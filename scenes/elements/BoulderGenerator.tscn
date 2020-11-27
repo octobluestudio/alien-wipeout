@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -279.895, 0, 0, 0, 0, 0, 279.895, -3 )
+}
+
+[node name="BoulderGenerator" type="Path2D"]
+position = Vector2( 160, -180 )
+scale = Vector2( 0.571643, -0.333333 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( -279.895, 0 )
+rotation = -0.00535903

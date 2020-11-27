@@ -1,0 +1,9 @@
+<Project Sdk="Godot.NET.Sdk/3.2.3">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>GameJamGameShow</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="util\" />
+  </ItemGroup>
+</Project>
