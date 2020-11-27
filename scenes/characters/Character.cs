@@ -29,17 +29,29 @@ public class Character : KinematicBody2D
     public override void _PhysicsProcess(float delta)
     {
         Vector2 inputVelocity = ControlsUtil.DirectionFromInput();
-        
+
         this.Velocity = this.MoveAndSlide(this.GetRealVelocityFromInputVelocity(inputVelocity, delta), Vector2.Up);
 
-        // Animate
-        var animation = (Math.Abs(inputVelocity.x) > 0 && this.IsOnFloor()) ? "Walk" : "Idle";
-        this.AnimationPlayer.Play(animation);
-
+        this.AnimationPlayer.Play(this.GetAnimation(inputVelocity));
         if (inputVelocity != Vector2.Zero)
         {
             this.Sprite.FlipH = inputVelocity.x < 0;
         }
+    }
+
+    private string GetAnimation(Vector2 inputVelocity)
+    {
+        if (!this.IsOnFloor())
+        {
+            if (this.Velocity.y < 0)
+            {
+                return "Jump";
+            }
+
+            return "Fall";
+        }
+        
+        return (Math.Abs(inputVelocity.x) > 0 && this.IsOnFloor()) ? "Walk" : "Idle";
     }
 
     private Vector2 GetRealVelocityFromInputVelocity(Vector2 inputVelocity, float delta)
