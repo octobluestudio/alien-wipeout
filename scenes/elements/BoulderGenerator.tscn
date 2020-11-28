@@ -15,7 +15,6 @@ script = ExtResource( 1 )
 Boulder = ExtResource( 2 )
 
 [node name="SpawnLocation" type="PathFollow2D" parent="."]
-position = Vector2( 46, 41 )
 rotate = false
 cubic_interp = false
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/poulpinette.png-33b91a6bb6dbe5562413acd7ac9a6c38.stex"
+path="res://.import/scaffolding.png-95ef9f2a651bbef6bf6708749fc76d1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/poulpinette.png"
-dest_files=[ "res://.import/poulpinette.png-33b91a6bb6dbe5562413acd7ac9a6c38.stex" ]
+source_file="res://resources/tiles/scaffolding.png"
+dest_files=[ "res://.import/scaffolding.png-95ef9f2a651bbef6bf6708749fc76d1c.stex" ]
 
 [params]
 

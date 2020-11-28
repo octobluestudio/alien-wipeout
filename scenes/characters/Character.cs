@@ -14,10 +14,22 @@ public class Character : KinematicBody2D
     private AnimationPlayer AnimationPlayer;
 
     private Vector2 Velocity = Vector2.Zero;
+    private bool Disabled = false;
+
+    public void Squash()
+    {
+        this.AnimationPlayer.Play("Squash");
+        this.Disable();
+    }
 
     public void Kill()
     {
         this.EmitSignal(nameof(CharacterKilled));
+    }
+
+    private void Disable()
+    {
+        this.Disabled = true;
     }
 
     public override void _Ready()
@@ -32,10 +44,13 @@ public class Character : KinematicBody2D
 
         this.Velocity = this.MoveAndSlide(this.GetRealVelocityFromInputVelocity(inputVelocity, delta), Vector2.Up);
 
-        this.AnimationPlayer.Play(this.GetAnimation(inputVelocity));
-        if (inputVelocity != Vector2.Zero)
+        if (! this.Disabled)
         {
-            this.Sprite.FlipH = inputVelocity.x < 0;
+            this.AnimationPlayer.Play(this.GetAnimation(inputVelocity));
+            if (inputVelocity != Vector2.Zero)
+            {
+                this.Sprite.FlipH = inputVelocity.x < 0;
+            }
         }
     }
 

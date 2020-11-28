@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/earth.png-4b9e83fd4b0ece7e9407830e3616e86e.stex"
+path="res://.import/earth.png-5e28b94bd05f5edd8cad19c7d78e8e06.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/earth.png"
-dest_files=[ "res://.import/earth.png-4b9e83fd4b0ece7e9407830e3616e86e.stex" ]
+source_file="res://resources/tiles/earth.png"
+dest_files=[ "res://.import/earth.png-5e28b94bd05f5edd8cad19c7d78e8e06.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/poulpinette_walk_0.png-7c7dacae966bf6eddf2a7ec2a70703e1.stex"
+path="res://.import/worm.png-39d32fa636d700e7661f93cbcd7ced4e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/poulpinette_walk_0.png"
-dest_files=[ "res://.import/poulpinette_walk_0.png-7c7dacae966bf6eddf2a7ec2a70703e1.stex" ]
+source_file="res://resources/enemies/worm.png"
+dest_files=[ "res://.import/worm.png-39d32fa636d700e7661f93cbcd7ced4e.stex" ]
 
 [params]
 
