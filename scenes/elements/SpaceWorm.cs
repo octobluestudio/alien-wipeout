@@ -4,35 +4,30 @@ using System;
 public class SpaceWorm : Area2D
 {
     private AnimationPlayer AnimationPlayer;
-
-    private bool Attacking;
+    private Timer WaitTimer;
 
     public override void _Ready()
     {
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
+        this.WaitTimer = this.GetNode<Timer>("WaitTimer");
     }
 
-    public async void Attack()
+    public void Attack()
     {
-        if (this.Attacking)
+        if (!this.AnimationPlayer.IsPlaying() && this.WaitTimer.TimeLeft == 0)
         {
-            return;
+            this.WaitTimer.Start();
         }
-
-        this.Attacking = true;
-
-        await this.ToSignal(this.GetTree().CreateTimer(1), "timeout");
-        this.AnimationPlayer.Play("Attack");
-
-        await this.ToSignal(this.GetTree().CreateTimer(1), "timeout");
-        this.AnimationPlayer.Play("Burry");
-
-        this.Attacking = false;
     }
     
     private void OnSpaceWormBodyEntered(PhysicsBody2D body)
     {
         ((Character)body).Squash();
+    }
+
+    private void OnWaitTimertimeout()
+    {
+        this.AnimationPlayer.Play("Attack");
     }
 }
 

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class StopWatch : Container
+public class StopWatch : Control
 {
     private Label Label;
 

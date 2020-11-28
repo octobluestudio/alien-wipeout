@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/UI/TV.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/UI/Speech.cs" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+outline_size = 1
+outline_color = Color( 0.278431, 0.278431, 0.278431, 0.588235 )
+font_data = ExtResource( 2 )
+
+[node name="Speech" type="Control"]
+margin_top = 120.0
+margin_right = 320.0
+margin_bottom = 180.0
+script = ExtResource( 3 )
+
+[node name="Text" type="Control" parent="."]
+margin_right = 250.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Text"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.733333, 0.733333, 0.733333, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Text"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.0
+margin_top = -20.0
+margin_right = 115.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "Salut Terrien !"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TV" parent="." instance=ExtResource( 1 )]
+margin_bottom = 3.8147e-06
