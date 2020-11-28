@@ -40,7 +40,7 @@ public class Character : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-        Vector2 inputVelocity = ControlsUtil.DirectionFromInput();
+        Vector2 inputVelocity = this.Disabled ? Vector2.Zero : ControlsUtil.DirectionFromInput();
 
         this.Velocity = this.MoveAndSlide(this.GetRealVelocityFromInputVelocity(inputVelocity, delta), Vector2.Up);
 
