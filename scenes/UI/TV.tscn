@@ -1,9 +1,149 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://resources/ui/tv-background.png" type="Texture" id=1]
 [ext_resource path="res://resources/ui/tv-alien.png" type="Texture" id=2]
 [ext_resource path="res://resources/ui/tv-glass.png" type="Texture" id=3]
 [ext_resource path="res://scenes/UI/TV.cs" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Amused"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Angry"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Impressed"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Neutral"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "TalkAmused"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "TalkAngry"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 4 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "TalkImpressed"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "TalkNeutral"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Alien:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 3 ]
+}
 
 [node name="TV" type="Control"]
 anchor_left = 1.0
@@ -25,13 +165,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Alien" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Alien" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+centered = false
+hframes = 6
+frame = 5
 
 [node name="Glass" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -42,3 +180,15 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Amused = SubResource( 1 )
+anims/Angry = SubResource( 2 )
+anims/Impressed = SubResource( 3 )
+anims/Neutral = SubResource( 4 )
+anims/TalkAmused = SubResource( 5 )
+anims/TalkAngry = SubResource( 6 )
+anims/TalkImpressed = SubResource( 7 )
+anims/TalkNeutral = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

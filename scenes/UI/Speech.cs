@@ -71,7 +71,7 @@ public class Speech : Control
         float duration = ((float) text.Length) / ((float) this.LettersPerSecond);
 
         this.TextArea.Display(text, duration);
-        this.TV.SpeakFor(duration);
+        this.TV.SpeakFor(duration + 1f);
     }
 
     private void DisplayNext()
