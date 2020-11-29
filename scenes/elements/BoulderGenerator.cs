@@ -7,6 +7,8 @@ public class BoulderGenerator : Path2D
 
     [Export] public PackedScene Boulder;
 
+    [Signal] public delegate void BoulderGenerated(Boulder boulder);
+
     private PathFollow2D SpawnLocation;
 
     public override void _Ready()
@@ -21,5 +23,7 @@ public class BoulderGenerator : Path2D
         Boulder boulder = (Boulder) Boulder.Instance();
         boulder.GlobalPosition = this.SpawnLocation.GlobalPosition;
         this.GetTree().CurrentScene.AddChild(boulder);
+
+        this.EmitSignal(nameof(BoulderGenerated), boulder);
     }
 }

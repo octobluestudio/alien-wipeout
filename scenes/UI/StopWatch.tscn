@@ -4,6 +4,7 @@
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+size = 17
 font_data = ExtResource( 2 )
 
 [node name="StopWatch" type="Control"]

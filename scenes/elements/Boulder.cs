@@ -4,26 +4,34 @@ using System;
 public class Boulder : RigidBody2D
 {
     private Area2D CollisionDetector;
-    private AlertArrow AlertArrow;
+    private RayCast2D ImpactLocator;
+
+    private string identifier;
+
+    [Signal] public delegate void ImminentImpact(string Identifier, Vector2 position);
+    [Signal] public delegate void Impact(string Identifier);
 
     public override void _Ready()
     {
-        this.CollisionDetector = this.GetNode<Area2D>("CollisionDetector");
-        this.AlertArrow = this.GetNode<AlertArrow>("AlertArrow");
+        this.identifier = Guid.NewGuid().ToString();
 
-        this.AlertArrow.UpdateFollowedObjectGlobalPosition(this.GlobalPosition);
+        this.CollisionDetector = this.GetNode<Area2D>("CollisionDetector");
+        this.ImpactLocator = this.GetNode<RayCast2D>("ImpactLocator");
     }
 
     public override void _PhysicsProcess(float delta)
     {
-        this.AlertArrow.UpdateFollowedObjectGlobalPosition(this.GlobalPosition);
-
-        if (this.ContactMonitor && this.TouchedGround())
+        if (this.TouchedGround())
         {
-            this.ContactMonitor = false;
-            this.ContactsReported = 0;
-
+            this.EmitSignal(nameof(Impact), this.identifier);
             this.QueueFree();
+        }
+
+        if (this.ImpactLocator.IsColliding())
+        {
+            var impactPointGlobalPosition = this.ImpactLocator.GetCollisionPoint();
+            this.EmitSignal(nameof(ImminentImpact), this.identifier, impactPointGlobalPosition);
+            this.ImpactLocator.Enabled = false;
         }
     }
 
@@ -36,9 +44,5 @@ public class Boulder : RigidBody2D
     {
         ((Character)body).Squash();
     }
-    
-    private void OnVisibilityNotifier2DScreenEntered()
-    {
-        this.AlertArrow.Disable();
-    }
 }
+
