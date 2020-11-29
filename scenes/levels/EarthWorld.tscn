@@ -5,8 +5,8 @@
 [ext_resource path="res://scenes/elements/platforms.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/levels/EarthWorld.cs" type="Script" id=4]
 [ext_resource path="res://scenes/UI/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/elements/BoulderGenerator.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/elements/WormBoobyTrap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/elements/generators/BoulderGenerator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/elements/generators/WormBoobyTrap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/music/Intergalactic Odyssey.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/UI/ImpactLocator.tscn" type="PackedScene" id=9]
 
@@ -80,6 +80,7 @@ stream = ExtResource( 8 )
 autoplay = true
 
 [node name="ImpactLocator" parent="." instance=ExtResource( 9 )]
+z_index = 1
 [connection signal="BoulderGenerated" from="BoulderGenerator" to="." method="OnBoulderGenerated"]
 [connection signal="CharacterKilled" from="Character" to="." method="OnCharacterKilled"]
 

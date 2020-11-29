@@ -12,6 +12,7 @@ public class Character : KinematicBody2D
 
     private Sprite Sprite;
     private AnimationPlayer AnimationPlayer;
+    private Timer DisableTimer;
 
     private Vector2 Velocity = Vector2.Zero;
     private bool Disabled = false;
@@ -19,6 +20,13 @@ public class Character : KinematicBody2D
     public void Squash()
     {
         this.AnimationPlayer.Play("Squash");
+        this.Disable();
+    }
+
+    internal void BounceBack(Vector2 direction, float strength)
+    {
+        this.Velocity = this.MoveAndSlide(direction * strength, Vector2.Up);
+        this.AnimationPlayer.Play("Fall");
         this.Disable();
     }
 
@@ -30,12 +38,14 @@ public class Character : KinematicBody2D
     private void Disable()
     {
         this.Disabled = true;
+        this.DisableTimer.Start();
     }
 
     public override void _Ready()
     {
         this.Sprite = this.GetNode<Sprite>("Sprite");
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
+        this.DisableTimer = this.GetNode<Timer>("DisableTimer");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -71,9 +81,10 @@ public class Character : KinematicBody2D
 
     private Vector2 GetRealVelocityFromInputVelocity(Vector2 inputVelocity, float delta)
     {
+        float frictionFactor = this.IsOnFloor() ? 1f : 0.01f;
         float x = !inputVelocity.Equals(Vector2.Zero) ?
             inputVelocity.x * this.Speed :
-            Mathf.Lerp(this.Velocity.x, 0, this.Friction);
+            Mathf.Lerp(this.Velocity.x, 0, this.Friction * frictionFactor);
 
         var gravityFactor = (this.IsSlidingOnWall()) ? 3 : 1;
 
@@ -92,5 +103,10 @@ public class Character : KinematicBody2D
     private bool IsJumping()
     {
         return (this.IsOnFloor() || this.IsOnWall()) && ControlsUtil.IsJumpJustPressed();
+    }
+
+    private void OnDisableTimerTimeout()
+    {
+        this.Disabled = false;
     }
 }

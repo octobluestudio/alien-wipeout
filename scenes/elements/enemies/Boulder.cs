@@ -5,6 +5,7 @@ public class Boulder : RigidBody2D
 {
     private Area2D CollisionDetector;
     private RayCast2D ImpactLocator;
+    private AnimationPlayer AnimationPlayer;
 
     private string identifier;
 
@@ -17,6 +18,7 @@ public class Boulder : RigidBody2D
 
         this.CollisionDetector = this.GetNode<Area2D>("CollisionDetector");
         this.ImpactLocator = this.GetNode<RayCast2D>("ImpactLocator");
+        this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -24,7 +26,9 @@ public class Boulder : RigidBody2D
         if (this.TouchedGround())
         {
             this.EmitSignal(nameof(Impact), this.identifier);
-            this.QueueFree();
+            this.Mode = ModeEnum.Static;
+            this.Rotation = 0;
+            this.AnimationPlayer.Play("Explode");
         }
 
         if (this.ImpactLocator.IsColliding())
