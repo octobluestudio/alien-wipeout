@@ -5,5 +5,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="util\" />
+    <Folder Include="scenes\UI\TV\util\" />
   </ItemGroup>
 </Project>

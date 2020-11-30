@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/elements/generators/BoulderGenerator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/elements/generators/WormBoobyTrap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/music/Intergalactic Odyssey.ogg" type="AudioStream" id=8]
-[ext_resource path="res://scenes/UI/ImpactLocator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/UI/Alert/ImpactLocator.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/elements/generators/BoxingGloveBoobyTrap.tscn" type="PackedScene" id=10]
 
 [node name="EarthWorld" type="Node2D"]
@@ -88,7 +88,12 @@ z_index = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+[connection signal="GameEvent" from="." to="HUD" method="OnGameEvent"]
 [connection signal="BoulderGenerated" from="BoulderGenerator" to="." method="OnBoulderGenerated"]
 [connection signal="CharacterKilled" from="Character" to="." method="OnCharacterKilled"]
+
+[editable path="HUD"]
+
+[editable path="HUD/Speech"]
 
 [editable path="DeathZone"]

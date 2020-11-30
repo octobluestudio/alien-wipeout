@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/UI/TextArea.cs" type="Script" id=2]
+[ext_resource path="res://scenes/UI/TV/TextArea.cs" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -10,7 +10,6 @@ outline_color = Color( 0.278431, 0.278431, 0.278431, 0.588235 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "TypeWriter"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:percent_visible")
 tracks/0/interp = 1

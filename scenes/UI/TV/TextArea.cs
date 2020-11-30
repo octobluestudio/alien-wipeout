@@ -21,12 +21,14 @@ public class TextArea : Control
     public void Display(string text, float duration)
     {
         this.Label.Text = text;
-        this.AnimationPlayer.PlaybackSpeed = duration;
+        this.AnimationPlayer.PlaybackSpeed = 1 / duration;
         this.AnimationPlayer.Play("TypeWriter");
     }
 
-    private void Erase()
+    public void Erase()
     {
+        this.CompleteDisplayTimer.Stop();
+
         this.Label.Text = "";
         this.Label.PercentVisible = 0;
         this.EmitSignal(nameof(DisplayComplete));

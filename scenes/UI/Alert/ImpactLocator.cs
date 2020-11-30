@@ -10,7 +10,7 @@ public class ImpactLocator : Node2D
 
     public override void _Ready()
     {
-        this.AlertArrow = ResourceLoader.Load<PackedScene>("res://scenes/UI/AlertArrow.tscn");
+        this.AlertArrow = ResourceLoader.Load<PackedScene>("res://scenes/UI/Alert/AlertArrow.tscn");
 
         this.markers = new Dictionary<string, AlertArrow>();
     }

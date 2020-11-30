@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/UI/StopWatch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/UI/HUD.cs" type="Script" id=2]
-[ext_resource path="res://scenes/UI/Speech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/UI/TV/Speech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/UI/TV/Sportscaster.tscn" type="PackedScene" id=4]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -12,3 +13,7 @@ anchor_right = 0.0
 margin_right = 320.0
 
 [node name="Speech" parent="." instance=ExtResource( 3 )]
+
+[node name="Sportscaster" parent="." instance=ExtResource( 4 )]
+[connection signal="MessageComplete" from="Speech" to="Sportscaster" method="OnSpeechMessageComplete"]
+[connection signal="Transmitted" from="Sportscaster" to="Speech" method="OnSportscasterTransmitted"]

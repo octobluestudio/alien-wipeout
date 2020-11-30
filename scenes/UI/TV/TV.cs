@@ -30,7 +30,7 @@ public class TV : Control
         this.Timer.Start(seconds);
     }
 
-    private void Idle()
+    public void Idle()
     {
         this.AnimationPlayer.Play(this.CurrentMood.ToString("G"));
     }
