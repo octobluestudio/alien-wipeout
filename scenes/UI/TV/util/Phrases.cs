@@ -19,7 +19,7 @@ public class Phrases
         {
             FillBlank,
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Simple(new SpeechLine("What a beautiful day!", TV.Mood.Neutral)),
+                SpeechLines.Simple(new SpeechLine("What a beautiful day...", TV.Mood.Neutral)),
                 SpeechLines.Simple(new SpeechLine("What a crap show...", TV.Mood.Angry)),
                 SpeechLines.Simple(new SpeechLine("Hope they'll die soon!", TV.Mood.Amused)),
                 SpeechLines.Simple(new SpeechLine("I'm too old for this s**t!!!", TV.Mood.Angry)),
