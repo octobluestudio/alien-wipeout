@@ -5,49 +5,103 @@ public class Sportscaster : Node
 {
     [Signal] public delegate void Transmitted(SpeechLines lines);
 
-    private bool speaking = false;
-    
+    private Timer BlankTimer;
+    private Timer InterruptionTimer;
+
+    private bool Speaking = false;
+    private bool InterruptionAllowed = false;
+
+    public override void _Ready()
+    {
+        this.BlankTimer = this.GetNode<Timer>("BlankTimer");
+        this.InterruptionTimer = this.GetNode<Timer>("InterruptionTimer");
+
+        this.BlankTimer.Start();
+        this.ForbidNextInterruptions();
+    }
+
     public void ReactTo(EarthWorld.Event gameEvent)
     {
-        if (this.speaking)
-        {
-            return;
-        }
-
         switch (gameEvent)
         {
             case EarthWorld.Event.Started:
-                this.Greet();
-                break;
             case EarthWorld.Event.DodgedBoulder:
-                this.DodgedBoulder();
+            case EarthWorld.Event.DodgedWorm:
+            case EarthWorld.Event.DodgedGlove:
+            case EarthWorld.Event.Punched:
+                this.Say(Phrases.Random(gameEvent.ToString("G")));
+                break;
+            case EarthWorld.Event.Fell:
+            case EarthWorld.Event.Eaten:
+            case EarthWorld.Event.Smashed:
+                this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
                 break;
         }
     }
-
-    private void Greet()
+    
+    public void Greet()
     {
-        SpeechLine[] greetings = {
-            new SpeechLine("Hello Terrans! Welcome to this new Episode of Alien Wipeout!", TV.Mood.Impressed),
-            new SpeechLine("Please Welcome our new contestant: Poulpinette!", TV.Mood.Amused)
-        };
-
-        this.Say(new SpeechLines(greetings));
+        this.Say(Phrases.Random(Phrases.Greetings));
     }
 
-    private void DodgedBoulder()
+    private void FillBlank()
     {
-        this.Say(SpeechLines.Simple(new SpeechLine("Oh! That was close!", TV.Mood.Impressed)));
+        this.Say(Phrases.Random(Phrases.FillBlank));
     }
 
     private void Say(SpeechLines lines)
     {
-        this.speaking = true;
+        if (this.Speaking && !(lines.Interruption && this.CanInterrupt()))
+        {
+            // if they're already speaking and this is not an allowed interruption
+            return;
+        }
+
+        if (this.Speaking && lines.Interruption)
+        {
+            // if this is an interruption
+            ForbidNextInterruptions();
+        }
+
+        this.Speaking = true;
+        this.BlankTimer.Stop();
+
         this.EmitSignal(nameof(Transmitted), lines);
     }
-    
+
+    private void ForceInterrupt(SpeechLines lines)
+    {
+        this.InterruptionAllowed = true;
+        this.InterruptionTimer.Stop();
+
+        this.Say(lines);
+    }
+
+    private void ForbidNextInterruptions()
+    {
+        this.InterruptionAllowed = false;
+        this.InterruptionTimer.Start();
+    }
+
+    private bool CanInterrupt()
+    {
+        return this.InterruptionAllowed;
+    }
+
     private void OnSpeechMessageComplete()
     {
-        this.speaking = false;
+        this.Speaking = false;
+
+        this.BlankTimer.Start();
+    }
+
+    private void OnBlankTimerTimeout()
+    {
+        this.FillBlank();
+    }
+
+    private void OnInterruptionTimerTimeout()
+    {
+        this.InterruptionAllowed = true;
     }
 }

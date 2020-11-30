@@ -35,6 +35,11 @@ public class Speech : Control
 
     public void Say(SpeechLines lines)
     {
+        if (lines.Interruption)
+        {
+            this.Interrupt();
+        }
+
         foreach(SpeechLine line in lines.Lines)
         {
             this.Messages.Enqueue(line);

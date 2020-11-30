@@ -3,7 +3,7 @@ using System;
 
 public class EarthWorld : Node2D
 {
-    public enum Event { Started, Restarted, DodgedBoulder, DodgedGlove, DodgedWorm, Fell };
+    public enum Event { Started, DodgedBoulder, DodgedGlove, DodgedWorm, Fell, Punched, Eaten, Smashed };
 
     [Signal] public delegate void GameEvent(Event gameEvent);
 
@@ -28,7 +28,5 @@ public class EarthWorld : Node2D
     private void OnBoulderGenerated(Boulder boulder)
     {
         this.ImpactLocator.RegisterBoulder(boulder);
-
-        this.EmitSignal(nameof(GameEvent), Event.DodgedBoulder);
     }
 }

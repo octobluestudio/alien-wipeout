@@ -4,3 +4,13 @@
 
 [node name="Sportscaster" type="Node"]
 script = ExtResource( 1 )
+
+[node name="BlankTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="InterruptionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="timeout" from="BlankTimer" to="." method="OnBlankTimerTimeout"]
+[connection signal="timeout" from="InterruptionTimer" to="." method="OnInterruptionTimerTimeout"]

@@ -31,6 +31,7 @@ public class TextArea : Control
 
         this.Label.Text = "";
         this.Label.PercentVisible = 0;
+        this.AnimationPlayer.Stop();
         this.EmitSignal(nameof(DisplayComplete));
     }
 
