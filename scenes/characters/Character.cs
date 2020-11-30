@@ -3,31 +3,45 @@ using System;
 
 public class Character : KinematicBody2D
 {
+    private Sprite Sprite;
+    private AnimationTree AnimationTree;
+    private AnimationNodeStateMachinePlayback AnimationStateMachine;
+    private Timer DisableTimer;
+
     [Export] public float Speed = 150.0f;
     [Export] public float Friction = 0.6f;
     [Export] public float Gravity = 22.0f;
     [Export] public float JumpForce = 400.0f;
 
     [Signal] public delegate void CharacterKilled();
-
-    private Sprite Sprite;
-    private AnimationPlayer AnimationPlayer;
-    private Timer DisableTimer;
+    
+    private enum State { Idle, Walk, Jump, Fall, Squash };
 
     private Vector2 Velocity = Vector2.Zero;
     private bool Disabled = false;
+    private State CurrentState;
+
+    public override void _Ready()
+    {
+        this.Sprite = this.GetNode<Sprite>("Sprite");
+        this.AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
+        this.AnimationStateMachine = (AnimationNodeStateMachinePlayback) this.AnimationTree.Get("parameters/playback");
+        this.DisableTimer = this.GetNode<Timer>("DisableTimer");
+
+        this.Animate(State.Idle);
+    }
 
     public void Squash()
     {
-        this.AnimationPlayer.Play("Squash");
+        this.Animate(State.Squash);
         this.Disable();
     }
 
     internal void BounceBack(Vector2 direction, float strength)
     {
         this.Velocity = this.MoveAndSlide(direction * strength, Vector2.Up);
-        this.AnimationPlayer.Play("Fall");
-        this.Disable();
+        this.Animate(State.Fall);
+        this.DisableFor(0.4f);
     }
 
     public void Kill()
@@ -35,17 +49,15 @@ public class Character : KinematicBody2D
         this.EmitSignal(nameof(CharacterKilled));
     }
 
+    private void DisableFor(float seconds)
+    {
+        this.Disable();
+        this.DisableTimer.Start(seconds);
+    }
+
     private void Disable()
     {
         this.Disabled = true;
-        this.DisableTimer.Start();
-    }
-
-    public override void _Ready()
-    {
-        this.Sprite = this.GetNode<Sprite>("Sprite");
-        this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
-        this.DisableTimer = this.GetNode<Timer>("DisableTimer");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -56,27 +68,12 @@ public class Character : KinematicBody2D
 
         if (! this.Disabled)
         {
-            this.AnimationPlayer.Play(this.GetAnimation(inputVelocity));
+            this.Animate(this.GetStateFromVelocity(inputVelocity));
             if (inputVelocity != Vector2.Zero)
             {
                 this.Sprite.FlipH = inputVelocity.x < 0;
             }
         }
-    }
-
-    private string GetAnimation(Vector2 inputVelocity)
-    {
-        if (!this.IsOnFloor())
-        {
-            if (this.Velocity.y < 0)
-            {
-                return "Jump";
-            }
-
-            return "Fall";
-        }
-        
-        return (Math.Abs(inputVelocity.x) > 0 && this.IsOnFloor()) ? "Walk" : "Idle";
     }
 
     private Vector2 GetRealVelocityFromInputVelocity(Vector2 inputVelocity, float delta)
@@ -93,6 +90,32 @@ public class Character : KinematicBody2D
             this.Velocity.y + (this.Gravity / gravityFactor);
 
         return new Vector2(x, y);
+    }
+
+    private State GetStateFromVelocity(Vector2 inputVelocity)
+    {
+        if (!this.IsOnFloor())
+        {
+            if (this.Velocity.y < 0)
+            {
+                return State.Jump;
+            }
+
+            return State.Fall;
+        }
+        
+        return (Math.Abs(inputVelocity.x) > 0 && this.IsOnFloor()) ? State.Walk : State.Idle;
+    }
+
+    private void Animate(State state)
+    {
+        if (this.CurrentState == state)
+        {
+            return;
+        }
+
+        this.CurrentState = state;
+        this.AnimationStateMachine.Travel(state.ToString("G"));
     }
 
     private bool IsSlidingOnWall()
