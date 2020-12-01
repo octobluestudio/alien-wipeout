@@ -3,8 +3,6 @@
 [ext_resource path="res://scenes/elements/generators/BoulderGenerator.cs" type="Script" id=1]
 [ext_resource path="res://scenes/elements/enemies/Boulder.tscn" type="PackedScene" id=2]
 
-
-
 [sub_resource type="Curve2D" id=1]
 bake_interval = 10.0
 _data = {
@@ -21,5 +19,4 @@ rotate = false
 cubic_interp = false
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

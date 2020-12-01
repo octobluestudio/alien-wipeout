@@ -22,7 +22,7 @@ public class SpaceWorm : Area2D
     
     private void OnSpaceWormBodyEntered(PhysicsBody2D body)
     {
-        ((Character)body).Squash();
+        ((Character)body).Chomp();
     }
 
     private void OnWaitTimertimeout()

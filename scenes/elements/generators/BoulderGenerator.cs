@@ -10,10 +10,22 @@ public class BoulderGenerator : Path2D
     [Signal] public delegate void BoulderGenerated(Boulder boulder);
 
     private PathFollow2D SpawnLocation;
+    private Timer Timer;
 
     public override void _Ready()
     {
         this.SpawnLocation = this.GetNode<PathFollow2D>("SpawnLocation");
+        this.Timer = this.GetNode<Timer>("Timer");
+    }
+
+    public void Start()
+    {
+        this.Timer.Start();
+    }
+
+    public void Stop()
+    {
+        this.Timer.Stop();
     }
 
     private void OnTimerTimeout()

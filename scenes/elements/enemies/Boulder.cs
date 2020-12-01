@@ -47,6 +47,7 @@ public class Boulder : RigidBody2D
     private void OnCollisionDetectorBodyEntered(PhysicsBody2D body)
     {
         ((Character)body).Squash();
+        this.CollisionDetector.SetDeferred("monitoring", false);
     }
 }
 

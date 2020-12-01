@@ -13,13 +13,14 @@ public class Character : KinematicBody2D
     [Export] public float Gravity = 22.0f;
     [Export] public float JumpForce = 400.0f;
 
-    [Signal] public delegate void CharacterKilled();
+    [Signal] public delegate void CharacterKilled(State state);
     
-    private enum State { Idle, Walk, Jump, Fall, Squash };
+    public enum State { Idle, Walk, Jump, Fall, Squash, Chomp };
 
     private Vector2 Velocity = Vector2.Zero;
     private bool Disabled = false;
     private State CurrentState;
+    private bool IsDying = false;
 
     public override void _Ready()
     {
@@ -33,20 +34,52 @@ public class Character : KinematicBody2D
 
     public void Squash()
     {
-        this.Animate(State.Squash);
-        this.Disable();
+        this.Dying(State.Squash);
     }
 
-    internal void BounceBack(Vector2 direction, float strength)
+    public void Chomp()
+    {
+        this.Dying(State.Chomp);
+    }
+
+    private void Dying(State state)
+    {
+        if (this.IsDying)
+        {
+            // You can't die twice
+            return;
+        }
+
+        this.Animate(state);
+        this.Disable();
+        this.IsDying = true;
+    }
+
+    public void BounceBack(Vector2 direction, float strength)
     {
         this.Velocity = this.MoveAndSlide(direction * strength, Vector2.Up);
         this.Animate(State.Fall);
         this.DisableFor(0.4f);
     }
 
-    public void Kill()
+    public void Smashed()
     {
-        this.EmitSignal(nameof(CharacterKilled));
+        this.Kill(State.Squash);
+    }
+
+    public void Chomped()
+    {
+        this.Kill(State.Chomp);
+    }
+
+    public void Fell()
+    {
+        this.Kill(State.Fall);
+    }
+
+    private void Kill(State state)
+    {
+        this.EmitSignal(nameof(CharacterKilled), state);
     }
 
     private void DisableFor(float seconds)
@@ -85,7 +118,7 @@ public class Character : KinematicBody2D
 
         var gravityFactor = (this.IsSlidingOnWall()) ? 3 : 1;
 
-        float y = this.IsJumping() ?
+        float y = this.IsJumping() && !this.Disabled ?
             -this.JumpForce :
             this.Velocity.y + (this.Gravity / gravityFactor);
 
@@ -109,7 +142,7 @@ public class Character : KinematicBody2D
 
     private void Animate(State state)
     {
-        if (this.CurrentState == state)
+        if (this.CurrentState == state || this.IsDying)
         {
             return;
         }
@@ -130,6 +163,11 @@ public class Character : KinematicBody2D
 
     private void OnDisableTimerTimeout()
     {
+        if (this.IsDying)
+        {
+            return;
+        }
+
         this.Disabled = false;
     }
 }
