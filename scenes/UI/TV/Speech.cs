@@ -53,9 +53,9 @@ public class Speech : Control
     {
         float duration = ((float) line.Text.Length) / ((float) this.LettersPerSecond);
 
-        this.TextArea.Display(line.Text, duration);
+        this.TextArea.Display(line.Text, duration, line.CompleteDisplayDuration);
         this.TV.ChangeMood(line.Mood);
-        this.TV.SpeakFor(duration + 1f);
+        this.TV.SpeakFor(duration + (line.CompleteDisplayDuration / 2));
     }
 
     private void DisplayNext()

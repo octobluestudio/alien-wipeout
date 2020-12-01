@@ -25,7 +25,7 @@ public class Phrases
                 SpeechLines.Simple(new SpeechLine("I'm too old for this s**t!!!", TV.Mood.Angry)),
                 SpeechLines.Simple(new SpeechLine("Does the buzzer really exist...?", TV.Mood.Amused)),
                 new SpeechLines(new SpeechLine[] {
-                    (new SpeechLine("Whoa...", TV.Mood.Impressed)),
+                    (new SpeechLine("Whoa...", TV.Mood.Impressed, 0.5f)),
                     (new SpeechLine("Oh, no, still the same boring stuff...", TV.Mood.Angry)),
                 }, 0.1f, 0.1f, false),
             })

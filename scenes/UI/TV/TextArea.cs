@@ -15,24 +15,15 @@ public class TextArea : Control
         this.Label = this.GetNode<Label>("Label");
         this.CompleteDisplayTimer = this.GetNode<Timer>("CompleteDisplayTimer");
 
-        this.Label.PercentVisible = 0;
+        this.Erase(false);
     }
 
-    public void Display(string text, float duration)
+    public void Display(string text, float duration, float waitAfterDuration)
     {
         this.Label.Text = text;
         this.AnimationPlayer.PlaybackSpeed = 1 / duration;
         this.AnimationPlayer.Play("TypeWriter");
-    }
-
-    public void Erase()
-    {
-        this.CompleteDisplayTimer.Stop();
-
-        this.Label.Text = "";
-        this.Label.PercentVisible = 0;
-        this.AnimationPlayer.Stop();
-        this.EmitSignal(nameof(DisplayComplete));
+        this.CompleteDisplayTimer.WaitTime = waitAfterDuration;
     }
 
     public void DisplayTermination()
@@ -40,6 +31,26 @@ public class TextArea : Control
         this.CompleteDisplayTimer.Start();
     }
 
+    public void Erase()
+    {
+        this.Erase(true);
+    }
+
+    private void Erase(bool notify)
+    {
+        this.CompleteDisplayTimer.Stop();
+        this.CompleteDisplayTimer.WaitTime = SpeechLine.DefaultCompleteDisplayDuration;
+
+        this.Label.Text = "";
+        this.Label.PercentVisible = 0;
+        this.AnimationPlayer.Stop();
+
+        if (notify)
+        {
+            this.EmitSignal(nameof(DisplayComplete));
+        }
+    }
+    
     private void OnCompleteDisplayTimerTimeout()
     {
         this.Erase();
