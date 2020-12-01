@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/CreditsMenu.cs" type="Script" id=2]
@@ -9,6 +9,12 @@
 [sub_resource type="DynamicFont" id=2]
 size = 6
 font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Credits"
@@ -129,6 +135,7 @@ custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = SubResource( 2 )
 shortcut_in_tooltip = false
+shortcut = SubResource( 4 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -136,4 +143,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Credits = SubResource( 1 )
-[connection signal="button_up" from="BackButton" to="." method="Back"]
+[connection signal="button_up" from="BackButton" to="." method="MainMenu"]

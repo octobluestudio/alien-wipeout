@@ -1,5 +1,5 @@
 
-public class WelcomeMenu : BaseMenu
+public class GameOverMenu : BaseMenu
 {
     public override void _Ready()
     {

@@ -1,5 +1,7 @@
+using Godot;
+using System;
 
-public class WelcomeMenu : BaseMenu
+public class LevelCompleteMenu : BaseMenu
 {
     public override void _Ready()
     {

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/menus/WelcomeMenu.cs" type="Script" id=2]
+[ext_resource path="res://scenes/menus/GameOverMenu.cs" type="Script" id=2]
 [ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
@@ -10,7 +10,7 @@
 size = 30
 font_data = ExtResource( 1 )
 
-[node name="WelcomeMenu" type="Control"]
+[node name="GameOverMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -28,54 +28,54 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.1
+anchor_top = 0.2
 anchor_right = 0.5
-anchor_bottom = 0.1
+anchor_bottom = 0.2
 margin_left = -122.5
 margin_right = 122.5
 margin_bottom = 31.0
 custom_fonts/font = SubResource( 1 )
-text = "Alien Wipeout"
+text = "Game Over"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartButton" type="Button" parent="."]
+[node name="TryAgainButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -32.0
-margin_top = -9.00001
-margin_right = 32.0
-margin_bottom = 8.99999
+margin_left = -52.0
+margin_top = -9.0
+margin_right = 52.0
+margin_bottom = 9.0
 mouse_default_cursor_shape = 3
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-text = "Start"
+text = "Try Again"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="."]
+[node name="MainMenuButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -32.0
+margin_left = -52.0
 margin_top = 13.0
-margin_right = 32.0
+margin_right = 52.0
 margin_bottom = 31.0
 mouse_default_cursor_shape = 3
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-text = "Credits"
+text = "Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,9 +85,9 @@ anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -32.0
+margin_left = -52.0
 margin_top = 35.0
-margin_right = 32.0
+margin_right = 52.0
 margin_bottom = 53.0
 mouse_default_cursor_shape = 3
 custom_styles/focus = ExtResource( 5 )
@@ -98,6 +98,6 @@ text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="StartButton" to="." method="StartGame"]
-[connection signal="button_up" from="CreditsButton" to="." method="DisplayCredits"]
+[connection signal="button_up" from="TryAgainButton" to="." method="StartGame"]
+[connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitGame"]
