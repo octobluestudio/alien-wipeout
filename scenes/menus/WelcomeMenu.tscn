@@ -2,17 +2,13 @@
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/WelcomeMenu.cs" type="Script" id=2]
-[ext_resource path="res://scenes/menus/buttonsFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
+[ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.796078, 0.133333, 0.133333, 1 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0, 0, 0 )
 
 [node name="WelcomeMenu" type="Control"]
 anchor_right = 1.0
@@ -38,7 +34,7 @@ anchor_bottom = 0.1
 margin_left = -122.5
 margin_right = 122.5
 margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Alien Wipeout"
 align = 1
 valign = 1
@@ -51,19 +47,35 @@ anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -28.0
-margin_top = -9.00005
-margin_right = 28.0
-margin_bottom = 8.99995
+margin_left = -32.0
+margin_top = -9.00001
+margin_right = 32.0
+margin_bottom = 8.99999
 mouse_default_cursor_shape = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Start"
-clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -32.0
+margin_top = 13.0
+margin_right = 32.0
+margin_bottom = 31.0
+mouse_default_cursor_shape = 3
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,21 +85,19 @@ anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -28.0
-margin_top = 16.0
-margin_right = 28.0
-margin_bottom = 34.0
+margin_left = -32.0
+margin_top = 35.0
+margin_right = 32.0
+margin_bottom = 53.0
 mouse_default_cursor_shape = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Quit"
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="button_up" from="StartButton" to="." method="OnStartButtonUp"]
+[connection signal="button_up" from="CreditsButton" to="." method="OnCreditsButtonUp"]
 [connection signal="button_up" from="QuitButton" to="." method="OnQuitButtonUp"]

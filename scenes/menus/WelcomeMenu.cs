@@ -4,6 +4,7 @@ using System;
 public class WelcomeMenu : Control
 {
     private Button StartButton;
+    private Button CreditsButton;
     private Button QuitButton;
 
     private Button SelectedButton;
@@ -13,23 +14,25 @@ public class WelcomeMenu : Control
         this.StartButton = this.GetNode<Button>("StartButton");
         this.SetButtonNavigation(this.StartButton);
 
+        this.CreditsButton = this.GetNode<Button>("CreditsButton");
+        this.SetButtonNavigation(this.CreditsButton);
+
         this.QuitButton = this.GetNode<Button>("QuitButton");
         this.SetButtonNavigation(this.QuitButton);
 
         this.DefaultFocus();
     }
 
-    public override void _Process(float delta)
+    public override void _Input(InputEvent @event)
     {
-        if (!AnyButtonHasFocus())
-        {
+        if (@event is InputEventKey && !this.AnyButtonHasFocus()) {
             this.DefaultFocus();
         }
     }
 
     private bool AnyButtonHasFocus()
     {
-        return this.StartButton.HasFocus() || this.QuitButton.HasFocus();
+        return this.StartButton.HasFocus() || this.CreditsButton.HasFocus() || this.QuitButton.HasFocus();
     }
 
     private void DefaultFocus()
@@ -40,6 +43,11 @@ public class WelcomeMenu : Control
     private void StartGame()
     {
         this.GetTree().ChangeScene("res://scenes/levels/EarthWorld.tscn");
+    }
+
+    private void DisplayCredits()
+    {
+        this.GetTree().ChangeScene("res://scenes/menus/CreditsMenu.tscn");
     }
 
     private void QuitGame()
@@ -56,6 +64,11 @@ public class WelcomeMenu : Control
     private void OnStartButtonUp()
     {
         this.StartGame();
+    }
+    
+    private void OnCreditsButtonUp()
+    {
+        this.DisplayCredits();
     }
 
     private void OnQuitButtonUp()
@@ -78,4 +91,3 @@ public class WelcomeMenu : Control
         button.ReleaseFocus();
     }
 }
-

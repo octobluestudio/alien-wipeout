@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/menus/CreditsMenu.cs" type="Script" id=2]
+[ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
+[ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Credits"
+length = 10.0
+step = 1.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Back"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Credits:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -700 ]
+}
+
+[node name="CreditsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "
+
+
+
+
+
+
+
+
+
+
+
+Alien Wipeout
+
+
+
+Created by
+
+Marie Brochard
+Remi San
+
+
+Art by
+Marie Brochard
+
+
+Code by
+Remi San
+
+
+Created during
+Angry Smile
+Beginners Circle Jam #4
+in December 2020
+
+
+Font
+PixelRPG by HeartBeast
+
+
+Sounds & Music
+
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -31.0
+margin_top = -11.0
+mouse_default_cursor_shape = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = SubResource( 2 )
+shortcut_in_tooltip = false
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Credits = SubResource( 1 )
+[connection signal="button_up" from="BackButton" to="." method="Back"]
