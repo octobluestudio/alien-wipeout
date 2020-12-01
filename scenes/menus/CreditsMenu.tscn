@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/CreditsMenu.cs" type="Script" id=2]
 [ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
+
+[sub_resource type="DynamicFont" id=5]
+size = 36
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 6
@@ -18,7 +22,7 @@ shortcut = SubResource( 3 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Credits"
-length = 10.0
+length = 15.0
 step = 1.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -27,11 +31,11 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 10 ),
+"times": PoolRealArray( 15 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "Back"
+"method": "MainMenu"
 } ]
 }
 tracks/1/type = "value"
@@ -41,10 +45,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 15 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, -700 ]
+"values": [ 0.0, -600 ]
 }
 
 [node name="CreditsMenu" type="Control"]
@@ -70,7 +74,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Credits"]
+[node name="MainTitle" type="Label" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -600.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.796078, 0.133333, 0.133333, 1 )
+text = "
+
+Alien Wipeout"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titles" type="Label" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.796078, 0.133333, 0.133333, 1 )
+text = "
+
+
+
+
+
+
+
+
+
+
+
+Created by
+
+
+
+
+Art by
+
+
+
+Code by
+
+
+
+Created during
+
+
+
+
+
+Font
+
+
+
+Sounds & Music
+
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Names" type="Label" parent="Credits"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 3 )
@@ -86,36 +152,32 @@ text = "
 
 
 
-Alien Wipeout
-
-
-
-Created by
 
 Marie Brochard
 Remi San
 
 
-Art by
+
 Marie Brochard
 
 
-Code by
+
 Remi San
 
 
-Created during
+
 Angry Smile
 Beginners Circle Jam #4
 in December 2020
 
 
-Font
-PixelRPG by HeartBeast
+
+PixelRPG by Heartbeast
 
 
-Sounds & Music
 
+Intergalactic Odyssey
+by Patrick De Arteaga
 "
 align = 1
 __meta__ = {
