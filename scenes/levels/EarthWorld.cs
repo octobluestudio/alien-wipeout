@@ -20,9 +20,9 @@ public class EarthWorld : Node2D
 
     private void OnCharacterKilled()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/EarthWorld.tscn");
-
         this.HUD.StopStopWatch();
+
+        this.GetTree().ChangeScene("res://scenes/menus/GameOverMenu.tscn");
     }
     
     private void OnBoulderGenerated(Boulder boulder)
