@@ -3,11 +3,11 @@
 [ext_resource path="res://resources/character/poulpinette.png" type="Texture" id=1]
 [ext_resource path="res://scenes/characters/Character.cs" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=24]
+[sub_resource type="CapsuleShape2D" id=41]
 radius = 8.99998
 height = 8.00004
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=42]
 resource_name = "Chomp"
 length = 0.4
 step = 0.05
@@ -38,11 +38,11 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=43]
 resource_name = "End"
 length = 0.05
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=44]
 resource_name = "Fall"
 length = 0.05
 loop = true
@@ -59,7 +59,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=45]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -74,7 +74,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=46]
 resource_name = "Jump"
 length = 0.05
 loop = true
@@ -91,7 +91,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=47]
 resource_name = "Squash"
 length = 0.4
 step = 0.05
@@ -122,7 +122,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=48]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -170,6 +170,7 @@ animation = "Walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
@@ -178,6 +179,7 @@ animation = "Walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=36]
 switch_mode = 2
@@ -207,9 +209,9 @@ states/Walk/position = Vector2( 472.75, 41.4375 )
 transitions = [ "Idle", "Squash", SubResource( 14 ), "Jump", "Fall", SubResource( 15 ), "Idle", "Jump", SubResource( 16 ), "Fall", "Idle", SubResource( 17 ), "Idle", "Walk", SubResource( 18 ), "Walk", "Idle", SubResource( 19 ), "Walk", "Jump", SubResource( 20 ), "Fall", "Walk", SubResource( 21 ), "Walk", "Fall", SubResource( 22 ), "Fall", "Jump", SubResource( 23 ), "Squash", "End", SubResource( 36 ), "Idle", "Chomp", SubResource( 39 ), "Chomp", "End", SubResource( 40 ) ]
 start_node = "Idle"
 end_node = "End"
-graph_offset = Vector2( 72.7086, 0 )
+graph_offset = Vector2( 72.7086, -3.26706 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=49]
 
 [node name="Character" type="KinematicBody2D"]
 collision_mask = 0
@@ -225,16 +227,16 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -9 )
 rotation = 1.5708
-shape = SubResource( 24 )
+shape = SubResource( 41 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Chomp = SubResource( 37 )
-anims/End = SubResource( 34 )
-anims/Fall = SubResource( 25 )
-anims/Idle = SubResource( 26 )
-anims/Jump = SubResource( 27 )
-anims/Squash = SubResource( 28 )
-anims/Walk = SubResource( 29 )
+anims/Chomp = SubResource( 42 )
+anims/End = SubResource( 43 )
+anims/Fall = SubResource( 44 )
+anims/Idle = SubResource( 45 )
+anims/Jump = SubResource( 46 )
+anims/Squash = SubResource( 47 )
+anims/Walk = SubResource( 48 )
 
 [node name="DisableTimer" type="Timer" parent="."]
 wait_time = 0.4
@@ -244,5 +246,5 @@ one_shot = true
 tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 30 )
+parameters/playback = SubResource( 49 )
 [connection signal="timeout" from="DisableTimer" to="." method="OnDisableTimerTimeout"]
