@@ -158,7 +158,7 @@ public class Character : KinematicBody2D
 
     private bool IsJumping()
     {
-        return (this.IsOnFloor() || this.IsOnWall()) && ControlsUtil.IsJumpJustPressed();
+        return (this.IsOnFloor() || this.IsSlidingOnWall()) && ControlsUtil.IsJumpJustPressed();
     }
 
     private void OnDisableTimerTimeout()
