@@ -59,7 +59,7 @@ public class Phrases
         {
             LevelOne.Event.Punched.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("I think I'm gonna eat calamari tonight...", TV.Mood.Amused))
+                SpeechLines.Interrupt(new SpeechLine("Hope they have a good dentist!", TV.Mood.Amused))
             })
         },
         {

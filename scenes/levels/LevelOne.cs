@@ -22,18 +22,6 @@ public class LevelOne : Node2D
         this.HUD.ReactTo(Event.Started);
     }
 
-    private async void OnCharacterKilled(Character.State state)
-    {
-        this.HUD.StopStopWatch();
-        this.HUD.ReactTo(CharacterStateToEvent(state));
-
-        this.Terrain.Deactivate();
-
-        await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
-
-        this.GetTree().ChangeScene("res://scenes/menus/GameOverMenu.tscn");
-    }
-
     private static Event CharacterStateToEvent(Character.State state)
     {
         switch (state)
@@ -45,6 +33,39 @@ public class LevelOne : Node2D
             default:
                 return Event.Fell;
         }
+    }
+
+    private async void OnCharacterKilled(Character.State state)
+    {
+        this.HUD.StopStopWatch();
+        this.HUD.ReactTo(CharacterStateToEvent(state));
+
+        this.Terrain.Deactivate();
+
+        await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
+
+        this.GetTree().ChangeScene("res://scenes/menus/GameOverMenu.tscn");
+    }
+    
+    private void OnCharacterDodged(EnemyProperties.Type enemyType)
+    {
+        switch(enemyType)
+        {
+            case EnemyProperties.Type.SpaceWorm:
+                this.HUD.ReactTo(Event.DodgedWorm);
+                break;
+            case EnemyProperties.Type.Boulder:
+                this.HUD.ReactTo(Event.DodgedBoulder);
+                break;
+            case EnemyProperties.Type.BoxingGlove:
+                this.HUD.ReactTo(Event.DodgedGlove);
+                break;
+        }
+    }
+
+    private void OnCharacterPunched()
+    {
+        this.HUD.ReactTo(Event.Punched);
     }
 
     private void OnBoulderGenerated(Boulder boulder)

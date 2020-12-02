@@ -63,5 +63,7 @@ motion_scale = Vector2( 0.19, 0.8 )
 texture = ExtResource( 11 )
 centered = false
 offset = Vector2( -150, -330 )
-[connection signal="CharacterKilled" from="Character" to="." method="OnCharacterKilled"]
+[connection signal="Dodged" from="Character" to="." method="OnCharacterDodged"]
+[connection signal="Killed" from="Character" to="." method="OnCharacterKilled"]
+[connection signal="Punched" from="Character" to="." method="OnCharacterPunched"]
 [connection signal="BoulderGenerated" from="Terrain" to="." method="OnBoulderGenerated"]

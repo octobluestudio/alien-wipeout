@@ -13,8 +13,10 @@ public class Character : KinematicBody2D
     [Export] public float Gravity = 22.0f;
     [Export] public float JumpForce = 400.0f;
 
-    [Signal] public delegate void CharacterKilled(State state);
-    
+    [Signal] public delegate void Killed(State state);
+    [Signal] public delegate void Punched();
+    [Signal] public delegate void Dodged(EnemyProperties.Type enemyType);
+
     public enum State { Idle, Walk, Jump, Fall, Squash, Chomp };
 
     private Vector2 Velocity = Vector2.Zero;
@@ -55,11 +57,18 @@ public class Character : KinematicBody2D
         this.IsDying = true;
     }
 
-    public void BounceBack(Vector2 direction, float strength)
+    public void Punch(Vector2 direction, float strength)
     {
         this.Velocity = this.MoveAndSlide(direction * strength, Vector2.Up);
         this.Animate(State.Fall);
         this.DisableFor(0.4f);
+
+        this.EmitSignal(nameof(Punched));
+    }
+
+    public void Dodge(EnemyProperties.Type enemyType)
+    {
+        this.EmitSignal(nameof(Dodged), enemyType);
     }
 
     public void Smashed()
@@ -79,7 +88,7 @@ public class Character : KinematicBody2D
 
     private void Kill(State state)
     {
-        this.EmitSignal(nameof(CharacterKilled), state);
+        this.EmitSignal(nameof(Killed), state);
     }
 
     private void DisableFor(float seconds)

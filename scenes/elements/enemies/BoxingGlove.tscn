@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/enemies/boxing-glove.png" type="Texture" id=1]
 [ext_resource path="res://scenes/elements/enemies/BoxingGlove.cs" type="Script" id=2]
+[ext_resource path="res://scenes/elements/enemies/DodgeDetector.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 24.0
 
 [node name="BoxingGlove" type="Area2D"]
 collision_layer = 0
@@ -19,8 +23,17 @@ texture = ExtResource( 1 )
 position = Vector2( 10, 1 )
 shape = SubResource( 1 )
 
+[node name="DodgeDetector" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="DodgeDetector/Area2D" index="0"]
+position = Vector2( 10, 1 )
+shape = SubResource( 2 )
+
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 21, 1 )
 scale = Vector2( 2.05, 1 )
 [connection signal="body_entered" from="." to="." method="OnBoxingGloveBodyEntered"]
+[connection signal="CharacterDodged" from="DodgeDetector" to="." method="OnCharacterDodged"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="OnscreenExited"]
+
+[editable path="DodgeDetector"]
