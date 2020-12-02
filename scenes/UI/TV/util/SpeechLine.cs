@@ -1,7 +1,6 @@
-﻿using System;
-using Godot;
+﻿using Godot;
 
-public class SpeechLine : Node
+public class SpeechLine : Object
 {
     public const float DefaultCompleteDisplayDuration = 2f;
 

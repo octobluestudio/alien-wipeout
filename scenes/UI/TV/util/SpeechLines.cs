@@ -1,7 +1,6 @@
 ﻿using System;
-using Godot;
 
-public class SpeechLines : Node
+public class SpeechLines : Godot.Object
 {
     public const float DefaultInitialWaitingTime = 0.1f;
     public const float DefaultWaitingTime = 0.5f;

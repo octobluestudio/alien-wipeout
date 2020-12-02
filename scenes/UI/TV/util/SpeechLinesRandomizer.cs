@@ -1,7 +1,6 @@
 ﻿using System;
-using Godot;
 
-public class SpeechLinesRandomizer : Node
+public class SpeechLinesRandomizer : Godot.Object
 {
     private readonly SpeechLines[] Lines;
 
