@@ -49,7 +49,7 @@ public abstract class BaseMenu : Control
 
     public void StartGame()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/EarthWorld.tscn");
+        this.GetTree().ChangeScene("res://scenes/levels/LevelOne.tscn");
     }
 
     public void MainMenu()

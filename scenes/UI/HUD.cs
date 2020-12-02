@@ -21,7 +21,7 @@ public class HUD : CanvasLayer
         this.StopWatch.Stop();
     }
     
-    private void OnGameEvent(EarthWorld.Event gameEvent)
+    public void ReactTo(LevelOne.Event gameEvent)
     {
         this.Sportscaster.ReactTo(gameEvent);
     }

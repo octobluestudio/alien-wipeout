@@ -1,43 +1,33 @@
 using Godot;
 using System;
 
-public class EarthWorld : Node2D
+public class LevelOne : Node2D
 {
     public enum Event { Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed };
 
-    [Signal] public delegate void GameEvent(Event gameEvent);
-
     private HUD HUD;
-    private BoulderGenerator BoulderGenerator;
+    private Terrain Terrain;
     private ImpactLocator ImpactLocator;
+    private RemoteTransform2D BoulderGeneratorFollow;
 
     public override void _Ready()
     {
         this.HUD = this.GetNode<HUD>("HUD");
-        this.BoulderGenerator = this.GetNode<BoulderGenerator>("BoulderGenerator");
+        this.Terrain = this.GetNode<Terrain>("Terrain");
         this.ImpactLocator = this.GetNode<ImpactLocator>("ImpactLocator");
+        this.BoulderGeneratorFollow = this.GetNode<RemoteTransform2D>("Character/BoulderGeneratorFollow");
 
-        this.ActivateTerrain();
-        this.EmitSignal(nameof(GameEvent), Event.Started);
-    }
-
-    private void ActivateTerrain()
-    {
-        this.BoulderGenerator.Start();
-    }
-
-    private void DeactivateTerrain()
-    {
-        this.BoulderGenerator.Stop();
+        this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
+        this.Terrain.Activate();
+        this.HUD.ReactTo(Event.Started);
     }
 
     private async void OnCharacterKilled(Character.State state)
     {
         this.HUD.StopStopWatch();
+        this.HUD.ReactTo(CharacterStateToEvent(state));
 
-        this.DeactivateTerrain();
-
-        this.EmitSignal(nameof(GameEvent), CharacterStateToEvent(state));
+        this.Terrain.Deactivate();
 
         await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
 
@@ -56,7 +46,7 @@ public class EarthWorld : Node2D
                 return Event.Fell;
         }
     }
-    
+
     private void OnBoulderGenerated(Boulder boulder)
     {
         this.ImpactLocator.RegisterBoulder(boulder);

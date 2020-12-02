@@ -31,7 +31,7 @@ public class Phrases
             })
         },
         {
-            EarthWorld.Event.Started.ToString("G"),
+            LevelOne.Event.Started.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Simple(new SpeechLine("Here we go!", TV.Mood.Amused)),
                 SpeechLines.Simple(new SpeechLine("Let's hope they'll last longer than the previous contestant...", TV.Mood.Angry)),
@@ -39,43 +39,43 @@ public class Phrases
             })
         },
         {
-            EarthWorld.Event.DodgedBoulder.ToString("G"),
+            LevelOne.Event.DodgedBoulder.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Oh! That was close!", TV.Mood.Impressed))
             })
         },
         {
-            EarthWorld.Event.DodgedWorm.ToString("G"),
+            LevelOne.Event.DodgedWorm.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Oh snap! It almost took a bite!", TV.Mood.Impressed))
             })
         },
         {
-            EarthWorld.Event.DodgedGlove.ToString("G"),
+            LevelOne.Event.DodgedGlove.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Two inches from a knockout!", TV.Mood.Angry))
             })
         },
         {
-            EarthWorld.Event.Punched.ToString("G"),
+            LevelOne.Event.Punched.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("I think I'm gonna eat calamari tonight...", TV.Mood.Amused))
             })
         },
         {
-            EarthWorld.Event.Smashed.ToString("G"),
+            LevelOne.Event.Smashed.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Oh no...", TV.Mood.Amused))
             })
         },
         {
-            EarthWorld.Event.Eaten.ToString("G"),
+            LevelOne.Event.Eaten.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("I think I'm gonna eat calamari tonight...", TV.Mood.Neutral))
             })
         },
         {
-            EarthWorld.Event.Fell.ToString("G"),
+            LevelOne.Event.Fell.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("What a waste...", TV.Mood.Angry))
             })

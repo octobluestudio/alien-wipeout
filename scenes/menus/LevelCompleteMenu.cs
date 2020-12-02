@@ -1,5 +1,3 @@
-using Godot;
-using System;
 
 public class LevelCompleteMenu : BaseMenu
 {

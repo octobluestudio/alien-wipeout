@@ -20,20 +20,20 @@ public class Sportscaster : Node
         this.ForbidNextInterruptions();
     }
 
-    public void ReactTo(EarthWorld.Event gameEvent)
+    public void ReactTo(LevelOne.Event gameEvent)
     {
         switch (gameEvent)
         {
-            case EarthWorld.Event.Started:
-            case EarthWorld.Event.DodgedBoulder:
-            case EarthWorld.Event.DodgedWorm:
-            case EarthWorld.Event.DodgedGlove:
-            case EarthWorld.Event.Punched:
+            case LevelOne.Event.Started:
+            case LevelOne.Event.DodgedBoulder:
+            case LevelOne.Event.DodgedWorm:
+            case LevelOne.Event.DodgedGlove:
+            case LevelOne.Event.Punched:
                 this.Say(Phrases.Random(gameEvent.ToString("G")));
                 break;
-            case EarthWorld.Event.Fell:
-            case EarthWorld.Event.Eaten:
-            case EarthWorld.Event.Smashed:
+            case LevelOne.Event.Fell:
+            case LevelOne.Event.Eaten:
+            case LevelOne.Event.Smashed:
                 this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
                 break;
         }
