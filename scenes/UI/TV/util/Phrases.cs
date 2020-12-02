@@ -11,7 +11,7 @@ public class Phrases
             new SpeechLinesRandomizer(new SpeechLines[] {
                 new SpeechLines(new SpeechLine[] {
                     new SpeechLine("Hello Terrans! Welcome to this new Episode of Alien Wipeout!", TV.Mood.Impressed),
-                    new SpeechLine("Please Welcome our new contestant: Poulpinette!", TV.Mood.Amused)
+                    new SpeechLine("Please Welcome our new contestant: Poulpinette!", TV.Mood.Amused),
                 })
             })
         },
@@ -35,48 +35,70 @@ public class Phrases
                 SpeechLines.Simple(new SpeechLine("Here we go!", TV.Mood.Amused)),
                 SpeechLines.Simple(new SpeechLine("Let's hope they'll last longer than the previous contestant...", TV.Mood.Angry)),
                 SpeechLines.Simple(new SpeechLine("And one more!", TV.Mood.Neutral)),
+                SpeechLines.Simple(new SpeechLine("They know they'll end up dead, they're still going... What an inspiration!", TV.Mood.Impressed)),
             })
         },
         {
             LevelOne.Event.DodgedBoulder.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("Oh! That was close!", TV.Mood.Impressed))
+                SpeechLines.Interrupt(new SpeechLine("Oh! That was close!", TV.Mood.Impressed)),
+                SpeechLines.Interrupt(new SpeechLine("Almost got a dinosaur death!", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("That's not a ball! Keep away!", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("Next time, rock, next time...", TV.Mood.Neutral)),
             })
         },
         {
             LevelOne.Event.DodgedWorm.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("Oh snap! It almost took a bite!", TV.Mood.Impressed))
+                SpeechLines.Interrupt(new SpeechLine("Oh snap! It almost took a bite!", TV.Mood.Impressed)),
+                SpeechLines.Interrupt(new SpeechLine("There won't be a Dune remake tonight!", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("What a beautiful move...", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("Did somebody feed the worms before the show?", TV.Mood.Angry)),
             })
         },
         {
             LevelOne.Event.DodgedGlove.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("Two inches from a knockout!", TV.Mood.Angry))
+                SpeechLines.Interrupt(new SpeechLine("Two inches from a knockout!", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("Did they really dodge it?", TV.Mood.Impressed)),
+                SpeechLines.Interrupt(new SpeechLine("And one wasted glove! One!", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("Watch out for the next one!", TV.Mood.Amused)),
             })
         },
         {
             LevelOne.Event.Punched.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("Hope they have a good dentist!", TV.Mood.Amused))
+                SpeechLines.Interrupt(new SpeechLine("Hope they have a good dentist!", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("That thing doesn't kill them?", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("Call the medic.", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("What a jump!", TV.Mood.Impressed)),
             })
         },
         {
             LevelOne.Event.Smashed.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("Oh no...", TV.Mood.Amused))
+                SpeechLines.Interrupt(new SpeechLine("Oh no...", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("Who ordered squid pancakes?", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("Who do you think is gonna clean after? eh?", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("My psychic told me this would happen!", TV.Mood.Impressed)),
             })
         },
         {
             LevelOne.Event.Eaten.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("I think I'm gonna eat calamari tonight...", TV.Mood.Neutral))
+                SpeechLines.Interrupt(new SpeechLine("I think I'm gonna eat calamari tonight!", TV.Mood.Impressed)),
+                SpeechLines.Interrupt(new SpeechLine("Isn't the worm the one supposed to be eaten?", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("Hope you will find spice, friend.", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("We told you! Don't get eaten! It's not that difficult!", TV.Mood.Angry)),
             })
         },
         {
             LevelOne.Event.Fell.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Interrupt(new SpeechLine("What a waste...", TV.Mood.Angry))
+                SpeechLines.Interrupt(new SpeechLine("Such a waste...", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("Please, next time, don't die off camera...", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("Told you this was slippery...", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("How could they miss it!?", TV.Mood.Impressed)),
             })
         }
     };

@@ -3,11 +3,11 @@
 [ext_resource path="res://resources/character/poulpinette.png" type="Texture" id=1]
 [ext_resource path="res://scenes/characters/Character.cs" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=41]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 8.99998
 height = 8.00004
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=2]
 resource_name = "Chomp"
 length = 0.4
 step = 0.05
@@ -38,11 +38,11 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=3]
 resource_name = "End"
 length = 0.05
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=4]
 resource_name = "Fall"
 length = 0.05
 loop = true
@@ -59,7 +59,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=45]
+[sub_resource type="Animation" id=5]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -74,7 +74,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=6]
 resource_name = "Jump"
 length = 0.05
 loop = true
@@ -91,7 +91,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=47]
+[sub_resource type="Animation" id=7]
 resource_name = "Squash"
 length = 0.4
 step = 0.05
@@ -122,7 +122,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=48]
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -138,30 +138,26 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Chomp"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "End"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Squash"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
@@ -170,48 +166,52 @@ animation = "Walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=7]
-states/Chomp/node = SubResource( 38 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=29]
+states/Chomp/node = SubResource( 9 )
 states/Chomp/position = Vector2( 542.354, 370.5 )
-states/End/node = SubResource( 35 )
+states/End/node = SubResource( 10 )
 states/End/position = Vector2( 766.709, 328.57 )
-states/Fall/node = SubResource( 9 )
+states/Fall/node = SubResource( 11 )
 states/Fall/position = Vector2( 263.906, 114.5 )
-states/Idle/node = SubResource( 10 )
+states/Idle/node = SubResource( 12 )
 states/Idle/position = Vector2( 263.641, 298.188 )
-states/Jump/node = SubResource( 11 )
+states/Jump/node = SubResource( 13 )
 states/Jump/position = Vector2( 72.5, 43.25 )
-states/Squash/node = SubResource( 12 )
+states/Squash/node = SubResource( 14 )
 states/Squash/position = Vector2( 541.5, 297.953 )
-states/Walk/node = SubResource( 13 )
+states/Walk/node = SubResource( 15 )
 states/Walk/position = Vector2( 472.75, 41.4375 )
-transitions = [ "Idle", "Squash", SubResource( 14 ), "Jump", "Fall", SubResource( 15 ), "Idle", "Jump", SubResource( 16 ), "Fall", "Idle", SubResource( 17 ), "Idle", "Walk", SubResource( 18 ), "Walk", "Idle", SubResource( 19 ), "Walk", "Jump", SubResource( 20 ), "Fall", "Walk", SubResource( 21 ), "Walk", "Fall", SubResource( 22 ), "Fall", "Jump", SubResource( 23 ), "Squash", "End", SubResource( 36 ), "Idle", "Chomp", SubResource( 39 ), "Chomp", "End", SubResource( 40 ) ]
+transitions = [ "Idle", "Squash", SubResource( 16 ), "Jump", "Fall", SubResource( 17 ), "Idle", "Jump", SubResource( 18 ), "Fall", "Idle", SubResource( 19 ), "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ), "Walk", "Jump", SubResource( 22 ), "Fall", "Walk", SubResource( 23 ), "Walk", "Fall", SubResource( 24 ), "Fall", "Jump", SubResource( 25 ), "Squash", "End", SubResource( 26 ), "Idle", "Chomp", SubResource( 27 ), "Chomp", "End", SubResource( 28 ) ]
 start_node = "Idle"
 end_node = "End"
 graph_offset = Vector2( 72.7086, -3.26706 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=49]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
 
 [node name="Character" type="KinematicBody2D"]
 collision_mask = 0
@@ -227,24 +227,24 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -9 )
 rotation = 1.5708
-shape = SubResource( 41 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Chomp = SubResource( 42 )
-anims/End = SubResource( 43 )
-anims/Fall = SubResource( 44 )
-anims/Idle = SubResource( 45 )
-anims/Jump = SubResource( 46 )
-anims/Squash = SubResource( 47 )
-anims/Walk = SubResource( 48 )
+anims/Chomp = SubResource( 2 )
+anims/End = SubResource( 3 )
+anims/Fall = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Jump = SubResource( 6 )
+anims/Squash = SubResource( 7 )
+anims/Walk = SubResource( 8 )
 
 [node name="DisableTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 7 )
+tree_root = SubResource( 29 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 49 )
+parameters/playback = SubResource( 30 )
 [connection signal="timeout" from="DisableTimer" to="." method="OnDisableTimerTimeout"]

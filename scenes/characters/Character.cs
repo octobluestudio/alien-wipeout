@@ -36,11 +36,13 @@ public class Character : KinematicBody2D
 
     public void Squash()
     {
+        this.Velocity = new Vector2(0, 200);
         this.Dying(State.Squash);
     }
 
     public void Chomp()
     {
+        this.Velocity = new Vector2(0, 0);
         this.Dying(State.Chomp);
     }
 
@@ -59,6 +61,11 @@ public class Character : KinematicBody2D
 
     public void Punch(Vector2 direction, float strength)
     {
+        if (this.IsDying)
+        {
+            return;
+        }
+
         this.Velocity = this.MoveAndSlide(direction * strength, Vector2.Up);
         this.Animate(State.Fall);
         this.DisableFor(0.4f);
@@ -68,6 +75,11 @@ public class Character : KinematicBody2D
 
     public void Dodge(EnemyProperties.Type enemyType)
     {
+        if (this.IsDying)
+        {
+            return;
+        }
+
         this.EmitSignal(nameof(Dodged), enemyType);
     }
 

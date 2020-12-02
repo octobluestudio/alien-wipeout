@@ -19,4 +19,5 @@ rotate = false
 cubic_interp = false
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
