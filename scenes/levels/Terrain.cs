@@ -9,8 +9,6 @@ public class Terrain : Node2D
     public override void _Ready()
     {
         this.BoulderGenerator = this.GetNode<BoulderGenerator>("BoulderGenerator");
-
-        this.Activate();
     }
 
     public void Activate()

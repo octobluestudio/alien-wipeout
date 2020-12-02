@@ -56,17 +56,8 @@ __meta__ = {
 }
 
 [node name="Stand" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.6 )
 motion_scale = Vector2( 0.19, 0.8 )
-
-[node name="ToDelete" type="ColorRect" parent="ParallaxBackground/Stand"]
-margin_left = -96.0
-margin_top = 88.0
-margin_right = 800.0
-margin_bottom = 135.0
-color = Color( 0.419608, 0.141176, 0.141176, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Stand"]
 texture = ExtResource( 11 )
