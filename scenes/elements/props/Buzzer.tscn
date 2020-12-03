@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/props/buzzer.png" type="Texture" id=1]
 [ext_resource path="res://scenes/elements/props/Buzzer.cs" type="Script" id=2]
+[ext_resource path="res://resources/sounds/buzzer.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 12 )
@@ -26,4 +27,8 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuzzDetector"]
 position = Vector2( 0, -24 )
 shape = SubResource( 2 )
+
+[node name="BuzzSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 5.0
 [connection signal="body_entered" from="BuzzDetector" to="." method="OnBuzzDetectorBodyEntered"]

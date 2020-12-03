@@ -7,6 +7,9 @@ public class Character : KinematicBody2D
     private AnimationTree AnimationTree;
     private AnimationNodeStateMachinePlayback AnimationStateMachine;
     private Timer DisableTimer;
+    private AudioStreamPlayer JumpSound;
+    private AudioStreamPlayer PunchSound;
+    private AudioStreamPlayer ChompSound;
 
     [Export] public float Speed = 150.0f;
     [Export] public float Friction = 0.6f;
@@ -32,6 +35,9 @@ public class Character : KinematicBody2D
         this.AnimationTree = this.GetNode<AnimationTree>("AnimationTree");
         this.AnimationStateMachine = (AnimationNodeStateMachinePlayback) this.AnimationTree.Get("parameters/playback");
         this.DisableTimer = this.GetNode<Timer>("DisableTimer");
+        this.JumpSound = this.GetNode<AudioStreamPlayer>("Audio/Jump");
+        this.PunchSound = this.GetNode<AudioStreamPlayer>("Audio/Punch");
+        this.ChompSound = this.GetNode<AudioStreamPlayer>("Audio/Chomp");
 
         this.Animate(State.Idle);
     }
@@ -54,6 +60,7 @@ public class Character : KinematicBody2D
     {
         this.Velocity = new Vector2(0, 0);
         this.Dying(State.Chomp);
+        this.ChompSound.Play();
     }
 
     private void Dying(State state)
@@ -79,6 +86,8 @@ public class Character : KinematicBody2D
         this.Velocity = this.MoveAndSlide(direction * strength, Vector2.Up);
         this.Animate(State.Fall);
         this.DisableFor(0.4f);
+
+        this.PunchSound.Play();
 
         this.EmitSignal(nameof(Punched));
     }
@@ -126,6 +135,11 @@ public class Character : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+        if (this.IsJumping())
+        {
+            this.JumpSound.Play();
+        }
+
         Vector2 inputVelocity = this.Disabled ? Vector2.Zero : ControlsUtil.DirectionFromInput();
 
         this.Velocity = this.MoveAndSlide(this.GetRealVelocityFromInputVelocity(inputVelocity, delta), Vector2.Up);

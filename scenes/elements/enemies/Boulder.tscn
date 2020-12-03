@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/enemies/boulder.png" type="Texture" id=1]
 [ext_resource path="res://scenes/elements/enemies/Boulder.cs" type="Script" id=2]
 [ext_resource path="res://scenes/elements/enemies/DodgeDetector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/sounds/boulder-explosion.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -15,7 +16,7 @@ radius = 30.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "Explode"
-length = 0.4
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -36,7 +37,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -54,6 +55,20 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("ExplosionSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="Boulder" type="RigidBody2D"]
@@ -100,6 +115,11 @@ collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Explode = SubResource( 3 )
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+max_distance = 200.0
 [connection signal="body_entered" from="CollisionDetector" to="." method="OnCollisionDetectorBodyEntered"]
 [connection signal="CharacterDodged" from="DodgeDetector" to="." method="OnCharacterDodged"]
 

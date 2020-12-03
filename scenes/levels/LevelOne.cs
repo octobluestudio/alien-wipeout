@@ -9,6 +9,8 @@ public class LevelOne : Node2D
     private Terrain Terrain;
     private ImpactLocator ImpactLocator;
     private RemoteTransform2D BoulderGeneratorFollow;
+    private AudioStreamPlayer Music;
+    private AudioStreamPlayer LostSound;
 
     public override void _Ready()
     {
@@ -16,6 +18,8 @@ public class LevelOne : Node2D
         this.Terrain = this.GetNode<Terrain>("Terrain");
         this.ImpactLocator = this.GetNode<ImpactLocator>("ImpactLocator");
         this.BoulderGeneratorFollow = this.GetNode<RemoteTransform2D>("Character/BoulderGeneratorFollow");
+        this.Music = this.GetNode<AudioStreamPlayer>("Audio/Music");
+        this.LostSound = this.GetNode<AudioStreamPlayer>("Audio/LostSound");
 
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
         this.Terrain.Activate();
@@ -41,6 +45,7 @@ public class LevelOne : Node2D
         this.HUD.ReactTo(Event.Win);
 
         this.Terrain.Deactivate();
+        this.Music.Stop();
 
         await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
 
@@ -52,9 +57,12 @@ public class LevelOne : Node2D
         this.HUD.StopStopWatch();
         this.HUD.ReactTo(CharacterStateToEvent(state));
 
+        this.Music.Stop();
+        this.LostSound.Play();
+
         this.Terrain.Deactivate();
 
-        await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
+        await this.ToSignal(this.GetTree().CreateTimer(2.5f), "timeout");
 
         this.GetTree().ChangeScene("res://scenes/menus/GameOverMenu.tscn");
     }

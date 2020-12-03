@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/worm-chomp.wav-09bf210651fd542c4fde6bad722b1608.sample"
+
+[deps]
+
+source_file="res://resources/sounds/worm-chomp.wav"
+dest_files=[ "res://.import/worm-chomp.wav-09bf210651fd542c4fde6bad722b1608.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0
