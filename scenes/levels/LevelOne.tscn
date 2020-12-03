@@ -12,35 +12,6 @@
 [node name="LevelOne" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="HUD" parent="." instance=ExtResource( 5 )]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 48, 160 )
-current = true
-limit_left = 0
-limit_top = -320
-limit_right = 3744
-limit_bottom = 224
-editor_draw_limits = true
-
-[node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 48, 160 )
-z_index = 1
-
-[node name="CameraFollow" type="RemoteTransform2D" parent="Character"]
-remote_path = NodePath("../../Camera2D")
-
-[node name="BoulderGeneratorFollow" type="RemoteTransform2D" parent="Character"]
-position = Vector2( -30, -250 )
-
-[node name="Terrain" parent="." instance=ExtResource( 2 )]
-
-[node name="ImpactLocator" parent="." instance=ExtResource( 9 )]
-z_index = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -68,7 +39,37 @@ motion_offset = Vector2( -150, -330 )
 [node name="front" type="Sprite" parent="ParallaxBackground/Stand"]
 texture = ExtResource( 11 )
 centered = false
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 32, 160 )
+current = true
+limit_left = 0
+limit_top = -320
+limit_right = 3744
+limit_bottom = 224
+editor_draw_limits = true
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 160 )
+z_index = 1
+
+[node name="CameraFollow" type="RemoteTransform2D" parent="Character"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="BoulderGeneratorFollow" type="RemoteTransform2D" parent="Character"]
+position = Vector2( -30, -250 )
+
+[node name="Terrain" parent="." instance=ExtResource( 2 )]
+
+[node name="ImpactLocator" parent="." instance=ExtResource( 9 )]
+z_index = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="Dodged" from="Character" to="." method="OnCharacterDodged"]
 [connection signal="Killed" from="Character" to="." method="OnCharacterKilled"]
 [connection signal="Punched" from="Character" to="." method="OnCharacterPunched"]
+[connection signal="Won" from="Character" to="." method="OnCharacterWon"]
 [connection signal="BoulderGenerated" from="Terrain" to="." method="OnBoulderGenerated"]

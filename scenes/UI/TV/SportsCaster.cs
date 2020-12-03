@@ -34,6 +34,7 @@ public class Sportscaster : Node
             case LevelOne.Event.Fell:
             case LevelOne.Event.Eaten:
             case LevelOne.Event.Smashed:
+            case LevelOne.Event.Win:
                 this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
                 break;
         }

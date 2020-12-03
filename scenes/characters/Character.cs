@@ -16,6 +16,7 @@ public class Character : KinematicBody2D
     [Signal] public delegate void Killed(State state);
     [Signal] public delegate void Punched();
     [Signal] public delegate void Dodged(EnemyProperties.Type enemyType);
+    [Signal] public delegate void Won();
 
     public enum State { Idle, Walk, Jump, Fall, Squash, Chomp };
 
@@ -23,6 +24,7 @@ public class Character : KinematicBody2D
     private bool Disabled = false;
     private State CurrentState;
     private bool IsDying = false;
+    private bool Immortal = false;
 
     public override void _Ready()
     {
@@ -32,6 +34,14 @@ public class Character : KinematicBody2D
         this.DisableTimer = this.GetNode<Timer>("DisableTimer");
 
         this.Animate(State.Idle);
+    }
+
+    public void Win()
+    {
+        this.Immortal = true;
+        this.Disable();
+        this.Animate(State.Idle); // TODO change
+        this.EmitSignal(nameof(Won));
     }
 
     public void Squash()
@@ -48,7 +58,7 @@ public class Character : KinematicBody2D
 
     private void Dying(State state)
     {
-        if (this.IsDying)
+        if (!this.CanDie())
         {
             // You can't die twice
             return;
@@ -180,6 +190,11 @@ public class Character : KinematicBody2D
     private bool IsJumping()
     {
         return (this.IsOnFloor() || this.IsSlidingOnWall()) && ControlsUtil.IsJumpJustPressed();
+    }
+
+    private bool CanDie()
+    {
+        return !this.Immortal && !this.IsDying;
     }
 
     private void OnDisableTimerTimeout()

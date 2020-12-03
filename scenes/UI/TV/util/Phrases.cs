@@ -100,6 +100,15 @@ public class Phrases
                 SpeechLines.Interrupt(new SpeechLine("Told you this was slippery...", TV.Mood.Amused)),
                 SpeechLines.Interrupt(new SpeechLine("How could they miss it!?", TV.Mood.Impressed)),
             })
+        },
+        {
+            LevelOne.Event.Win.ToString("G"),
+            new SpeechLinesRandomizer(new SpeechLines[] {
+                SpeechLines.Interrupt(new SpeechLine("Congratulations... till next time!", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("I guess I was wrong all along. They did it!", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("And they advance to the next lev... hum... phase.", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("Against all odds, here we are!", TV.Mood.Impressed)),
+            })
         }
     };
 

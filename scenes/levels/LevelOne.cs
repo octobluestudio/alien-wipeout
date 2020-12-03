@@ -3,7 +3,7 @@ using System;
 
 public class LevelOne : Node2D
 {
-    public enum Event { Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed };
+    public enum Event { Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
 
     private HUD HUD;
     private Terrain Terrain;
@@ -33,6 +33,18 @@ public class LevelOne : Node2D
             default:
                 return Event.Fell;
         }
+    }
+
+    private async void OnCharacterWon()
+    {
+        this.HUD.StopStopWatch();
+        this.HUD.ReactTo(Event.Win);
+
+        this.Terrain.Deactivate();
+
+        await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
+
+        this.GetTree().ChangeScene("res://scenes/menus/LevelCompleteMenu.tscn");
     }
 
     private async void OnCharacterKilled(Character.State state)
