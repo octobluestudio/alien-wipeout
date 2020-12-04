@@ -34,7 +34,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 30
 outline_size = 1
 outline_color = Color( 0.168627, 0.168627, 0.168627, 1 )
@@ -77,7 +77,7 @@ anchor_bottom = 0.2
 margin_left = -137.0
 margin_right = 138.0
 margin_bottom = 4.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "You Win!"
 align = 1
 valign = 1
@@ -94,7 +94,7 @@ margin_left = -137.0
 margin_top = 31.0
 margin_right = 138.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "00:00"
 align = 1
 valign = 1

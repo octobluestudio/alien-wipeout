@@ -21,10 +21,10 @@ public class Character : KinematicBody2D
     [Signal] public delegate void Dodged(EnemyProperties.Type enemyType);
     [Signal] public delegate void Won();
 
-    public enum State { Idle, Walk, Jump, Fall, Squash, Chomp };
+    public enum State { Idle, Walk, Jump, Fall, Squash, Chomp, Dance };
 
     private Vector2 Velocity = Vector2.Zero;
-    private bool Disabled = false;
+    private bool Disabled = true;
     private State CurrentState;
     private bool IsDying = false;
     private bool Immortal = false;
@@ -42,11 +42,17 @@ public class Character : KinematicBody2D
         this.Animate(State.Idle);
     }
 
+    public void WakeUp()
+    {
+        this.Disabled = false;
+        this.Immortal = false;
+    }
+
     public void Win()
     {
         this.Immortal = true;
         this.Disable();
-        this.Animate(State.Idle); // TODO change
+        this.Animate(State.Dance);
         this.EmitSignal(nameof(Won));
     }
 

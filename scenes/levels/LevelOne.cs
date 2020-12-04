@@ -3,27 +3,31 @@ using System;
 
 public class LevelOne : Node2D
 {
-    public enum Event { Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
+    public enum Event { Greetings, Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
 
+    private Character Character;
     private HUD HUD;
     private Terrain Terrain;
     private ImpactLocator ImpactLocator;
     private RemoteTransform2D BoulderGeneratorFollow;
+    private RemoteTransform2D CameraFollow;
     private AudioStreamPlayer Music;
     private AudioStreamPlayer LostSound;
 
     public override void _Ready()
     {
+        this.Character = this.GetNode<Character>("Character");
         this.HUD = this.GetNode<HUD>("HUD");
         this.Terrain = this.GetNode<Terrain>("Terrain");
         this.ImpactLocator = this.GetNode<ImpactLocator>("ImpactLocator");
         this.BoulderGeneratorFollow = this.GetNode<RemoteTransform2D>("Character/BoulderGeneratorFollow");
+        this.CameraFollow = this.GetNode<RemoteTransform2D>("Character/CameraFollow");
         this.Music = this.GetNode<AudioStreamPlayer>("Audio/Music");
         this.LostSound = this.GetNode<AudioStreamPlayer>("Audio/LostSound");
 
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
-        this.Terrain.Activate();
-        this.HUD.ReactTo(Event.Started);
+
+        this.Terrain.Present();
     }
 
     private static Event CharacterStateToEvent(Character.State state)
@@ -37,6 +41,21 @@ public class LevelOne : Node2D
             default:
                 return Event.Fell;
         }
+    }
+
+    private void OnTerrainPresentationStarted()
+    {
+        this.HUD.ReactTo(Event.Greetings);
+    }
+
+    private void OnTerrainPresentationEnded()
+    {
+        this.CameraFollow.RemotePath = new NodePath("../../Terrain/Camera");
+
+        this.Terrain.Activate();
+        this.Character.WakeUp();
+
+        this.HUD.ReactTo(Event.Started);
     }
 
     private async void OnCharacterWon()
@@ -93,3 +112,6 @@ public class LevelOne : Node2D
         this.ImpactLocator.RegisterBoulder(boulder);
     }
 }
+
+
+

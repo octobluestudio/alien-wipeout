@@ -3,14 +3,14 @@
 public class Phrases
 {
     public const string FillBlank = "FillBlank";
-    public const string Greetings = "Greetings";
 
     private static readonly Dictionary<string, SpeechLinesRandomizer> Available = new Dictionary<string, SpeechLinesRandomizer>() {
         {
-            Greetings,
+            LevelOne.Event.Greetings.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 new SpeechLines(new SpeechLine[] {
                     new SpeechLine("Hello Terrans! Welcome to this new Episode of Alien Wipeout!", TV.Mood.Impressed),
+                    new SpeechLine("Today, our contestants will face death with the sole purpose of entertaining you!", TV.Mood.Amused),
                     new SpeechLine("Please Welcome our new contestant: Poulpinette!", TV.Mood.Amused),
                 })
             })
@@ -32,10 +32,10 @@ public class Phrases
         {
             LevelOne.Event.Started.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
-                SpeechLines.Simple(new SpeechLine("Here we go!", TV.Mood.Amused)),
-                SpeechLines.Simple(new SpeechLine("Let's hope they'll last longer than the previous contestant...", TV.Mood.Angry)),
-                SpeechLines.Simple(new SpeechLine("And one more!", TV.Mood.Neutral)),
-                SpeechLines.Simple(new SpeechLine("They know they'll end up dead, they're still going... What an inspiration!", TV.Mood.Impressed)),
+                SpeechLines.Interrupt(new SpeechLine("Here we go!", TV.Mood.Amused)),
+                SpeechLines.Interrupt(new SpeechLine("Let's hope they'll last longer than the previous contestant...", TV.Mood.Angry)),
+                SpeechLines.Interrupt(new SpeechLine("And one more!", TV.Mood.Neutral)),
+                SpeechLines.Interrupt(new SpeechLine("They know they'll end up dead, they're still going... What an inspiration!", TV.Mood.Impressed)),
             })
         },
         {

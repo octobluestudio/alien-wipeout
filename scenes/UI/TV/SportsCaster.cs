@@ -24,13 +24,14 @@ public class Sportscaster : Node
     {
         switch (gameEvent)
         {
-            case LevelOne.Event.Started:
+            case LevelOne.Event.Greetings:
             case LevelOne.Event.DodgedBoulder:
             case LevelOne.Event.DodgedWorm:
             case LevelOne.Event.DodgedGlove:
             case LevelOne.Event.Punched:
                 this.Say(Phrases.Random(gameEvent.ToString("G")));
                 break;
+            case LevelOne.Event.Started:
             case LevelOne.Event.Fell:
             case LevelOne.Event.Eaten:
             case LevelOne.Event.Smashed:
@@ -38,11 +39,6 @@ public class Sportscaster : Node
                 this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
                 break;
         }
-    }
-    
-    public void Greet()
-    {
-        this.Say(Phrases.Random(Phrases.Greetings));
     }
 
     private void FillBlank()
