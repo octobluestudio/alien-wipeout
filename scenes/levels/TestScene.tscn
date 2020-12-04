@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/elements/props/Buzzer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/elements/platforms.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/levels/TestScene.cs" type="Script" id=4]
+[ext_resource path="res://scenes/elements/generators/BoxingGloveBoobyTrap.tscn" type="PackedScene" id=5]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource( 4 )
@@ -13,12 +13,12 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( -196608, 1, 0, -131072, 2, 0, -131063, 2, 0, -65536, 2, 0, -65527, 2, 0, 0, 2, 0, 9, 2, 0, 65536, 2, 0, 65545, 2, 0, 131072, 2, 0, 131081, 2, 0, 196608, 2, 0, 196617, 2, 0, 262144, 2, 0, 262153, 2, 0, 327680, 2, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 2, 0 )
-
-[node name="Buzzer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 207, 160 )
+tile_data = PoolIntArray( -196608, 1, 0, -131072, 2, 0, -65536, 2, 0, 0, 2, 0, 65536, 2, 0, 131072, 2, 0, 196608, 2, 0, 262144, 2, 0, 327680, 2, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 2, 0 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 position = Vector2( 56, 160 )
+
+[node name="BoxingGloveBoobyTrap" parent="." instance=ExtResource( 5 )]
+position = Vector2( 269, 160 )
 [connection signal="Dodged" from="Character" to="." method="_on_Character_Dodged"]
 [connection signal="Punched" from="Character" to="." method="_on_Character_Punched"]

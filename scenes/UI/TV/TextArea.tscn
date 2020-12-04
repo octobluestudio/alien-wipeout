@@ -65,6 +65,7 @@ margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 valign = 1
 autowrap = true
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

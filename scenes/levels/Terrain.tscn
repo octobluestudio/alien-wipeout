@@ -16,7 +16,7 @@ _data = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "Presentation"
-length = 15.0
+length = 10.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CameraPath/PathFollow2D:unit_offset")
@@ -25,7 +25,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 15 ),
+"times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -37,7 +37,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 15 ),
+"times": PoolRealArray( 10 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -94,7 +94,7 @@ z_index = 1
 
 [node name="BoxingGloveBoobyTrap" parent="BoxingGloves" instance=ExtResource( 4 )]
 modulate = Color( 0.917647, 0.776471, 0.12549, 0.443137 )
-position = Vector2( 528, 96 )
+position = Vector2( 478, 96 )
 
 [node name="Buzzer" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3728, 64 )
@@ -103,9 +103,8 @@ position = Vector2( 3728, 64 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CameraPath"]
-position = Vector2( 2557.53, 122.377 )
+position = Vector2( 4005, 48 )
 rotation = 2.81728
-offset = 1458.47
 rotate = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CameraPath/PathFollow2D"]
@@ -114,7 +113,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4119, 36 )
+position = Vector2( 4005, 48 )
 
 [node name="CameraMovement" type="AnimationPlayer" parent="."]
 anims/Presentation = SubResource( 2 )
