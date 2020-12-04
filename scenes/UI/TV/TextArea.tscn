@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/UI/TV/TextArea.cs" type="Script" id=2]
+[ext_resource path="res://resources/ui/text-display.png" type="Texture" id=3]
+[ext_resource path="res://resources/ui/text-display-tv-lines.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -45,13 +47,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.733333, 0.733333, 0.733333, 0.392157 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="background" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.752941 )
+texture = ExtResource( 3 )
+centered = false
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -65,10 +64,15 @@ margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 valign = 1
 autowrap = true
-clip_text = true
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="lines" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+texture = ExtResource( 4 )
+centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/TypeWriter = SubResource( 2 )
