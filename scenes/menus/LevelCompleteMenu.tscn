@@ -1,13 +1,43 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/LevelCompleteMenu.cs" type="Script" id=2]
 [ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://resources/background/stand.png" type="Texture" id=6]
+[ext_resource path="res://resources/menus/podium.png" type="Texture" id=7]
+[ext_resource path="res://resources/menus/poulpinette_win.png" type="Texture" id=8]
+[ext_resource path="res://scenes/elements/props/Confetti.tscn" type="PackedScene" id=9]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 50, 46 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 8 )
+region = Rect2( 50, 46, 50, 46 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 46, 50, 46 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 8 )
+region = Rect2( 50, 0, 50, 46 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
+outline_size = 1
+outline_color = Color( 0.168627, 0.168627, 0.168627, 1 )
 font_data = ExtResource( 1 )
 
 [node name="LevelCompleteMenu" type="Control"]
@@ -18,24 +48,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 320.0
-margin_bottom = 180.0
-color = Color( 0, 0, 0, 1 )
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 160, 160 )
+texture = ExtResource( 6 )
+
+[node name="podium" type="Sprite" parent="."]
+position = Vector2( 160, 70 )
+texture = ExtResource( 7 )
+
+[node name="Confetti" parent="." instance=ExtResource( 9 )]
+position = Vector2( 160, 108 )
+z_index = 0
+z_as_relative = true
+emitting = true
+lifetime = 3.0
+one_shot = false
+
+[node name="dance" type="AnimatedSprite" parent="."]
+position = Vector2( 160, 91 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 0.2
+margin_left = -137.0
+margin_right = 138.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 1 )
+text = "You Win!"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Time" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.2
+anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.2
-margin_left = -137.5
-margin_right = 137.5
-margin_bottom = 31.0
+margin_left = -137.0
+margin_top = 31.0
+margin_right = 138.0
+margin_bottom = 35.0
 custom_fonts/font = SubResource( 1 )
-text = "Congratulations"
+text = "00:00"
 align = 1
 valign = 1
 __meta__ = {
@@ -44,57 +104,53 @@ __meta__ = {
 
 [node name="TryAgainButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.6
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.6
+anchor_bottom = 1.0
 margin_left = -52.0
-margin_top = -9.0
+margin_top = -18.0
 margin_right = 52.0
-margin_bottom = 9.0
 mouse_default_cursor_shape = 3
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Try Again"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainMenuButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-margin_left = -52.0
-margin_top = 13.0
-margin_right = 52.0
-margin_bottom = 31.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -18.0
+margin_right = 104.0
 mouse_default_cursor_shape = 3
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Main Menu"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="QuitButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-margin_left = -52.0
-margin_top = 35.0
-margin_right = 52.0
-margin_bottom = 53.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -18.0
 mouse_default_cursor_shape = 3
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Quit"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
