@@ -78,22 +78,22 @@ public abstract class BaseMenu : Control
 
     public void LevelOne()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/LevelOne.tscn");
+        this.GetTree().ChangeScene("res://scenes/levels/Level1/Level.tscn");
     }
 
     public void LevelTwo()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/LevelTwo.tscn");
+        this.GetTree().ChangeScene("res://scenes/levels/Level2/Level.tscn");
     }
 
     public void LevelThree()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/LevelThree.tscn");
+        this.GetTree().ChangeScene("res://scenes/levels/Level3/Level.tscn");
     }
 
     public void LevelFour()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/LevelFour.tscn");
+        this.GetTree().ChangeScene("res://scenes/levels/Level4/Level.tscn");
     }
 
     public void MainMenu()

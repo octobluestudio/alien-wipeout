@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class LevelOne : Node2D
+public class BaseLevel : Node2D
 {
     public enum Event { Greetings, Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
 
@@ -16,10 +16,10 @@ public class LevelOne : Node2D
 
     private GameState GameState;
 
-    public override void _Ready()
+    protected void InitNodes(GameState.Level level)
     {
         this.GameState = (GameState)GetNode("/root/GameState");
-        this.GameState.SetCurrentLevel(GameState.Level.One);
+        this.GameState.SetCurrentLevel(level);
 
         this.Character = this.GetNode<Character>("Character");
         this.HUD = this.GetNode<HUD>("HUD");
@@ -31,7 +31,10 @@ public class LevelOne : Node2D
         this.LostSound = this.GetNode<AudioStreamPlayer>("Audio/LostSound");
 
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
+    }
 
+    public void Start()
+    {
         this.Terrain.Present();
     }
 
@@ -120,6 +123,3 @@ public class LevelOne : Node2D
         this.ImpactLocator.RegisterBoulder(boulder);
     }
 }
-
-
-

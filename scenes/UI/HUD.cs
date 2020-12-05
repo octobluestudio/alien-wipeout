@@ -29,7 +29,7 @@ public class HUD : CanvasLayer
         return this.StopWatch.TimeElapsed();
     }
     
-    public void ReactTo(LevelOne.Event gameEvent)
+    public void ReactTo(BaseLevel.Event gameEvent)
     {
         this.Sportscaster.ReactTo(gameEvent);
     }
