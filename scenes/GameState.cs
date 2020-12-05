@@ -6,7 +6,7 @@ public class GameState : Node
 {
     const string SAVE_PATH = "user://highscores.json";
 
-    public enum Level { One, Two, Three, Four };
+    public enum Level { One, Two, Three, Four, End };
 
     private Dictionary<string, float> HighScores;
 
@@ -24,6 +24,18 @@ public class GameState : Node
     {
         this.currentLevel = level;
         this.duration = 0;
+    }
+
+    public Level NextLevel()
+    {
+        switch (this.currentLevel)
+        {
+            case Level.One: return Level.Two;
+            case Level.Two: return Level.Three;
+            case Level.Three: return Level.Four;
+            case Level.Four: return Level.End;
+            default: return Level.One;
+        }
     }
 
     public void RecordTime(float duration)

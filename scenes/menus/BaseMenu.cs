@@ -84,11 +84,16 @@ public abstract class BaseMenu : Control
 
     public void NextLevel()
     {
-        // TODO code
+        this.StartLevel(GameState.NextLevel());
     }
 
     private void StartLevel(GameState.Level level)
     {
+        if (level == GameState.Level.End)
+        {
+            return; // TODO create End
+        }
+
         this.GameState.SetCurrentLevel(level);
         this.GetTree().ChangeScene("res://scenes/levels/Level.tscn");
     }
