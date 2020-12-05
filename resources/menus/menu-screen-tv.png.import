@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/welcom-screen-alien-neutral.png-826533298b75ac69d262e35bc80f8bbe.stex"
+path="res://.import/menu-screen-tv.png-ca10f03e78d16f6c3150332ab71b0b1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/menus/welcom-screen-alien-neutral.png"
-dest_files=[ "res://.import/welcom-screen-alien-neutral.png-826533298b75ac69d262e35bc80f8bbe.stex" ]
+source_file="res://resources/menus/menu-screen-tv.png"
+dest_files=[ "res://.import/menu-screen-tv.png-ca10f03e78d16f6c3150332ab71b0b1d.stex" ]
 
 [params]
 

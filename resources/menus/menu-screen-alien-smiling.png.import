@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/welcom-screen-background.png-7a4178a59f3a14ab37f10498c586bba8.stex"
+path="res://.import/menu-screen-alien-smiling.png-cfd14e541d940617f557c8b271cb943f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/menus/welcom-screen-background.png"
-dest_files=[ "res://.import/welcom-screen-background.png-7a4178a59f3a14ab37f10498c586bba8.stex" ]
+source_file="res://resources/menus/menu-screen-alien-smiling.png"
+dest_files=[ "res://.import/menu-screen-alien-smiling.png-cfd14e541d940617f557c8b271cb943f.stex" ]
 
 [params]
 

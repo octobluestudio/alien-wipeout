@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/welcom-screen-tv.png-26562bef0ea904b55e422973230cb05b.stex"
+path="res://.import/welcome-screen-background.png-9300a54d5eeba98180d587b75d09b3e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/menus/welcom-screen-tv.png"
-dest_files=[ "res://.import/welcom-screen-tv.png-26562bef0ea904b55e422973230cb05b.stex" ]
+source_file="res://resources/menus/welcome-screen-background.png"
+dest_files=[ "res://.import/welcome-screen-background.png-9300a54d5eeba98180d587b75d09b3e1.stex" ]
 
 [params]
 

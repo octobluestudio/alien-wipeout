@@ -82,6 +82,11 @@ public abstract class BaseMenu : Control
         this.StartLevel(GameState.Level.Four);
     }
 
+    public void NextLevel()
+    {
+        // TODO code
+    }
+
     private void StartLevel(GameState.Level level)
     {
         this.GameState.SetCurrentLevel(level);

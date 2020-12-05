@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/LevelCompleteMenu.cs" type="Script" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://resources/menus/podium.png" type="Texture" id=7]
 [ext_resource path="res://resources/menus/poulpinette_win.png" type="Texture" id=8]
 [ext_resource path="res://scenes/elements/props/Confetti.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/menus/res/ReturnButtonStyle.tres" type="StyleBox" id=10]
+[ext_resource path="res://resources/menus/title-button-background.png" type="Texture" id=11]
+[ext_resource path="res://scenes/menus/res/EmptyStyle.tres" type="StyleBox" id=12]
+[ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=13]
+[ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 8 )
@@ -35,8 +40,7 @@ animations = [ {
 } ]
 
 [sub_resource type="DynamicFont" id=6]
-size = 30
-outline_size = 1
+size = 24
 outline_color = Color( 0.168627, 0.168627, 0.168627, 1 )
 font_data = ExtResource( 1 )
 
@@ -49,15 +53,18 @@ __meta__ = {
 }
 
 [node name="background" type="Sprite" parent="."]
-position = Vector2( 160, 160 )
+position = Vector2( 216, 166 )
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="podium" type="Sprite" parent="."]
-position = Vector2( 160, 70 )
+position = Vector2( 99, 66 )
 texture = ExtResource( 7 )
 
 [node name="Confetti" parent="." instance=ExtResource( 9 )]
-position = Vector2( 160, 108 )
+position = Vector2( 99, 104 )
 z_index = 0
 z_as_relative = true
 emitting = true
@@ -65,9 +72,8 @@ lifetime = 3.0
 one_shot = false
 
 [node name="dance" type="AnimatedSprite" parent="."]
-position = Vector2( 160, 91 )
+position = Vector2( 99, 87 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Label" type="Label" parent="."]
@@ -75,12 +81,13 @@ anchor_left = 0.5
 anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.2
-margin_left = -137.0
-margin_right = 138.0
-margin_bottom = 4.0
+margin_left = -121.0
+margin_top = 18.0
+margin_right = 154.0
+margin_bottom = 22.0
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "You Win!"
-align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,14 +98,64 @@ anchor_left = 0.5
 anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.2
-margin_left = -137.0
-margin_top = 31.0
-margin_right = 138.0
-margin_bottom = 35.0
+margin_left = 12.0
+margin_top = 50.0
+margin_right = 124.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "00:00"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground1" type="TextureRect" parent="."]
+margin_left = 167.0
+margin_top = 103.0
+margin_right = 331.0
+margin_bottom = 122.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLevelButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = -77.0
+margin_right = 128.0
+margin_bottom = -61.0
+focus_neighbour_left = NodePath("../QuitButton")
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_right = NodePath("../TryAgainButton")
+focus_neighbour_bottom = NodePath("../TryAgainButton")
+focus_next = NodePath("../TryAgainButton")
+focus_previous = NodePath("../QuitButton")
+mouse_default_cursor_shape = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+text = "Next Level"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground2" type="TextureRect" parent="."]
+margin_left = 167.0
+margin_top = 125.0
+margin_right = 331.0
+margin_bottom = 144.0
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -108,31 +165,57 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -52.0
-margin_top = -18.0
-margin_right = 52.0
+margin_left = 7.0
+margin_top = -55.0
+margin_right = 128.0
+margin_bottom = -39.0
+focus_neighbour_left = NodePath("../NextLevelButton")
+focus_neighbour_top = NodePath("../NextLevelButton")
+focus_neighbour_right = NodePath("../MainMenuButton")
+focus_neighbour_bottom = NodePath("../MainMenuButton")
+focus_next = NodePath("../MainMenuButton")
+focus_previous = NodePath("../NextLevelButton")
 mouse_default_cursor_shape = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Try Again"
 flat = true
+align = 0
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="TV" type="Sprite" parent="."]
+texture = ExtResource( 14 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="MainMenuButton" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -18.0
-margin_right = 104.0
+margin_left = 218.0
+margin_top = -23.0
+margin_right = 246.0
+margin_bottom = -9.0
+focus_neighbour_left = NodePath("../QuitButton")
+focus_neighbour_top = NodePath("../TryAgainButton")
+focus_neighbour_right = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../NextLevelButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../TryAgainButton")
 mouse_default_cursor_shape = 3
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 4 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/normal = ExtResource( 12 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-text = "Main Menu"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -143,18 +226,28 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -104.0
-margin_top = -18.0
+margin_left = -75.0
+margin_top = -23.0
+margin_right = -47.0
+margin_bottom = -9.0
+focus_neighbour_left = NodePath("../MainMenuButton")
+focus_neighbour_top = NodePath("../TryAgainButton")
+focus_neighbour_right = NodePath("../MainMenuButton")
+focus_neighbour_bottom = NodePath("../NextLevelButton")
+focus_next = NodePath("../NextLevelButton")
+focus_previous = NodePath("../MainMenuButton")
 mouse_default_cursor_shape = 3
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 4 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-text = "Quit"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="TryAgainButton" to="." method="StartGame"]
+[connection signal="button_up" from="NextLevelButton" to="." method="StartGame"]
+[connection signal="button_up" from="TryAgainButton" to="." method="NextLevel"]
 [connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitGame"]
