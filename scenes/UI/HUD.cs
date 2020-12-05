@@ -12,7 +12,10 @@ public class HUD : CanvasLayer
         this.Speech = this.GetNode<Speech>("Speech");
         this.Sportscaster = this.GetNode<Sportscaster>("Sportscaster");
         this.StopWatch = this.GetNode<StopWatch>("StopWatch");
+    }
 
+    public void StartStopWatch()
+    {
         this.StopWatch.Start();
     }
 

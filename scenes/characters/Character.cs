@@ -209,7 +209,7 @@ public class Character : KinematicBody2D
 
     private bool IsJumping()
     {
-        return (this.IsOnFloor() || this.IsSlidingOnWall()) && ControlsUtil.IsJumpJustPressed();
+        return !this.Disabled && (this.IsOnFloor() || this.IsSlidingOnWall()) && ControlsUtil.IsJumpJustPressed();
     }
 
     private bool CanDie()

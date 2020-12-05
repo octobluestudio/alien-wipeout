@@ -54,6 +54,7 @@ public class LevelOne : Node2D
 
         this.Terrain.Activate();
         this.Character.WakeUp();
+        this.HUD.StartStopWatch();
 
         this.HUD.ReactTo(Event.Started);
     }
