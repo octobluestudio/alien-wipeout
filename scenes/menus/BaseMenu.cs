@@ -98,6 +98,11 @@ public abstract class BaseMenu : Control
         this.GetTree().ChangeScene("res://scenes/menus/CreditsMenu.tscn");
     }
 
+    public void HighScores()
+    {
+        this.GetTree().ChangeScene("res://scenes/menus/HighScoresMenu.tscn");
+    }
+
     public void QuitGame()
     {
         this.GetTree().Quit();

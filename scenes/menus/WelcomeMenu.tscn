@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/menus/welcom-screen-alien-neutral.png" type="Texture" id=1]
 [ext_resource path="res://scenes/menus/WelcomeMenu.cs" type="Script" id=2]
 [ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://resources/menus/welcom-screen-background.png" type="Texture" id=6]
+[ext_resource path="res://resources/menus/welcom-screen-tv.png" type="Texture" id=7]
+[ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=8]
+[ext_resource path="res://resources/menus/title-button-background.png" type="Texture" id=9]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="WelcomeMenu" type="Control"]
 anchor_right = 1.0
@@ -18,26 +20,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 margin_right = 320.0
 margin_bottom = 180.0
-color = Color( 0, 0, 0, 1 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.1
-anchor_right = 0.5
-anchor_bottom = 0.1
-margin_left = -122.5
-margin_right = 122.5
-margin_bottom = 31.0
-custom_fonts/font = SubResource( 1 )
-text = "Alien Wipeout"
-align = 1
-valign = 1
+[node name="Alien" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground1" type="TextureRect" parent="."]
+margin_left = 124.0
+margin_top = 74.0
+margin_right = 288.0
+margin_bottom = 93.0
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,16 +51,63 @@ anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -32.0
-margin_top = -9.00001
-margin_right = 32.0
-margin_bottom = 8.99999
+margin_left = -36.0
+margin_top = -34.0
+margin_right = 128.0
+margin_bottom = -18.0
 mouse_default_cursor_shape = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Start"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground2" type="TextureRect" parent="."]
+margin_left = 124.0
+margin_top = 97.0
+margin_right = 288.0
+margin_bottom = 116.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoresButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -36.0
+margin_top = -11.0
+margin_right = 128.0
+margin_bottom = 4.99999
+mouse_default_cursor_shape = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+text = "High Scores"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground3" type="TextureRect" parent="."]
+margin_left = 124.0
+margin_top = 121.0
+margin_right = 288.0
+margin_bottom = 140.0
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -66,38 +117,45 @@ anchor_left = 0.5
 anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
-margin_left = -32.0
+margin_left = -36.0
 margin_top = 13.0
-margin_right = 32.0
-margin_bottom = 31.0
+margin_right = 128.0
+margin_bottom = 29.0
 mouse_default_cursor_shape = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Credits"
+flat = true
+align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuitButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.6
-anchor_right = 0.5
-anchor_bottom = 0.6
-margin_left = -32.0
-margin_top = 35.0
-margin_right = 32.0
-margin_bottom = 53.0
-mouse_default_cursor_shape = 3
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 4 )
-custom_fonts/font = ExtResource( 3 )
+[node name="TV" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 245.0
+margin_top = 157.0
+margin_right = 273.0
+margin_bottom = 171.0
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/normal = SubResource( 2 )
 shortcut_in_tooltip = false
-text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="button_up" from="StartButton" to="." method="StartGame"]
+[connection signal="button_up" from="HighScoresButton" to="." method="HighScores"]
 [connection signal="button_up" from="CreditsButton" to="." method="DisplayCredits"]
-[connection signal="button_up" from="QuitButton" to="." method="QuitGame"]
+[connection signal="button_up" from="Quit" to="." method="QuitGame"]
