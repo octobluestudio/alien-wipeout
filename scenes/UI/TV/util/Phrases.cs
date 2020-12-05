@@ -6,7 +6,7 @@ public class Phrases
 
     private static readonly Dictionary<string, SpeechLinesRandomizer> Available = new Dictionary<string, SpeechLinesRandomizer>() {
         {
-            BaseLevel.Event.Greetings.ToString("G"),
+            Level.Event.Greetings.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 new SpeechLines(new SpeechLine[] {
                     new SpeechLine("Hello Terrans! Welcome to this new Episode of Alien Wipeout!", TV.Mood.Impressed),
@@ -30,7 +30,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.Started.ToString("G"),
+            Level.Event.Started.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Here we go!", TV.Mood.Amused)),
                 SpeechLines.Interrupt(new SpeechLine("Let's hope they'll last longer than the previous contestant...", TV.Mood.Angry)),
@@ -39,7 +39,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.DodgedBoulder.ToString("G"),
+            Level.Event.DodgedBoulder.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Oh! That was close!", TV.Mood.Impressed)),
                 SpeechLines.Interrupt(new SpeechLine("Almost got a dinosaur death!", TV.Mood.Amused)),
@@ -48,7 +48,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.DodgedWorm.ToString("G"),
+            Level.Event.DodgedWorm.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Oh snap! It almost took a bite!", TV.Mood.Impressed)),
                 SpeechLines.Interrupt(new SpeechLine("There won't be a Dune remake tonight!", TV.Mood.Amused)),
@@ -57,7 +57,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.DodgedGlove.ToString("G"),
+            Level.Event.DodgedGlove.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Two inches from a knockout!", TV.Mood.Angry)),
                 SpeechLines.Interrupt(new SpeechLine("Did they really dodge it?", TV.Mood.Impressed)),
@@ -66,7 +66,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.Punched.ToString("G"),
+            Level.Event.Punched.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Hope they have a good dentist!", TV.Mood.Amused)),
                 SpeechLines.Interrupt(new SpeechLine("That thing doesn't kill them?", TV.Mood.Angry)),
@@ -75,7 +75,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.Smashed.ToString("G"),
+            Level.Event.Smashed.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Oh no...", TV.Mood.Neutral)),
                 SpeechLines.Interrupt(new SpeechLine("Who ordered squid pancakes?", TV.Mood.Amused)),
@@ -84,7 +84,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.Eaten.ToString("G"),
+            Level.Event.Eaten.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("I think I'm gonna eat calamari tonight!", TV.Mood.Impressed)),
                 SpeechLines.Interrupt(new SpeechLine("Isn't the worm the one supposed to be eaten?", TV.Mood.Amused)),
@@ -93,7 +93,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.Fell.ToString("G"),
+            Level.Event.Fell.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Such a waste...", TV.Mood.Angry)),
                 SpeechLines.Interrupt(new SpeechLine("Please, next time, don't die off camera...", TV.Mood.Neutral)),
@@ -102,7 +102,7 @@ public class Phrases
             })
         },
         {
-            BaseLevel.Event.Win.ToString("G"),
+            Level.Event.Win.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 SpeechLines.Interrupt(new SpeechLine("Congratulations... till next time!", TV.Mood.Angry)),
                 SpeechLines.Interrupt(new SpeechLine("I guess I was wrong all along. They did it!", TV.Mood.Amused)),

@@ -22,24 +22,24 @@ public class Sportscaster : Node
         this.ForbidNextInterruptions();
     }
 
-    public void ReactTo(BaseLevel.Event gameEvent)
+    public void ReactTo(Level.Event gameEvent)
     {
         switch (gameEvent)
         {
-            case BaseLevel.Event.Greetings:
-            case BaseLevel.Event.DodgedBoulder:
-            case BaseLevel.Event.DodgedWorm:
-            case BaseLevel.Event.DodgedGlove:
-            case BaseLevel.Event.Punched:
+            case Level.Event.Greetings:
+            case Level.Event.DodgedBoulder:
+            case Level.Event.DodgedWorm:
+            case Level.Event.DodgedGlove:
+            case Level.Event.Punched:
                 this.Say(Phrases.Random(gameEvent.ToString("G")));
                 break;
-            case BaseLevel.Event.Started:
+            case Level.Event.Started:
                 this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
                 break;
-            case BaseLevel.Event.Fell:
-            case BaseLevel.Event.Eaten:
-            case BaseLevel.Event.Smashed:
-            case BaseLevel.Event.Win:
+            case Level.Event.Fell:
+            case Level.Event.Eaten:
+            case Level.Event.Smashed:
+            case Level.Event.Win:
                 this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
                 this.CanFeelBlank = false;
                 break;
