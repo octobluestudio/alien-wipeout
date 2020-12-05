@@ -7,6 +7,16 @@ public abstract class BaseMenu : Control
 
     protected Button SelectedButton;
 
+    private GameState gameState;
+    protected GameState GameState { get {
+            if (this.gameState == null) {
+                this.gameState = (GameState)GetNode("/root/GameState");
+            }
+
+            return this.gameState;
+        }
+    }
+
     public override void _Input(InputEvent @event)
     {
         if (@event is InputEventKey && !this.AnyButtonHasFocus())
@@ -22,7 +32,6 @@ public abstract class BaseMenu : Control
             if (childNode is Button)
             {
                 this.AddButton((Button)childNode);
-                this.InitButtonNavigation((Button)childNode);
             }
         }
     }
@@ -30,6 +39,7 @@ public abstract class BaseMenu : Control
     protected void AddButton(Button button)
     {
         this.Buttons.Add(button);
+        this.InitButtonNavigation(button);
     }
 
     protected bool AnyButtonHasFocus()
@@ -49,7 +59,41 @@ public abstract class BaseMenu : Control
 
     public void StartGame()
     {
+        switch(this.GameState.CurrentLevel)
+        {
+            case GameState.Level.One:
+                this.LevelOne();
+                break;
+            case GameState.Level.Two:
+                this.LevelTwo();
+                break;
+            case GameState.Level.Three:
+                this.LevelThree();
+                break;
+            case GameState.Level.Four:
+                this.LevelFour();
+                break;
+        }
+    }
+
+    public void LevelOne()
+    {
         this.GetTree().ChangeScene("res://scenes/levels/LevelOne.tscn");
+    }
+
+    public void LevelTwo()
+    {
+        this.GetTree().ChangeScene("res://scenes/levels/LevelTwo.tscn");
+    }
+
+    public void LevelThree()
+    {
+        this.GetTree().ChangeScene("res://scenes/levels/LevelThree.tscn");
+    }
+
+    public void LevelFour()
+    {
+        this.GetTree().ChangeScene("res://scenes/levels/LevelFour.tscn");
     }
 
     public void MainMenu()

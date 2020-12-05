@@ -9,7 +9,10 @@ public class GameState : Node
     public enum Level { One, Two, Three, Four };
 
     private Dictionary<string, float> HighScores;
-    private Level currentLevel;
+
+    private Level currentLevel = Level.One;
+    public Level CurrentLevel {  get { return this.currentLevel;  } }
+
     private float duration;
 
     public override void _Ready()
