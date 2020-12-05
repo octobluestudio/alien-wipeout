@@ -9,14 +9,18 @@ public class Terrain : Node2D
     private BoulderGenerator BoulderGenerator;
     private AnimationPlayer CameraMovement;
     private Path2D CameraPath;
+    private Position2D StartPosition;
 
     private bool IsPresenting = false;
+
+    public Vector2 StartPointGlobalPosition { get { return this.StartPosition.GlobalPosition; } }
     
     public override void _Ready()
     {
         this.BoulderGenerator = this.GetNode<BoulderGenerator>("BoulderGenerator");
         this.CameraMovement = this.GetNode<AnimationPlayer>("CameraMovement");
         this.CameraPath = this.GetNode<Path2D>("CameraPath");
+        this.StartPosition = this.GetNode<Position2D>("StartPosition");
     }
 
     public override void _Input(InputEvent @event)

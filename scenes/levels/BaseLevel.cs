@@ -40,21 +40,25 @@ public class BaseLevel : Node2D
         this.Music = this.GetNode<AudioStreamPlayer>("Audio/Music");
         this.LostSound = this.GetNode<AudioStreamPlayer>("Audio/LostSound");
 
-        this.AddTerrain(level);
+        this.Terrain = this.AddTerrain(level);
 
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
+
+        this.Character.GlobalPosition = this.Terrain.StartPointGlobalPosition;
     }
 
-    private void AddTerrain(GameState.Level level)
+    private Terrain AddTerrain(GameState.Level level)
     {
         var TerrainPrototype = ResourceLoader.Load<PackedScene>(GetTerrainScenePath(level));
 
-        this.Terrain = (Terrain)TerrainPrototype.Instance();
-        this.Terrain.Connect(nameof(Terrain.BoulderGenerated), this, "OnBoulderGenerated");
-        this.Terrain.Connect(nameof(Terrain.PresentationStarted), this, "OnTerrainPresentationStarted");
-        this.Terrain.Connect(nameof(Terrain.PresentationEnded), this, "OnTerrainPresentationEnded");
+        var terrain = (Terrain)TerrainPrototype.Instance();
+        terrain.Connect(nameof(Terrain.BoulderGenerated), this, "OnBoulderGenerated");
+        terrain.Connect(nameof(Terrain.PresentationStarted), this, "OnTerrainPresentationStarted");
+        terrain.Connect(nameof(Terrain.PresentationEnded), this, "OnTerrainPresentationEnded");
 
-        this.AddChild(this.Terrain);
+        this.AddChild(terrain);
+
+        return terrain;
     }
 
     private static string GetTerrainScenePath(GameState.Level level)
