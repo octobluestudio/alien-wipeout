@@ -14,4 +14,3 @@ public class LevelCompleteMenu : BaseMenu
         this.DefaultFocus();
     }
 }
-

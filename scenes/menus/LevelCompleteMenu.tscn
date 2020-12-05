@@ -247,7 +247,7 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="NextLevelButton" to="." method="StartGame"]
-[connection signal="button_up" from="TryAgainButton" to="." method="NextLevel"]
+[connection signal="button_up" from="NextLevelButton" to="." method="NextLevel"]
+[connection signal="button_up" from="TryAgainButton" to="." method="StartGame"]
 [connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitGame"]
