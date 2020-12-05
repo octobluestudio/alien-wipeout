@@ -44,7 +44,7 @@ centered = false
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, 160 )
+position = Vector2( 18, 160 )
 z_index = 1
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="Character"]

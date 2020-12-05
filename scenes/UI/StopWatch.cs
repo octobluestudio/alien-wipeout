@@ -30,10 +30,10 @@ public class StopWatch : Control
         return this.timeElapsed;
     }
 
-    public String TimeElapsedAsString()
+    public static string TimeElapsedAsString(float timeElapsed)
     {
-        int minutes = (int) Math.Floor(this.timeElapsed / 60);
-        int seconds = (int)Math.Floor(this.timeElapsed) % 60;
+        int minutes = (int) Math.Floor(timeElapsed / 60);
+        int seconds = (int)Math.Floor(timeElapsed) % 60;
 
         return minutes.ToString("D2") + ":" + seconds.ToString("D2");
     }
@@ -50,7 +50,7 @@ public class StopWatch : Control
         if (this.running)
         {
             this.timeElapsed += delta;
-            this.Label.Text = this.TimeElapsedAsString();
+            this.Label.Text = TimeElapsedAsString(this.timeElapsed);
         }
     }
 }

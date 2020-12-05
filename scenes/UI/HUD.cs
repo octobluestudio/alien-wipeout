@@ -23,6 +23,11 @@ public class HUD : CanvasLayer
     {
         this.StopWatch.Stop();
     }
+
+    public float GetTime()
+    {
+        return this.StopWatch.TimeElapsed();
+    }
     
     public void ReactTo(LevelOne.Event gameEvent)
     {

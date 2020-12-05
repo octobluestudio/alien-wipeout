@@ -19,6 +19,10 @@ config/name="GameJam-GameShow"
 run/main_scene="res://scenes/menus/WelcomeMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameState="*res://scenes/GameState.cs"
+
 [display]
 
 window/size/width=320

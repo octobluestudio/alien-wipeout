@@ -14,8 +14,13 @@ public class LevelOne : Node2D
     private AudioStreamPlayer Music;
     private AudioStreamPlayer LostSound;
 
+    private GameState GameState;
+
     public override void _Ready()
     {
+        this.GameState = (GameState)GetNode("/root/GameState");
+        this.GameState.SetCurrentLevel(GameState.Level.One);
+
         this.Character = this.GetNode<Character>("Character");
         this.HUD = this.GetNode<HUD>("HUD");
         this.Terrain = this.GetNode<Terrain>("Terrain");
@@ -66,6 +71,8 @@ public class LevelOne : Node2D
 
         this.Terrain.Deactivate();
         this.Music.Stop();
+
+        this.GameState.RecordTime(this.HUD.GetTime());
 
         await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
 
