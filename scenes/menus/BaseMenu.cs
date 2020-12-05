@@ -59,41 +59,33 @@ public abstract class BaseMenu : Control
 
     public void StartGame()
     {
-        switch(this.GameState.CurrentLevel)
-        {
-            case GameState.Level.One:
-                this.LevelOne();
-                break;
-            case GameState.Level.Two:
-                this.LevelTwo();
-                break;
-            case GameState.Level.Three:
-                this.LevelThree();
-                break;
-            case GameState.Level.Four:
-                this.LevelFour();
-                break;
-        }
+        this.StartLevel(this.GameState.CurrentLevel);
     }
 
     public void LevelOne()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/Level1/Level.tscn");
+        this.StartLevel(GameState.Level.One);
     }
 
     public void LevelTwo()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/Level2/Level.tscn");
+        this.StartLevel(GameState.Level.Two);
     }
 
     public void LevelThree()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/Level3/Level.tscn");
+        this.StartLevel(GameState.Level.Three);
     }
 
     public void LevelFour()
     {
-        this.GetTree().ChangeScene("res://scenes/levels/Level4/Level.tscn");
+        this.StartLevel(GameState.Level.Four);
+    }
+
+    private void StartLevel(GameState.Level level)
+    {
+        this.GameState.SetCurrentLevel(level);
+        this.GetTree().ChangeScene("res://scenes/levels/BaseLevel.tscn");
     }
 
     public void MainMenu()

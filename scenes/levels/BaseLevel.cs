@@ -16,26 +16,57 @@ public class BaseLevel : Node2D
 
     private GameState GameState;
 
-    protected void InitNodes(GameState.Level level)
+    public override void _Ready()
     {
         this.GameState = (GameState)GetNode("/root/GameState");
-        this.GameState.SetCurrentLevel(level);
 
+        this.InitNodes(this.GameState.CurrentLevel);
+
+        this.Start();
+    }
+
+    public void Start()
+    {
+        this.Terrain.Present();
+    }
+
+    protected void InitNodes(GameState.Level level)
+    {
         this.Character = this.GetNode<Character>("Character");
         this.HUD = this.GetNode<HUD>("HUD");
-        this.Terrain = this.GetNode<Terrain>("Terrain");
         this.ImpactLocator = this.GetNode<ImpactLocator>("ImpactLocator");
         this.BoulderGeneratorFollow = this.GetNode<RemoteTransform2D>("Character/BoulderGeneratorFollow");
         this.CameraFollow = this.GetNode<RemoteTransform2D>("Character/CameraFollow");
         this.Music = this.GetNode<AudioStreamPlayer>("Audio/Music");
         this.LostSound = this.GetNode<AudioStreamPlayer>("Audio/LostSound");
 
+        this.AddTerrain(level);
+
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
     }
 
-    public void Start()
+    private void AddTerrain(GameState.Level level)
     {
-        this.Terrain.Present();
+        var TerrainPrototype = ResourceLoader.Load<PackedScene>(GetTerrainScenePath(level));
+
+        this.Terrain = (Terrain)TerrainPrototype.Instance();
+        this.Terrain.Connect(nameof(Terrain.BoulderGenerated), this, "OnBoulderGenerated");
+        this.Terrain.Connect(nameof(Terrain.PresentationStarted), this, "OnTerrainPresentationStarted");
+        this.Terrain.Connect(nameof(Terrain.PresentationEnded), this, "OnTerrainPresentationEnded");
+
+        this.AddChild(this.Terrain);
+    }
+
+    private static string GetTerrainScenePath(GameState.Level level)
+    {
+        switch(level)
+        {
+            case GameState.Level.One  : return "res://scenes/levels/Level1/Terrain.tscn";
+            case GameState.Level.Two  : return "res://scenes/levels/Level2/Terrain.tscn";
+            case GameState.Level.Three: return "res://scenes/levels/Level3/Terrain.tscn";
+            case GameState.Level.Four : return "res://scenes/levels/Level4/Terrain.tscn";
+            default: throw new NotImplementedException();
+        }
     }
 
     private static Event CharacterStateToEvent(Character.State state)
