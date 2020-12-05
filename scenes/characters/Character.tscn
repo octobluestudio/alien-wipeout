@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 4, 5 ]
+"values": [ 0, 10, 11 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -41,7 +41,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=3]
 resource_name = "Dance"
 length = 0.8
 loop = true
@@ -59,12 +59,10 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "End"
+[sub_resource type="Animation" id=4]
 length = 0.05
 
-[sub_resource type="Animation" id=4]
-resource_name = "Fall"
+[sub_resource type="Animation" id=5]
 length = 0.05
 loop = true
 tracks/0/type = "value"
@@ -80,7 +78,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -95,8 +93,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Jump"
+[sub_resource type="Animation" id=7]
 length = 0.05
 loop = true
 tracks/0/type = "value"
@@ -112,8 +109,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Squash"
+[sub_resource type="Animation" id=8]
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -143,7 +139,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -159,33 +155,29 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Chomp"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Dance"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "End"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Squash"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
@@ -194,54 +186,58 @@ animation = "Walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=28]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=29]
-states/Chomp/node = SubResource( 9 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachine" id=33]
+states/Chomp/node = SubResource( 10 )
 states/Chomp/position = Vector2( 543.568, 372.5 )
-states/Dance/node = SubResource( 32 )
+states/Dance/node = SubResource( 11 )
 states/Dance/position = Vector2( 543.781, 463.733 )
-states/End/node = SubResource( 10 )
+states/End/node = SubResource( 12 )
 states/End/position = Vector2( 766.709, 328.57 )
-states/Fall/node = SubResource( 11 )
+states/Fall/node = SubResource( 13 )
 states/Fall/position = Vector2( 263.906, 114.5 )
-states/Idle/node = SubResource( 12 )
+states/Idle/node = SubResource( 14 )
 states/Idle/position = Vector2( 263.641, 298.188 )
-states/Jump/node = SubResource( 13 )
+states/Jump/node = SubResource( 15 )
 states/Jump/position = Vector2( 72.5, 43.25 )
-states/Squash/node = SubResource( 14 )
+states/Squash/node = SubResource( 16 )
 states/Squash/position = Vector2( 541.5, 297.953 )
-states/Walk/node = SubResource( 15 )
+states/Walk/node = SubResource( 17 )
 states/Walk/position = Vector2( 472.75, 41.4375 )
-transitions = [ "Idle", "Squash", SubResource( 16 ), "Jump", "Fall", SubResource( 17 ), "Idle", "Jump", SubResource( 18 ), "Fall", "Idle", SubResource( 19 ), "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ), "Walk", "Jump", SubResource( 22 ), "Fall", "Walk", SubResource( 23 ), "Walk", "Fall", SubResource( 24 ), "Fall", "Jump", SubResource( 25 ), "Squash", "End", SubResource( 26 ), "Idle", "Chomp", SubResource( 27 ), "Chomp", "End", SubResource( 28 ), "Idle", "Dance", SubResource( 33 ), "Dance", "End", SubResource( 34 ) ]
+transitions = [ "Idle", "Squash", SubResource( 18 ), "Jump", "Fall", SubResource( 19 ), "Idle", "Jump", SubResource( 20 ), "Fall", "Idle", SubResource( 21 ), "Idle", "Walk", SubResource( 22 ), "Walk", "Idle", SubResource( 23 ), "Walk", "Jump", SubResource( 24 ), "Fall", "Walk", SubResource( 25 ), "Walk", "Fall", SubResource( 26 ), "Fall", "Jump", SubResource( 27 ), "Squash", "End", SubResource( 28 ), "Idle", "Chomp", SubResource( 29 ), "Chomp", "End", SubResource( 30 ), "Idle", "Dance", SubResource( 31 ), "Dance", "End", SubResource( 32 ) ]
 start_node = "Idle"
 end_node = "End"
 graph_offset = Vector2( 72.7086, 204.733 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
 [node name="Character" type="KinematicBody2D"]
 collision_mask = 0
@@ -250,9 +246,9 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -10 )
 texture = ExtResource( 1 )
-vframes = 5
+vframes = 6
 hframes = 2
-frame = 6
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -9 )
@@ -261,23 +257,23 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Chomp = SubResource( 2 )
-anims/Dance = SubResource( 31 )
-anims/End = SubResource( 3 )
-anims/Fall = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/Jump = SubResource( 6 )
-anims/Squash = SubResource( 7 )
-anims/Walk = SubResource( 8 )
+anims/Dance = SubResource( 3 )
+anims/End = SubResource( 4 )
+anims/Fall = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/Squash = SubResource( 8 )
+anims/Walk = SubResource( 9 )
 
 [node name="DisableTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 29 )
+tree_root = SubResource( 33 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 30 )
+parameters/playback = SubResource( 34 )
 
 [node name="Audio" type="Node" parent="."]
 
