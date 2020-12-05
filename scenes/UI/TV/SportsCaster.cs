@@ -11,6 +11,8 @@ public class Sportscaster : Node
     private bool Speaking = false;
     private bool InterruptionAllowed = false;
 
+    private bool CanFeelBlank = true;
+
     public override void _Ready()
     {
         this.BlankTimer = this.GetNode<Timer>("BlankTimer");
@@ -32,17 +34,25 @@ public class Sportscaster : Node
                 this.Say(Phrases.Random(gameEvent.ToString("G")));
                 break;
             case BaseLevel.Event.Started:
+                this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
+                break;
             case BaseLevel.Event.Fell:
             case BaseLevel.Event.Eaten:
             case BaseLevel.Event.Smashed:
             case BaseLevel.Event.Win:
                 this.ForceInterrupt(Phrases.Random(gameEvent.ToString("G")));
+                this.CanFeelBlank = false;
                 break;
         }
     }
 
     private void FillBlank()
     {
+        if (!this.CanFeelBlank)
+        {
+            return;
+        }
+
         this.Say(Phrases.Random(Phrases.FillBlank));
     }
 
