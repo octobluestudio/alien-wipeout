@@ -30,6 +30,8 @@ window/size/height=180
 window/size/test_width=1280
 window/size/test_height=720
 window/dpi/allow_hidpi=true
+mouse_cursor/custom_image="res://resources/ui/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 4, 4 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
