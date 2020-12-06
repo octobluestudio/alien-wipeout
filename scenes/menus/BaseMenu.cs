@@ -95,7 +95,7 @@ public abstract class BaseMenu : Control
         }
 
         this.GameState.SetCurrentLevel(level);
-        this.GetTree().ChangeScene("res://scenes/levels/Level.tscn");
+        this.GetTree().ChangeScene("res://scenes/levels/BaseLevel.tscn");
     }
 
     public void MainMenu()

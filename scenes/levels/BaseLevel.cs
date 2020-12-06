@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Level : Node2D
+public class BaseLevel : Node2D
 {
     public enum Event { Greetings, Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
 
