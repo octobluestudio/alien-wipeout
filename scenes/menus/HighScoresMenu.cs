@@ -21,10 +21,11 @@ public class HighScoresMenu : BaseMenu
     private void InitLevel(string levelNodeGroupName, GameState.Level level)
     {
         var highScore = this.GameState.GetHighScoreFor(level);
+        var previousLevelHighScore = this.GameState.GetHighScoreFor(this.GameState.GetPreviousLevel(level));
 
         if (level != GameState.Level.One)
         {
-            this.GetNode<Button>(levelNodeGroupName + "/Button").Disabled = (highScore == 0);
+            this.GetNode<Button>(levelNodeGroupName + "/Button").Disabled = (previousLevelHighScore == 0);
         }
         
         this.GetNode<Label>(levelNodeGroupName+"/Score").Text = StopWatch.TimeElapsedAsString(highScore);

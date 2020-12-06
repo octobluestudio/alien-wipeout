@@ -6,7 +6,7 @@ public class GameState : Node
 {
     const string SAVE_PATH = "user://highscores.json";
 
-    public enum Level { One, Two, Three, Four, End };
+    public enum Level { One, Two, Three, Four, None };
 
     private Dictionary<string, float> HighScores;
 
@@ -28,12 +28,29 @@ public class GameState : Node
 
     public Level NextLevel()
     {
-        switch (this.currentLevel)
+        return this.GetNextLevel(this.currentLevel);
+    }
+
+    public Level GetNextLevel(Level level)
+    {
+        switch (level)
         {
             case Level.One: return Level.Two;
             case Level.Two: return Level.Three;
             case Level.Three: return Level.Four;
-            case Level.Four: return Level.End;
+            case Level.Four: return Level.None;
+            default: return Level.One;
+        }
+    }
+
+    public Level GetPreviousLevel(Level level)
+    {
+        switch (level)
+        {
+            case Level.One: return Level.None;
+            case Level.Two: return Level.One;
+            case Level.Three: return Level.Two;
+            case Level.Four: return Level.Three;
             default: return Level.One;
         }
     }

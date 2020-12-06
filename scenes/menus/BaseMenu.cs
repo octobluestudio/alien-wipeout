@@ -89,7 +89,7 @@ public abstract class BaseMenu : Control
 
     private void StartLevel(GameState.Level level)
     {
-        if (level == GameState.Level.End)
+        if (level == GameState.Level.None)
         {
             return; // TODO create End
         }

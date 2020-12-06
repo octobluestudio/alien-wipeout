@@ -178,7 +178,7 @@ shortcut_in_tooltip = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="StartButton" to="." method="StartGame"]
+[connection signal="button_up" from="StartButton" to="." method="LevelOne"]
 [connection signal="button_up" from="HighScoresButton" to="." method="HighScores"]
 [connection signal="button_up" from="CreditsButton" to="." method="DisplayCredits"]
 [connection signal="button_up" from="Quit" to="." method="QuitGame"]
