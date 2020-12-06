@@ -27,6 +27,8 @@ public abstract class BaseMenu : Control
 
     public void InitButtons()
     {
+        ControlsUtil.ShowMouse();
+
         foreach (Node childNode in this.GetChildren())
         {
             if (childNode is Button)

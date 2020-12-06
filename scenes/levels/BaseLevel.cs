@@ -18,11 +18,21 @@ public class BaseLevel : Node2D
 
     public override void _Ready()
     {
+        ControlsUtil.HideMouse();
+
         this.GameState = (GameState)GetNode("/root/GameState");
 
         this.InitNodes(this.GameState.CurrentLevel);
 
         this.Start();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton)
+        {
+            ControlsUtil.ShowMouse();
+        }
     }
 
     public void Start()

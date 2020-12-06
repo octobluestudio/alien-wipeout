@@ -30,7 +30,7 @@ public class Terrain : Node2D
             return;
         }
 
-        if (@event.IsAction("ui_cancel") || @event.IsAction("ui_accept"))
+        if (@event.IsAction("ui_accept"))
         {
             this.EndPresentation();
         }

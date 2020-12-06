@@ -34,4 +34,14 @@ public class ControlsUtil
         Input.ActionRelease(MoveDown);
         Input.ActionRelease(Jump);
     }
+
+    public static void HideMouse()
+    {
+        Input.SetMouseMode(Input.MouseMode.Hidden);
+    }
+
+    public static void ShowMouse()
+    {
+        Input.SetMouseMode(Input.MouseMode.Visible);
+    }
 }
