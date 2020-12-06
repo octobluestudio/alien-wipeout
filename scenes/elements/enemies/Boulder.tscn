@@ -9,13 +9,12 @@
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 17.0
+radius = 15.0
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=3]
 radius = 30.0
 
-[sub_resource type="Animation" id=3]
-resource_name = "Explode"
+[sub_resource type="Animation" id=4]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -95,14 +94,14 @@ monitorable = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetector"]
-position = Vector2( 0, -14 )
+position = Vector2( 0, -13 )
 shape = SubResource( 2 )
 
 [node name="DodgeDetector" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionShape2D" parent="DodgeDetector/Area2D" index="0"]
 position = Vector2( 0, -14 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0, -14 )
@@ -114,7 +113,7 @@ cast_to = Vector2( 0, 300 )
 collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Explode = SubResource( 3 )
+anims/Explode = SubResource( 4 )
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
