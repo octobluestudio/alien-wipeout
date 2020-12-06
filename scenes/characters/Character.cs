@@ -146,11 +146,14 @@ public class Character : KinematicBody2D
             this.JumpSound.Play();
         }
 
+        var originalVelocity = this.Velocity;
+
         Vector2 inputVelocity = this.Disabled ? Vector2.Zero : ControlsUtil.DirectionFromInput();
 
         this.Velocity = this.MoveAndSlide(this.GetRealVelocityFromInputVelocity(inputVelocity, delta), Vector2.Up);
+        this.Bounce(originalVelocity);
 
-        if (! this.Disabled)
+        if (!this.Disabled)
         {
             this.Animate(this.GetStateFromVelocity(inputVelocity));
             if (inputVelocity != Vector2.Zero)
@@ -174,6 +177,33 @@ public class Character : KinematicBody2D
             this.Velocity.y + (this.Gravity / gravityFactor);
 
         return new Vector2(x, y);
+    }
+
+    private void Bounce(Vector2 originalVelocity)
+    {
+        Bouncer bouncer = this.GetBouncerCollider();
+        if (bouncer != null)
+        {
+            float bounceForce = bouncer.BounceForce();
+            Vector2 normal = this.GetFloorNormal();
+            float strength = Math.Min(originalVelocity.Length() * bounceForce, JumpForce * 1.5f);
+            this.Velocity = (normal * strength - originalVelocity).Normalized() * strength; ;
+        }
+    }
+
+    private Bouncer GetBouncerCollider()
+    {
+        for (var i = 0; i < this.GetSlideCount(); i++)
+        {
+            var collider = this.GetSlideCollision(i).Collider;
+
+            if (collider is Bouncer)
+            {
+                return (Bouncer)collider;
+            }
+        }
+
+        return null;
     }
 
     private State GetStateFromVelocity(Vector2 inputVelocity)

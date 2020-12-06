@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/elements/props/BigBall.cs" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
+
+[node name="BigBall" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -32 )
+shape = SubResource( 1 )
