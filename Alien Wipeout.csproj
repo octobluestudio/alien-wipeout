@@ -2,8 +2,4 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="util\" />
-    <Folder Include="scenes\UI\TV\util\" />
-  </ItemGroup>
 </Project>
