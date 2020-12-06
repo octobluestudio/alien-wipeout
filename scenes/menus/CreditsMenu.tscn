@@ -36,10 +36,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 20 ),
+"times": PoolRealArray( 0, 19 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, -620 ]
+"values": [ 0.0, -690 ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -78,7 +78,9 @@ __meta__ = {
 [node name="MainTitle" type="Label" parent="Credits"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -600.0
+margin_left = 3.0
+margin_right = 3.0
+margin_bottom = -81.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.713726, 0.917647, 1, 1 )
 text = "
@@ -92,6 +94,9 @@ __meta__ = {
 [node name="Titles" type="Label" parent="Credits"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+margin_bottom = 522.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.2, 0.458824, 0.568627, 1 )
 text = "
@@ -129,9 +134,18 @@ Font
 
 
 
-Sounds & Music
+Music
 
-"
+
+
+
+
+courtesy of Patrick De Arteaga
+
+
+Sounds
+
+courtesy of Game Supply"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,12 +169,12 @@ text = "
 
 
 
-Marie Brochard
+MarieArty
 Remi San
 
 
 
-Marie Brochard
+MarieArty
 
 
 
@@ -179,10 +193,22 @@ PixelRPG by Heartbeast
 
 
 Intergalactic Odyssey
-by Patrick De Arteaga
+Point of Clash
+Looking for a New Beginning
+Electronic Fantasy
+Interplanetary Odyssey
+     Patrick De Arteaga
+
+
 
 Nintendo SFX
-by GameSupply"
+     Game Supply
+
+
+
+
+MarieArty & Remi San 2020
+All Rights Reserved"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
