@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/LevelCompleteMenu.cs" type="Script" id=2]
 [ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://resources/music/Electronic Fantasy.ogg" type="AudioStream" id=6]
 [ext_resource path="res://resources/menus/podium.png" type="Texture" id=7]
 [ext_resource path="res://resources/menus/poulpinette_win.png" type="Texture" id=8]
 [ext_resource path="res://scenes/elements/props/Confetti.tscn" type="PackedScene" id=9]
@@ -79,7 +80,7 @@ one_shot = false
 [node name="dance" type="AnimatedSprite" parent="."]
 position = Vector2( 99, 87 )
 frames = SubResource( 5 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Label" type="Label" parent="."]
@@ -250,6 +251,11 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
+autoplay = true
 [connection signal="button_up" from="NextLevelButton" to="." method="NextLevel"]
 [connection signal="button_up" from="TryAgainButton" to="." method="StartGame"]
 [connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]

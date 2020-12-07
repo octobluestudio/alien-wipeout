@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/HighScoresMenu.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
 [ext_resource path="res://scenes/menus/res/DisabledButtonStyle.tres" type="StyleBox" id=6]
+[ext_resource path="res://resources/music/Point of Clash.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -255,6 +256,11 @@ text = "00:00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+autoplay = true
 [connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
 [connection signal="button_up" from="Level1/Button" to="." method="LevelOne"]
 [connection signal="button_up" from="Level2/Button" to="." method="LevelTwo"]

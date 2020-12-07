@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/CreditsMenu.cs" type="Script" id=2]
@@ -7,13 +7,14 @@
 [ext_resource path="res://scenes/menus/res/EmptyStyle.tres" type="StyleBox" id=5]
 [ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=6]
 [ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=7]
+[ext_resource path="res://resources/music/Interplanetary Odyssey.ogg" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
-length = 20.0
+length = 26.15
 step = 1.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -22,7 +23,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 20 ),
+"times": PoolRealArray( 26.15 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -36,10 +37,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 19 ),
+"times": PoolRealArray( 0, 24 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, -690 ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("Music")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -71,6 +86,7 @@ __meta__ = {
 [node name="Credits" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -690.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -278,5 +294,10 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -20.0
+autoplay = true
 [connection signal="button_up" from="BackButton" to="." method="MainMenu"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitGame"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Point of Clash.ogg-4ee1257c2c8a3f6a923a57850cc40d5f.oggstr"
+
+[deps]
+
+source_file="res://resources/music/Point of Clash.ogg"
+dest_files=[ "res://.import/Point of Clash.ogg-4ee1257c2c8a3f6a923a57850cc40d5f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

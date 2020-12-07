@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/menus/menu-screen-alien-neutral.png" type="Texture" id=1]
 [ext_resource path="res://scenes/menus/WelcomeMenu.cs" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=8]
 [ext_resource path="res://resources/menus/title-button-background.png" type="Texture" id=9]
 [ext_resource path="res://scenes/menus/res/EmptyStyle.tres" type="StyleBox" id=10]
+[ext_resource path="res://resources/music/Point of Clash.ogg" type="AudioStream" id=11]
 
 [node name="WelcomeMenu" type="Control"]
 anchor_right = 1.0
@@ -175,6 +176,11 @@ shortcut_in_tooltip = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -20.0
+autoplay = true
 [connection signal="button_up" from="StartButton" to="." method="LevelOne"]
 [connection signal="button_up" from="HighScoresButton" to="." method="HighScores"]
 [connection signal="button_up" from="CreditsButton" to="." method="DisplayCredits"]

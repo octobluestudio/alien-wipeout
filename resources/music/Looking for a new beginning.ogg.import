@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Looking for a new beginning.ogg-3e275fd5e40ca478ba02602635fecead.oggstr"
+
+[deps]
+
+source_file="res://resources/music/Looking for a new beginning.ogg"
+dest_files=[ "res://.import/Looking for a new beginning.ogg-3e275fd5e40ca478ba02602635fecead.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
