@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=1]
 [ext_resource path="res://scenes/menus/HighScoresMenu.cs" type="Script" id=2]
 [ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
@@ -8,10 +8,10 @@
 [ext_resource path="res://scenes/menus/res/DisabledButtonStyle.tres" type="StyleBox" id=6]
 [ext_resource path="res://resources/music/Point of Clash.ogg" type="AudioStream" id=7]
 [ext_resource path="res://resources/ui/cursor.png" type="Texture" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 1 )
+[ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=9]
+[ext_resource path="res://scenes/menus/res/ReturnButtonStyle.tres" type="StyleBox" id=10]
+[ext_resource path="res://scenes/menus/res/EmptyStyle.tres" type="StyleBox" id=11]
+[ext_resource path="res://resources/menus/high-scores-background.png" type="Texture" id=12]
 
 [node name="HighScoresMenu" type="Control"]
 anchor_right = 1.0
@@ -21,43 +21,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 margin_right = 320.0
 margin_bottom = 180.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -122.0
-margin_right = 123.0
-margin_bottom = 49.0
-custom_fonts/font = SubResource( 1 )
-text = "High Scores"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainMenuButton" type="Button" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -104.0
-margin_top = -18.0
-focus_neighbour_right = NodePath("../Level1/Button")
-focus_neighbour_bottom = NodePath("../Level1/Button")
-focus_next = NodePath("../Level1/Button")
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 4 )
-custom_fonts/font = ExtResource( 3 )
-shortcut_in_tooltip = false
-text = "Main Menu"
+texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -77,11 +44,17 @@ __meta__ = {
 [node name="Button" type="Button" parent="Level1"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 52.0
-margin_top = -6.0
-margin_right = 140.0
-margin_bottom = 6.0
+margin_left = 75.0
+margin_top = -11.0
+margin_right = 211.0
+margin_bottom = 4.0
 rect_pivot_offset = Vector2( 181, 45 )
+focus_neighbour_left = NodePath("../../QuitButton")
+focus_neighbour_top = NodePath("../../QuitButton")
+focus_neighbour_right = NodePath("../../Level2/Button")
+focus_neighbour_bottom = NodePath("../../Level2/Button")
+focus_next = NodePath("../../Level2/Button")
+focus_previous = NodePath("../../QuitButton")
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
@@ -101,12 +74,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -6.0
-margin_bottom = 6.0
+margin_left = -153.0
+margin_top = -11.0
+margin_right = -109.0
+margin_bottom = 4.0
 rect_pivot_offset = Vector2( 71, 45 )
 custom_fonts/font = ExtResource( 3 )
 text = "00:00"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,11 +102,17 @@ __meta__ = {
 [node name="Button" type="Button" parent="Level2"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 52.0
-margin_top = -6.0
-margin_right = 140.0
-margin_bottom = 6.0
+margin_left = 75.0
+margin_top = -7.0
+margin_right = 211.0
+margin_bottom = 8.0
 rect_pivot_offset = Vector2( 181, 45 )
+focus_neighbour_left = NodePath("../../Level1/Button")
+focus_neighbour_top = NodePath("../../Level1/Button")
+focus_neighbour_right = NodePath("../../Level3/Button")
+focus_neighbour_bottom = NodePath("../../Level3/Button")
+focus_next = NodePath("../../Level3/Button")
+focus_previous = NodePath("../../Level1/Button")
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
@@ -150,12 +132,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -6.0
-margin_bottom = 6.0
+margin_left = -153.0
+margin_top = -7.0
+margin_right = -109.0
+margin_bottom = 8.0
 rect_pivot_offset = Vector2( 71, 45 )
 custom_fonts/font = ExtResource( 3 )
 text = "00:00"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,11 +160,17 @@ __meta__ = {
 [node name="Button" type="Button" parent="Level3"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 52.0
-margin_top = -6.0
-margin_right = 140.0
-margin_bottom = 6.0
+margin_left = 75.0
+margin_top = -3.0
+margin_right = 211.0
+margin_bottom = 12.0
 rect_pivot_offset = Vector2( 181, 45 )
+focus_neighbour_left = NodePath("../../Level2/Button")
+focus_neighbour_top = NodePath("../../Level2/Button")
+focus_neighbour_right = NodePath("../../Level4/Button")
+focus_neighbour_bottom = NodePath("../../Level4/Button")
+focus_next = NodePath("../../Level4/Button")
+focus_previous = NodePath("../../Level2/Button")
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
@@ -199,12 +190,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -6.0
-margin_bottom = 6.0
+margin_left = -153.0
+margin_top = -3.0
+margin_right = -109.0
+margin_bottom = 12.0
 rect_pivot_offset = Vector2( 71, 45 )
 custom_fonts/font = ExtResource( 3 )
 text = "00:00"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,11 +218,17 @@ __meta__ = {
 [node name="Button" type="Button" parent="Level4"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 52.0
-margin_top = -6.0
-margin_right = 140.0
-margin_bottom = 6.0
+margin_left = 75.0
+margin_top = 1.0
+margin_right = 211.0
+margin_bottom = 16.0
 rect_pivot_offset = Vector2( 181, 45 )
+focus_neighbour_left = NodePath("../../Level3/Button")
+focus_neighbour_top = NodePath("../../Level3/Button")
+focus_neighbour_right = NodePath("../../MainMenuButton")
+focus_neighbour_bottom = NodePath("../../MainMenuButton")
+focus_next = NodePath("../../MainMenuButton")
+focus_previous = NodePath("../../Level3/Button")
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
@@ -248,14 +248,24 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -6.0
-margin_bottom = 6.0
+margin_left = -153.0
+margin_top = 1.0
+margin_right = -109.0
+margin_bottom = 16.0
 rect_pivot_offset = Vector2( 71, 45 )
 custom_fonts/font = ExtResource( 3 )
 text = "00:00"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="TV" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -267,8 +277,61 @@ autoplay = true
 texture = ExtResource( 8 )
 centered = false
 offset = Vector2( -3, -3 )
-[connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
+
+[node name="MainMenuButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = 58.0
+margin_top = 49.0
+margin_right = 86.0
+margin_bottom = 63.0
+focus_neighbour_left = NodePath("../QuitButton")
+focus_neighbour_top = NodePath("../Level4/Button")
+focus_neighbour_right = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../Level1/Button")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../Level4/Button")
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = 85.0
+margin_top = 49.0
+margin_right = 113.0
+margin_bottom = 63.0
+focus_neighbour_left = NodePath("../MainMenuButton")
+focus_neighbour_top = NodePath("../Level4/Button")
+focus_neighbour_right = NodePath("../MainMenuButton")
+focus_neighbour_bottom = NodePath("../Level1/Button")
+focus_next = NodePath("../Level1/Button")
+focus_previous = NodePath("../MainMenuButton")
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="Level1/Button" to="." method="LevelOne"]
 [connection signal="button_up" from="Level2/Button" to="." method="LevelTwo"]
 [connection signal="button_up" from="Level3/Button" to="." method="LevelThree"]
 [connection signal="button_up" from="Level4/Button" to="." method="LevelFour"]
+[connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
+[connection signal="button_up" from="QuitButton" to="." method="QuitGame"]
