@@ -3,6 +3,7 @@ using System;
 
 public class SpaceWorm : Area2D
 {
+    private Particles2D PortalOpening;
     private AnimationPlayer AnimationPlayer;
     private DodgeDetector DodgeDetector;
     private Timer WaitTimer;
@@ -11,6 +12,7 @@ public class SpaceWorm : Area2D
 
     public override void _Ready()
     {
+        this.PortalOpening = this.GetNode<Particles2D>("PortalOpening");
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
         this.DodgeDetector = this.GetNode<DodgeDetector>("DodgeDetector");
         this.WaitTimer = this.GetNode<Timer>("WaitTimer");
@@ -20,6 +22,7 @@ public class SpaceWorm : Area2D
     {
         if (!this.AnimationPlayer.IsPlaying() && this.WaitTimer.TimeLeft == 0)
         {
+            this.PortalOpening.Emitting = true;
             this.WaitTimer.Start();
         }
     }
@@ -42,6 +45,7 @@ public class SpaceWorm : Area2D
 
     private void OnWaitTimertimeout()
     {
+        this.PortalOpening.Emitting = false;
         this.AnimationPlayer.Play("Attack");
     }
 }

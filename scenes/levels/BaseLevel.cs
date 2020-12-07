@@ -20,9 +20,6 @@ public class BaseLevel : Node2D
     {
         ControlsUtil.HideMouse();
 
-        this.Connect("mouse_entered", this, "OnMouseEntered");
-        this.Connect("mouse_exited", this, "OnMouseExited");
-
         this.GameState = (GameState)GetNode("/root/GameState");
 
         this.InitNodes(this.GameState.CurrentLevel);
@@ -169,15 +166,5 @@ public class BaseLevel : Node2D
     private void OnBoulderGenerated(Boulder boulder)
     {
         this.ImpactLocator.RegisterBoulder(boulder);
-    }
-
-    private void OnMouseEntered()
-    {
-        ControlsUtil.HideMouse();
-    }
-
-    private void OnMouseExited()
-    {
-        ControlsUtil.ShowMouse();
     }
 }
