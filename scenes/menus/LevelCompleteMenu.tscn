@@ -81,6 +81,7 @@ one_shot = false
 [node name="dance" type="AnimatedSprite" parent="."]
 position = Vector2( 99, 87 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Label" type="Label" parent="."]
@@ -106,10 +107,10 @@ anchor_left = 0.5
 anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.2
-margin_left = 12.0
-margin_top = 62.0
-margin_right = 124.0
-margin_bottom = 66.0
+margin_left = 13.0
+margin_top = 56.0
+margin_right = 123.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "00:00"

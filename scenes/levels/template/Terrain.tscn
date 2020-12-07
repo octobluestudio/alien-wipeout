@@ -1,13 +1,15 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/levels/Terrain.cs" type="Script" id=1]
-[ext_resource path="res://scenes/UI/Camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/camera/ConfigurableCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/elements/generators/WormBoobyTrap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/elements/platforms.tres" type="TileSet" id=4]
 [ext_resource path="res://scenes/elements/generators/BoulderGenerator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/elements/props/Buzzer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/elements/DeathZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/elements/generators/BoxingGloveBoobyTrap.tscn" type="PackedScene" id=8]
+
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {

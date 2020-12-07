@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/elements/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/Terrain.cs" type="Script" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://scenes/elements/props/Buzzer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/elements/platforms.tres" type="TileSet" id=6]
 [ext_resource path="res://scenes/elements/generators/WormBoobyTrap.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/UI/Camera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/camera/ConfigurableCamera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/camera/CameraZone.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -44,6 +45,18 @@ tracks/1/keys = {
 "method": "EndPresentation"
 } ]
 }
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 78.9893, 90.2965 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 65.3181, 95.1007 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 70.4771, 108.457 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 91.3832, 137.3 )
 
 [node name="Terrain" type="Node2D"]
 script = ExtResource( 2 )
@@ -83,9 +96,6 @@ position = Vector2( 720, -128 )
 [node name="WormBoobyTrap6" parent="Worms" instance=ExtResource( 7 )]
 position = Vector2( 1120, -224 )
 
-[node name="WormBoobyTrap7" parent="Worms" instance=ExtResource( 7 )]
-position = Vector2( 1488, -128 )
-
 [node name="WormBoobyTrap8" parent="Worms" instance=ExtResource( 7 )]
 position = Vector2( 2000, 160 )
 
@@ -120,6 +130,68 @@ anims/Presentation = SubResource( 2 )
 
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 48, 160 )
+
+[node name="CameraZone" type="Node2D" parent="."]
+
+[node name="CameraZone" parent="CameraZone" instance=ExtResource( 9 )]
+position = Vector2( 390.088, 52 )
+
+[node name="CollisionShape2D" parent="CameraZone/CameraZone" index="0"]
+position = Vector2( 0, 44 )
+shape = SubResource( 3 )
+
+[node name="TopPosition" parent="CameraZone/CameraZone" index="1"]
+position = Vector2( 0, 0 )
+
+[node name="BottomPosition" parent="CameraZone/CameraZone" index="2"]
+position = Vector2( 0, 177 )
+
+[node name="CameraZone2" parent="CameraZone" instance=ExtResource( 9 )]
+position = Vector2( 1196.12, -264.775 )
+
+[node name="CollisionShape2D" parent="CameraZone/CameraZone2" index="0"]
+position = Vector2( 0, 72.508 )
+shape = SubResource( 4 )
+
+[node name="TopPosition" parent="CameraZone/CameraZone2" index="1"]
+position = Vector2( 0, -15.9238 )
+
+[node name="BottomPosition" parent="CameraZone/CameraZone2" index="2"]
+position = Vector2( 0, 264.775 )
+
+[node name="CameraZone3" parent="CameraZone" instance=ExtResource( 9 )]
+position = Vector2( 1343.57, -205.899 )
+
+[node name="CollisionShape2D" parent="CameraZone/CameraZone3" index="0"]
+position = Vector2( 0, 44.583 )
+shape = SubResource( 5 )
+
+[node name="TopPosition" parent="CameraZone/CameraZone3" index="1"]
+position = Vector2( 0, -34.1008 )
+
+[node name="BottomPosition" parent="CameraZone/CameraZone3" index="2"]
+position = Vector2( 0, 310.899 )
+
+[node name="CameraZone4" parent="CameraZone" instance=ExtResource( 9 )]
+position = Vector2( 1529.78, -141.365 )
+
+[node name="CollisionShape2D" parent="CameraZone/CameraZone4" index="0"]
+position = Vector2( 0, 44.583 )
+shape = SubResource( 6 )
+
+[node name="TopPosition" parent="CameraZone/CameraZone4" index="1"]
+position = Vector2( 0, -26.6349 )
+
+[node name="BottomPosition" parent="CameraZone/CameraZone4" index="2"]
+position = Vector2( 0, 349.543 )
 [connection signal="BoulderGenerated" from="BoulderGenerator" to="." method="OnBoulderGenerated"]
 
 [editable path="DeathZone"]
+
+[editable path="CameraZone/CameraZone"]
+
+[editable path="CameraZone/CameraZone2"]
+
+[editable path="CameraZone/CameraZone3"]
+
+[editable path="CameraZone/CameraZone4"]

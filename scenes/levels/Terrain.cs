@@ -7,6 +7,7 @@ public class Terrain : Node2D
     [Signal] public delegate void PresentationEnded();
 
     private BoulderGenerator BoulderGenerator;
+    private ConfigurableCamera Camera;
     private AnimationPlayer CameraMovement;
     private Path2D CameraPath;
     private Position2D StartPosition;
@@ -18,9 +19,17 @@ public class Terrain : Node2D
     public override void _Ready()
     {
         this.BoulderGenerator = this.GetNode<BoulderGenerator>("BoulderGenerator");
+        this.Camera = this.GetNode<ConfigurableCamera>("Camera");
         this.CameraMovement = this.GetNode<AnimationPlayer>("CameraMovement");
         this.CameraPath = this.GetNode<Path2D>("CameraPath");
         this.StartPosition = this.GetNode<Position2D>("StartPosition");
+
+        var cameraZones = this.GetTree().GetNodesInGroup("CameraZone");
+        foreach(CameraZone zone in cameraZones)
+        {
+            zone.Connect(nameof(CameraZone.CameraZoneModified), this, "OnCameraZoneModified");
+            zone.Connect(nameof(CameraZone.CameraZoneRestored), this, "OnCameraZoneRestored");
+        }
     }
 
     public override void _Input(InputEvent @event)
@@ -65,5 +74,15 @@ public class Terrain : Node2D
     private void OnBoulderGenerated(Boulder boulder)
     {
         this.EmitSignal(nameof(BoulderGenerated), boulder);
+    }
+
+    private void OnCameraZoneModified(int newTop, int newBottom)
+    {
+        this.Camera.ChangeTopBottomLimits(newTop, newBottom);
+    }
+
+    private void OnCameraZoneRestored()
+    {
+        this.Camera.RestoreTopBottomLimits();
     }
 }

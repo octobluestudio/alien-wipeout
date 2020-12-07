@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/elements/props/Buzzer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/elements/platforms.tres" type="TileSet" id=6]
 [ext_resource path="res://scenes/elements/generators/WormBoobyTrap.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/UI/Camera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/camera/ConfigurableCamera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/elements/props/BigBall.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]

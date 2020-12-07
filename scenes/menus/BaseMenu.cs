@@ -170,7 +170,6 @@ public abstract class BaseMenu : Control
 
     private void OnMouseExited()
     {
-        GD.Print("exit");
         ControlsUtil.ShowMouse();
     }
 }
