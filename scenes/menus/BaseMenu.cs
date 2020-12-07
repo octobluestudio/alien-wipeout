@@ -104,7 +104,8 @@ public abstract class BaseMenu : Control
     {
         if (level == GameState.Level.None)
         {
-            return; // TODO create End
+            this.DisplayCredits();
+            return;
         }
 
         this.GameState.SetCurrentLevel(level);

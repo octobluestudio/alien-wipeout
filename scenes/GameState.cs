@@ -68,7 +68,6 @@ public class GameState : Node
 
     internal bool IsCurrentLevelRecord()
     {
-        GD.Print(this.duration + " / " + this.GetHighScoreFor(this.currentLevel));
         return this.duration == this.GetHighScoreFor(this.currentLevel);
     }
 

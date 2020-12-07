@@ -122,10 +122,12 @@ __meta__ = {
 }
 
 [node name="NewHighScoreLabel" type="TextureRect" parent="."]
-margin_left = 173.0
-margin_top = 85.2016
-margin_right = 283.0
-margin_bottom = 99.2016
+anchor_top = 0.000449626
+anchor_bottom = 0.000449626
+margin_left = 183.0
+margin_top = 84.9191
+margin_right = 269.0
+margin_bottom = 98.9191
 texture = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
