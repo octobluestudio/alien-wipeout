@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/LevelCompleteMenu.cs" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=13]
 [ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=14]
 [ext_resource path="res://resources/ui/cursor.png" type="Texture" id=15]
+[ext_resource path="res://resources/menus/new-high-score-banner.png" type="Texture" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 8 )
@@ -81,7 +82,7 @@ one_shot = false
 [node name="dance" type="AnimatedSprite" parent="."]
 position = Vector2( 99, 87 )
 frames = SubResource( 5 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Label" type="Label" parent="."]
@@ -90,9 +91,9 @@ anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.2
 margin_left = -128.0
-margin_top = 15.0
+margin_top = 13.0
 margin_right = 128.0
-margin_bottom = 19.0
+margin_bottom = 17.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "You Win!"
@@ -116,6 +117,16 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "00:00"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewHighScoreLabel" type="TextureRect" parent="."]
+margin_left = 173.0
+margin_top = 85.2016
+margin_right = 283.0
+margin_bottom = 99.2016
+texture = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

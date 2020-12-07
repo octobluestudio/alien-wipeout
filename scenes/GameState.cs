@@ -12,7 +12,7 @@ public class GameState : Node
 
     private Level currentLevel = Level.One;
     public Level CurrentLevel {  get { return this.currentLevel;  } }
-
+    
     private float duration;
 
     public override void _Ready()
@@ -64,6 +64,12 @@ public class GameState : Node
             this.HighScores[StringifyLevel(this.currentLevel)] = duration;
             this.Save();
         }
+    }
+
+    internal bool IsCurrentLevelRecord()
+    {
+        GD.Print(this.duration + " / " + this.GetHighScoreFor(this.currentLevel));
+        return this.duration == this.GetHighScoreFor(this.currentLevel);
     }
 
     public float GetCurrentDuration()
