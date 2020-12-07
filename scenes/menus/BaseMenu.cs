@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public abstract class BaseMenu : Control
 {
+    private Sprite Mouse;
+
     private List<Button> Buttons = new List<Button>();
 
     protected Button SelectedButton;
@@ -25,9 +27,18 @@ public abstract class BaseMenu : Control
         }
     }
 
-    public void InitButtons()
+    public override void _PhysicsProcess(float delta)
     {
-        ControlsUtil.ShowMouse();
+        this.Mouse.GlobalPosition = this.GetGlobalMousePosition();
+    }
+
+    public void Init()
+    {
+        this.Mouse = this.GetNode<Sprite>("./Mouse");
+        this.Connect("mouse_entered", this, "OnMouseEntered");
+        this.Connect("mouse_exited", this, "OnMouseExited");
+        ControlsUtil.HideMouse();
+
 
         foreach (Node childNode in this.GetChildren())
         {
@@ -130,21 +141,36 @@ public abstract class BaseMenu : Control
 
     protected void GrabFocusForButton(Button button)
     {
+        this.OnMouseEntered();
         button.GrabFocus();
     }
 
     protected void ReleaseFocusForButton(Button button)
     {
+        this.OnMouseEntered();
         button.ReleaseFocus();
     }
 
     protected void ButtonFocusEntered(Button button)
     {
+        this.OnMouseEntered();
         this.SelectedButton = button;
     }
 
     protected void ButtonFocusExited(Button button)
     {
+        this.OnMouseEntered();
         this.SelectedButton = null;
+    }
+
+    private void OnMouseEntered()
+    {
+        ControlsUtil.HideMouse();
+    }
+
+    private void OnMouseExited()
+    {
+        GD.Print("exit");
+        ControlsUtil.ShowMouse();
     }
 }

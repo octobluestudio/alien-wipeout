@@ -3,7 +3,7 @@ public class WelcomeMenu : BaseMenu
 {
     public override void _Ready()
     {
-        this.InitButtons();
+        this.Init();
 
         this.DefaultFocus();
     }

@@ -9,7 +9,7 @@ public class LevelCompleteMenu : BaseMenu
         this.Time = this.GetNode<Label>("Time");
         this.Time.Text = StopWatch.TimeElapsedAsString(this.GameState.GetCurrentDuration());
 
-        this.InitButtons();
+        this.Init();
 
         this.DefaultFocus();
     }

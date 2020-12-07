@@ -9,13 +9,13 @@ public class HighScoresMenu : BaseMenu
         this.AddButton(this.GetNode<Button>("Level3/Button"));
         this.AddButton(this.GetNode<Button>("Level4/Button"));
 
-        this.InitButtons();
-        this.DefaultFocus();
-
         this.InitLevel("Level1", GameState.Level.One);
         this.InitLevel("Level2", GameState.Level.Two);
         this.InitLevel("Level3", GameState.Level.Three);
         this.InitLevel("Level4", GameState.Level.Four);
+
+        this.Init();
+        this.DefaultFocus();
     }
 
     private void InitLevel(string levelNodeGroupName, GameState.Level level)

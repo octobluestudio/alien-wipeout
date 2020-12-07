@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/LevelCompleteMenu.cs" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/menus/res/EmptyStyle.tres" type="StyleBox" id=12]
 [ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=13]
 [ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=14]
+[ext_resource path="res://resources/ui/cursor.png" type="Texture" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 8 )
@@ -80,7 +81,6 @@ one_shot = false
 [node name="dance" type="AnimatedSprite" parent="."]
 position = Vector2( 99, 87 )
 frames = SubResource( 5 )
-frame = 3
 playing = true
 
 [node name="Label" type="Label" parent="."]
@@ -256,6 +256,11 @@ __meta__ = {
 stream = ExtResource( 6 )
 volume_db = -20.0
 autoplay = true
+
+[node name="Mouse" type="Sprite" parent="."]
+texture = ExtResource( 15 )
+centered = false
+offset = Vector2( -3, -3 )
 [connection signal="button_up" from="NextLevelButton" to="." method="NextLevel"]
 [connection signal="button_up" from="TryAgainButton" to="." method="StartGame"]
 [connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]

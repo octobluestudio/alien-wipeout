@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://resources/fonts/PixelRPG.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menus/CreditsMenu.cs" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=6]
 [ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=7]
 [ext_resource path="res://resources/music/Interplanetary Odyssey.ogg" type="AudioStream" id=8]
+[ext_resource path="res://resources/ui/cursor.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -299,5 +300,10 @@ __meta__ = {
 stream = ExtResource( 8 )
 volume_db = -20.0
 autoplay = true
+
+[node name="Mouse" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+centered = false
+offset = Vector2( -3, -3 )
 [connection signal="button_up" from="BackButton" to="." method="MainMenu"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitGame"]

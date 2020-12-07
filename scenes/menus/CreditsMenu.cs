@@ -6,7 +6,7 @@ public class CreditsMenu : BaseMenu
 
     public override void _Ready()
     {
-        this.InitButtons();
+        this.Init();
         this.DefaultFocus();
 
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
