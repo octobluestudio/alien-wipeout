@@ -188,6 +188,7 @@ public class Character : KinematicBody2D
             Vector2 normal = this.GetFloorNormal();
             float strength = Math.Min(originalVelocity.Length() * bounceForce, JumpForce * 1.5f);
             this.Velocity = (normal - originalVelocity.Normalized()).Normalized() * strength; ;
+            this.JumpSound.Play();
         }
     }
 

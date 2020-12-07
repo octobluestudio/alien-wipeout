@@ -112,7 +112,7 @@ public class BaseLevel : Node2D
         this.HUD.ReactTo(Event.Started);
     }
 
-    private async void OnCharacterWon()
+    private void OnCharacterWon()
     {
         this.HUD.StopStopWatch();
         this.HUD.ReactTo(Event.Win);
@@ -122,12 +122,10 @@ public class BaseLevel : Node2D
 
         this.GameState.RecordTime(this.HUD.GetTime());
 
-        await this.ToSignal(this.GetTree().CreateTimer(2), "timeout");
-
-        this.GetTree().ChangeScene("res://scenes/menus/LevelCompleteMenu.tscn");
+        this.GetTree().CreateTimer(2).Connect("timeout", this, "GoToScene", new Godot.Collections.Array() { "res://scenes/menus/LevelCompleteMenu.tscn" });
     }
 
-    private async void OnCharacterKilled(Character.State state)
+    private void OnCharacterKilled(Character.State state)
     {
         this.HUD.StopStopWatch();
         this.HUD.ReactTo(CharacterStateToEvent(state));
@@ -137,9 +135,12 @@ public class BaseLevel : Node2D
 
         this.Terrain.Deactivate();
 
-        await this.ToSignal(this.GetTree().CreateTimer(2.5f), "timeout");
+        this.GetTree().CreateTimer(2.5f).Connect("timeout", this, "GoToScene", new Godot.Collections.Array() { "res://scenes/menus/GameOverMenu.tscn" });
+    }
 
-        this.GetTree().ChangeScene("res://scenes/menus/GameOverMenu.tscn");
+    private void GoToScene(string scenePath)
+    {
+        this.GetTree().ChangeScene(scenePath);
     }
     
     private void OnCharacterDodged(EnemyProperties.Type enemyType)

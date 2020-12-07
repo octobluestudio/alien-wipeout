@@ -65,6 +65,7 @@ __meta__ = {
 
 [node name="BoulderGenerator" parent="." instance=ExtResource( 3 )]
 position = Vector2( 18, -90 )
+Active = false
 
 [node name="Worms" type="Node2D" parent="."]
 z_index = 1
