@@ -82,6 +82,12 @@ position = Vector2( 816, -256 )
 modulate = Color( 0.917647, 0.776471, 0.12549, 0.443137 )
 position = Vector2( 1232, 64 )
 
+[node name="BoxingGloveBoobyTrap9" parent="BoxingGloves" instance=ExtResource( 4 )]
+modulate = Color( 0.917647, 0.776471, 0.12549, 0.443137 )
+position = Vector2( 1496, -32 )
+scale = Vector2( -1, 1 )
+Direction = Vector2( 1, 0 )
+
 [node name="BoxingGloveBoobyTrap4" parent="BoxingGloves" instance=ExtResource( 4 )]
 modulate = Color( 0.917647, 0.776471, 0.12549, 0.443137 )
 position = Vector2( 1584, -224 )

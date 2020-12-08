@@ -5,7 +5,7 @@ public class BoxingGlove : Area2D
 {
     private const float MaxSpeed = 300f;
 
-    [Export] private Vector2 Direction = Vector2.Left;
+    [Export] public Vector2 Direction = Vector2.Left;
     [Export] private float Strength = 450f;
     [Export] private float Speed = 0f;
 
@@ -18,6 +18,8 @@ public class BoxingGlove : Area2D
     {
         this.DodgeDetector = this.GetNode<DodgeDetector>("DodgeDetector");
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
+
+        this.Scale = new Vector2(-this.Direction.x * Math.Abs(this.Scale.x), this.Scale.y);
 
         this.Appear();
     }

@@ -3,6 +3,8 @@ using System;
 
 public class BoxingGloveBoobyTrap : Node2D
 {
+    [Export] Vector2 Direction = Vector2.Left;
+
     private PackedScene BoxingGlove;
     private Position2D LaunchPoint;
 
@@ -21,6 +23,7 @@ public class BoxingGloveBoobyTrap : Node2D
 
         var boxingGlove = (BoxingGlove) this.BoxingGlove.Instance();
         boxingGlove.GlobalPosition = this.LaunchPoint.GlobalPosition;
+        boxingGlove.Direction = this.Direction;
         this.GetTree().CurrentScene.CallDeferred("add_child", boxingGlove);
     }
 }
