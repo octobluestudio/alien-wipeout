@@ -120,6 +120,12 @@ position = Vector2( 304, 32 )
 [node name="WormBoobyTrap4" parent="Worms" instance=ExtResource( 7 )]
 position = Vector2( 880, 160 )
 
+[node name="WormBoobyTrap7" parent="Worms" instance=ExtResource( 7 )]
+position = Vector2( 1264, 96 )
+
+[node name="WormBoobyTrap8" parent="Worms" instance=ExtResource( 7 )]
+position = Vector2( 1232, 0 )
+
 [node name="WormBoobyTrap5" parent="Worms" instance=ExtResource( 7 )]
 position = Vector2( 656, 0 )
 
@@ -158,6 +164,13 @@ Direction = Vector2( 1, 0 )
 [node name="BoxingGloveBoobyTrap4" parent="BoxingGloves" instance=ExtResource( 4 )]
 modulate = Color( 0.917647, 0.776471, 0.12549, 0.443137 )
 position = Vector2( 624, -160 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+Direction = Vector2( 1, 0 )
+
+[node name="BoxingGloveBoobyTrap7" parent="BoxingGloves" instance=ExtResource( 4 )]
+modulate = Color( 0.917647, 0.776471, 0.12549, 0.443137 )
+position = Vector2( 960, -64 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 Direction = Vector2( 1, 0 )
@@ -220,7 +233,7 @@ limit_top = -352
 anims/Presentation = SubResource( 2 )
 
 [node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 1912.02, 120 )
+position = Vector2( 48, 160 )
 [connection signal="BoulderGenerated" from="BoulderGenerator" to="." method="OnBoulderGenerated"]
 
 [editable path="DeathZone"]
