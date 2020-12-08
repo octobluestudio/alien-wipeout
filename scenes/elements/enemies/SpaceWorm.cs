@@ -3,6 +3,8 @@ using System;
 
 public class SpaceWorm : Area2D
 {
+    [Export] public float WaitingTime = 1;
+
     private Particles2D PortalOpening;
     private AnimationPlayer AnimationPlayer;
     private DodgeDetector DodgeDetector;
@@ -16,6 +18,7 @@ public class SpaceWorm : Area2D
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
         this.DodgeDetector = this.GetNode<DodgeDetector>("DodgeDetector");
         this.WaitTimer = this.GetNode<Timer>("WaitTimer");
+        this.WaitTimer.WaitTime = WaitingTime;
     }
 
     public void Attack()
