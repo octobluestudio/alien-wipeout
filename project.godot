@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Alien Wipeout"
 run/main_scene="res://scenes/menus/WelcomeMenu.tscn"
+boot_splash/image="res://resources/menus/splash-screen.png"
 config/icon="res://icon.png"
 
 [autoload]
