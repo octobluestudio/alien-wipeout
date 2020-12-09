@@ -275,7 +275,7 @@ position = Vector2( 1248, -176 )
 curve = SubResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CameraPath"]
-position = Vector2( 4005, 48 )
+position = Vector2( 4004.33, 31.2155 )
 rotation = 2.81728
 rotate = false
 
@@ -285,7 +285,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 5252.33, -145.065 )
+position = Vector2( 5252.33, -144.785 )
 limit_right = 5024
 
 [node name="CameraMovement" type="AnimationPlayer" parent="."]

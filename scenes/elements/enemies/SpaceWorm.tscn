@@ -150,6 +150,7 @@ scale_random = 0.5
 color_ramp = SubResource( 7 )
 
 [node name="SpaceWorm" type="Area2D"]
+z_index = 1
 gravity_vec = Vector2( 0, 0 )
 collision_layer = 0
 script = ExtResource( 1 )

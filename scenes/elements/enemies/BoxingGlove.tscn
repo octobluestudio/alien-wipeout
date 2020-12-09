@@ -106,6 +106,7 @@ tracks/2/keys = {
 }
 
 [node name="BoxingGlove" type="Area2D"]
+z_index = 1
 collision_layer = 0
 collision_mask = 3
 script = ExtResource( 2 )
