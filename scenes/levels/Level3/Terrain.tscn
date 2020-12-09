@@ -26,7 +26,7 @@ extents = Vector2( 32, 16 )
 
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 4005, 48, 0, 0, 0, 0, 3728, 48 )
+"points": PoolVector2Array( 0, 0, 0, 0, 4004.33, 31.2155, 0, 0, 0, 0, 3727.55, 30.9353, 0, 0, 0, 0, 3519.1, 307.85, 0, 0, 0, 0, 3185.03, -13.551, 0, 0, 0, 0, 2912.91, 176.978, 0, 0, 0, 0, 2208.46, 332.305, 0, 0, 0, 0, 1383.21, 175.199, 0, 0, 0, 0, 813.628, 267.091, 0, 0, 0, 0, 467.699, 324.153, 0, 0, 0, 0, 114.064, 178.46, 0, 0, 0, 0, -283.887, 275.539, 0, 0, 0, 0, -606.99, 177.719, 0, 0, 0, 0, -1035.62, 214.476, 0, 0, 0, 0, -1199.4, 339.715 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -82,7 +82,6 @@ __meta__ = {
 
 [node name="BoulderGenerator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 18, -90 )
-Active = false
 
 [node name="SpawnLocation" parent="BoulderGenerator" index="0"]
 position = Vector2( -62.3152, 1.80728 )
@@ -274,9 +273,6 @@ position = Vector2( 4976, -128 )
 [node name="CameraPath" type="Path2D" parent="."]
 position = Vector2( 1248, -176 )
 curve = SubResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CameraPath"]
 position = Vector2( 4005, 48 )
@@ -289,7 +285,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 5253, -128 )
+position = Vector2( 5252.33, -145.065 )
 limit_right = 5024
 
 [node name="CameraMovement" type="AnimationPlayer" parent="."]

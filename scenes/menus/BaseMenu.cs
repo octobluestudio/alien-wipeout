@@ -92,8 +92,7 @@ public abstract class BaseMenu : Control
 
     public void LevelFour()
     {
-        // TODO uncomment after adding a level 4
-        // this.StartLevel(GameState.Level.Four);
+        this.StartLevel(GameState.Level.Four);
     }
 
     public void NextLevel()
