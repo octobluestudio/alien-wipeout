@@ -29,10 +29,7 @@ public class Boulder : RigidBody2D
     {
         if (this.TouchedGround())
         {
-            this.EmitSignal(nameof(Impact), this.identifier);
-            this.Mode = ModeEnum.Static;
-            this.Rotation = 0;
-            this.AnimationPlayer.Play("Explode");
+            this.Explode();
         }
 
         if (this.ImpactLocator.IsColliding())
@@ -41,6 +38,14 @@ public class Boulder : RigidBody2D
             this.EmitSignal(nameof(ImminentImpact), this.identifier, impactPointGlobalPosition);
             this.ImpactLocator.Enabled = false;
         }
+    }
+
+    public void Explode()
+    {
+        this.EmitSignal(nameof(Impact), this.identifier);
+        this.SetDeferred("mode", ModeEnum.Static);
+        this.Rotation = 0;
+        this.AnimationPlayer.Play("Explode");
     }
 
     private bool TouchedGround()

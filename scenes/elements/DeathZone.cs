@@ -5,6 +5,15 @@ public class DeathZone : Area2D
 {
     private void OnDeathZoneBodyEntered(PhysicsBody2D body)
     {
-        ((Character)body).Fell();
+        if (body is Character)
+        {
+            ((Character)body).Fell();
+        }
+
+        if (body is Boulder)
+        {
+            ((Boulder)body).Explode();
+        }
+        
     }
 }
