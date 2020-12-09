@@ -2,6 +2,8 @@ using Godot;
 
 public class Terrain : Node2D
 {
+    [Export] public float LevelLength = Background.LevelReferenceLength;
+
     [Signal] public delegate void BoulderGenerated(Boulder boulder);
     [Signal] public delegate void PresentationStarted();
     [Signal] public delegate void PresentationEnded();

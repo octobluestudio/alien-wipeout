@@ -8,6 +8,7 @@ public class BaseLevel : Node2D
     private Character Character;
     private HUD HUD;
     private Terrain Terrain;
+    private Background Background;
     private ImpactLocator ImpactLocator;
     private RemoteTransform2D BoulderGeneratorFollow;
     private RemoteTransform2D CameraFollow;
@@ -43,6 +44,7 @@ public class BaseLevel : Node2D
     protected void InitNodes(GameState.Level level)
     {
         this.Character = this.GetNode<Character>("Character");
+        this.Background = this.GetNode<Background>("Background");
         this.HUD = this.GetNode<HUD>("HUD");
         this.ImpactLocator = this.GetNode<ImpactLocator>("ImpactLocator");
         this.BoulderGeneratorFollow = this.GetNode<RemoteTransform2D>("Character/BoulderGeneratorFollow");
@@ -55,6 +57,7 @@ public class BaseLevel : Node2D
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
 
         this.Character.GlobalPosition = this.Terrain.StartPointGlobalPosition;
+        this.Background.AdjustMotion(this.Terrain.LevelLength);
     }
 
     private Terrain AddTerrain(GameState.Level level)
