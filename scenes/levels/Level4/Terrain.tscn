@@ -51,6 +51,9 @@ script = ExtResource( 1 )
 [node name="DeathZone" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2471, 245 )
 
+[node name="CollisionShape2D" parent="DeathZone" index="0"]
+position = Vector2( 0, 59.2576 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
@@ -64,6 +67,12 @@ __meta__ = {
 
 [node name="BoulderGenerator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 18, -90 )
+
+[node name="SpawnLocation" parent="BoulderGenerator" index="0"]
+position = Vector2( -62.3152, 1.80728 )
+
+[node name="Timer" parent="BoulderGenerator" index="1"]
+wait_time = 1.0
 
 [node name="Worms" type="Node2D" parent="."]
 z_index = 1
@@ -114,3 +123,5 @@ position = Vector2( 48, 160 )
 [connection signal="BoulderGenerated" from="BoulderGenerator" to="." method="OnBoulderGenerated"]
 
 [editable path="DeathZone"]
+
+[editable path="BoulderGenerator"]

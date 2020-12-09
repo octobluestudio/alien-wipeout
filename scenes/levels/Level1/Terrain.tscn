@@ -51,6 +51,9 @@ script = ExtResource( 2 )
 [node name="DeathZone" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2471, 245 )
 
+[node name="CollisionShape2D" parent="DeathZone" index="0"]
+position = Vector2( 0, 90.5161 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
 cell_size = Vector2( 32, 32 )
