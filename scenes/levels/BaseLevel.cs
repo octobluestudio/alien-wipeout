@@ -19,6 +19,7 @@ public class BaseLevel : Node2D
     private AudioStreamPlayer LostSound;
 
     private GameState GameState;
+    private LevelAudio LevelAudio;
 
     private string NextScene = null;
 
@@ -27,6 +28,7 @@ public class BaseLevel : Node2D
         ControlsUtil.HideMouse();
 
         this.GameState = (GameState)GetNode("/root/GameState");
+        this.LevelAudio = (LevelAudio)GetNode("/root/LevelAudio");
 
         this.InitNodes(this.GameState.CurrentLevel);
 
@@ -68,6 +70,9 @@ public class BaseLevel : Node2D
 
         this.Character.GlobalPosition = this.Terrain.StartPointGlobalPosition;
         this.Background.AdjustMotion(this.Terrain.LevelLength);
+
+        this.LevelAudio.Reset();
+        this.LevelAudio.AddPlayerToMuteControl(this.Music);
     }
 
     private Terrain AddTerrain(GameState.Level level)

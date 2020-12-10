@@ -20,10 +20,11 @@ margin_right = 320.0
 [node name="SkipMessage" type="Label" parent="."]
 visible = false
 anchor_right = 1.0
-margin_top = 16.0
+margin_top = 25.0
 margin_bottom = 46.0
 custom_fonts/font = SubResource( 1 )
-text = "Press JUMP button to skip"
+text = "Press SPACE or action button to skip
+Press M or select button to mute music"
 align = 1
 valign = 1
 __meta__ = {
