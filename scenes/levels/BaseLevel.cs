@@ -3,6 +3,9 @@ using System;
 
 public class BaseLevel : Node2D
 {
+    private const float WaitTimeAfterEnd = 3;
+    private const string SkipAction = "ui_accept";
+
     public enum Event { Greetings, Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
 
     private Character Character;
@@ -37,7 +40,7 @@ public class BaseLevel : Node2D
             ControlsUtil.ShowMouse();
         }
 
-        if (@event.IsAction("ui_accept") && this.NextScene != null)
+        if (@event.IsAction(SkipAction) && this.NextScene != null)
         {
             this.GoToScene();
         }
@@ -136,7 +139,7 @@ public class BaseLevel : Node2D
         this.GameState.RecordTime(this.HUD.GetTime());
 
         this.RegisterNextScene("res://scenes/menus/LevelCompleteMenu.tscn");
-        this.GetTree().CreateTimer(2.5f).Connect("timeout", this, "GoToScene");
+        this.GetTree().CreateTimer(WaitTimeAfterEnd).Connect("timeout", this, "GoToScene");
         
     }
 
@@ -152,7 +155,7 @@ public class BaseLevel : Node2D
         this.LostSound.Play();
 
         this.RegisterNextScene("res://scenes/menus/GameOverMenu.tscn");
-        this.GetTree().CreateTimer(2.5f).Connect("timeout", this, "GoToScene");
+        this.GetTree().CreateTimer(WaitTimeAfterEnd).Connect("timeout", this, "GoToScene");
     }
 
     private void RegisterNextScene(string nextScene)
@@ -167,7 +170,7 @@ public class BaseLevel : Node2D
             return;
         }
 
-        Input.ActionRelease("ui_accept");
+        Input.ActionRelease(SkipAction);
         this.GetTree().ChangeScene(this.NextScene);
     }
     
