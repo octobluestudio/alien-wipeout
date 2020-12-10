@@ -30,8 +30,9 @@ __meta__ = {
 }
 
 [node name="Alien" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -0.176788
+margin_right = 319.823
+margin_bottom = 180.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,9 +40,9 @@ __meta__ = {
 
 [node name="ButtonBackground1" type="TextureRect" parent="."]
 margin_left = 124.0
-margin_top = 74.0
+margin_top = 65.0
 margin_right = 288.0
-margin_bottom = 93.0
+margin_bottom = 84.0
 focus_neighbour_left = NodePath("../Quit")
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_right = NodePath("../HighScoresButton")
@@ -59,9 +60,9 @@ anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
 margin_left = -36.0
-margin_top = -34.0
+margin_top = -43.1768
 margin_right = 128.0
-margin_bottom = -18.0
+margin_bottom = -27.1768
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
@@ -77,9 +78,9 @@ __meta__ = {
 
 [node name="ButtonBackground2" type="TextureRect" parent="."]
 margin_left = 124.0
-margin_top = 97.0
+margin_top = 87.0
 margin_right = 288.0
-margin_bottom = 116.0
+margin_bottom = 106.0
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,9 +92,9 @@ anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
 margin_left = -36.0
-margin_top = -11.0
+margin_top = -21.0
 margin_right = 128.0
-margin_bottom = 4.99999
+margin_bottom = -5.00002
 focus_neighbour_left = NodePath("../StartButton")
 focus_neighbour_top = NodePath("../StartButton")
 focus_neighbour_right = NodePath("../CreditsButton")
@@ -115,9 +116,9 @@ __meta__ = {
 
 [node name="ButtonBackground3" type="TextureRect" parent="."]
 margin_left = 124.0
-margin_top = 121.0
+margin_top = 109.0
 margin_right = 288.0
-margin_bottom = 140.0
+margin_bottom = 128.0
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,14 +130,14 @@ anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
 margin_left = -36.0
-margin_top = 13.0
+margin_top = 0.999992
 margin_right = 128.0
-margin_bottom = 29.0
+margin_bottom = 17.0
 focus_neighbour_left = NodePath("../HighScoresButton")
 focus_neighbour_top = NodePath("../HighScoresButton")
-focus_neighbour_right = NodePath("../Quit")
-focus_neighbour_bottom = NodePath("../Quit")
-focus_next = NodePath("../Quit")
+focus_neighbour_right = NodePath("../ControlsButton")
+focus_neighbour_bottom = NodePath("../ControlsButton")
+focus_next = NodePath("../ControlsButton")
 focus_previous = NodePath("../HighScoresButton")
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
@@ -145,6 +146,44 @@ custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
 text = "Credits"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBackground4" type="TextureRect" parent="."]
+margin_left = 124.0
+margin_top = 131.0
+margin_right = 288.0
+margin_bottom = 150.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -36.0
+margin_top = 23.0
+margin_right = 128.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../CreditsButton")
+focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_right = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../CreditsButton")
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+text = "Controls"
 flat = true
 align = 0
 __meta__ = {
@@ -163,12 +202,12 @@ margin_left = 245.0
 margin_top = 157.0
 margin_right = 273.0
 margin_bottom = 171.0
-focus_neighbour_left = NodePath("../CreditsButton")
-focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_left = NodePath("../ControlsButton")
+focus_neighbour_top = NodePath("../ControlsButton")
 focus_neighbour_right = NodePath("../StartButton")
 focus_neighbour_bottom = NodePath("../StartButton")
 focus_next = NodePath("../StartButton")
-focus_previous = NodePath("../CreditsButton")
+focus_previous = NodePath("../ControlsButton")
 custom_styles/hover = ExtResource( 8 )
 custom_styles/pressed = ExtResource( 8 )
 custom_styles/focus = ExtResource( 8 )
@@ -190,4 +229,5 @@ offset = Vector2( -3, -3 )
 [connection signal="button_up" from="StartButton" to="." method="LevelOne"]
 [connection signal="button_up" from="HighScoresButton" to="." method="HighScores"]
 [connection signal="button_up" from="CreditsButton" to="." method="DisplayCredits"]
+[connection signal="button_up" from="ControlsButton" to="." method="KeyboardControlsMenu"]
 [connection signal="button_up" from="Quit" to="." method="QuitGame"]

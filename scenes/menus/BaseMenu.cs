@@ -145,6 +145,16 @@ public abstract class BaseMenu : Control
     {
         this.GetTree().ChangeScene("res://scenes/menus/HighScoresMenu.tscn");
     }
+    
+    public void KeyboardControlsMenu()
+    {
+        this.GetTree().ChangeScene("res://scenes/menus/ControlsKeyboardMenu.tscn");
+    }
+
+    public void GamepadControlsMenu()
+    {
+        this.GetTree().ChangeScene("res://scenes/menus/ControlsGamepadMenu.tscn");
+    }
 
     public void QuitGame()
     {

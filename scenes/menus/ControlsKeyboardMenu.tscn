@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/menus/res/ReturnButtonStyle.tres" type="StyleBox" id=1]
+[ext_resource path="res://scenes/menus/ControlsKeyboardMenu.cs" type="Script" id=2]
+[ext_resource path="res://scenes/menus/res/buttonsFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/menus/res/NormalButtonStyle.tres" type="StyleBox" id=4]
+[ext_resource path="res://scenes/menus/res/FocusButtonStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://resources/menus/controls-arrow.png" type="Texture" id=6]
+[ext_resource path="res://resources/menus/menu-screen-tv.png" type="Texture" id=7]
+[ext_resource path="res://scenes/menus/res/QuitButtonStyle.tres" type="StyleBox" id=8]
+[ext_resource path="res://resources/menus/controls-keyboard.png" type="Texture" id=9]
+[ext_resource path="res://scenes/menus/res/EmptyStyle.tres" type="StyleBox" id=10]
+[ext_resource path="res://resources/music/Point of Clash.ogg" type="AudioStream" id=11]
+[ext_resource path="res://resources/ui/cursor.png" type="Texture" id=12]
+[ext_resource path="res://scenes/menus/res/controls-font.tres" type="DynamicFont" id=13]
+
+[node name="ControlsKeyboardMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = 100.0
+margin_top = -32.0
+margin_right = 120.0
+margin_bottom = -4.00001
+focus_neighbour_left = NodePath("../Quit")
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_right = NodePath("../MainMenuButton")
+focus_neighbour_bottom = NodePath("../MainMenuButton")
+focus_next = NodePath("../MainMenuButton")
+focus_previous = NodePath("../Quit")
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="Sprite" parent="Next"]
+position = Vector2( -260, -76 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Mute" type="Label" parent="."]
+margin_left = 106.0
+margin_top = 83.0
+margin_right = 149.0
+margin_bottom = 103.0
+custom_fonts/font = ExtResource( 13 )
+text = "Mute music"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space" type="Label" parent="."]
+margin_left = 82.0
+margin_top = 130.0
+margin_right = 162.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 13 )
+text = "Jump / Skip"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="Label" parent="."]
+margin_left = 196.984
+margin_top = 67.7614
+margin_right = 219.984
+margin_bottom = 88.7614
+custom_fonts/font = ExtResource( 13 )
+text = "Jump"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move" type="Label" parent="."]
+anchor_top = 0.00108354
+anchor_bottom = 0.00108354
+margin_left = 175.39
+margin_top = 116.461
+margin_right = 242.39
+margin_bottom = 133.461
+custom_fonts/font = ExtResource( 13 )
+text = "Move"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TV" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MainMenuButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = 58.0
+margin_top = 49.0
+margin_right = 86.0
+margin_bottom = 63.0
+focus_neighbour_left = NodePath("../Quit")
+focus_neighbour_top = NodePath("../Next")
+focus_neighbour_right = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Next")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Next")
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 245.0
+margin_top = 157.0
+margin_right = 273.0
+margin_bottom = 171.0
+focus_neighbour_left = NodePath("../MainMenuButton")
+focus_neighbour_top = NodePath("../Next")
+focus_neighbour_right = NodePath("../MainMenuButton")
+focus_neighbour_bottom = NodePath("../Next")
+focus_next = NodePath("../Next")
+focus_previous = NodePath("../MainMenuButton")
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/normal = ExtResource( 10 )
+shortcut_in_tooltip = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -20.0
+autoplay = true
+
+[node name="Mouse" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+centered = false
+offset = Vector2( -3, -3 )
+[connection signal="button_up" from="Next" to="." method="GamepadControlsMenu"]
+[connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
+[connection signal="button_up" from="Quit" to="." method="QuitGame"]
