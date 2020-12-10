@@ -4,7 +4,7 @@ using System;
 public class BaseLevel : Node2D
 {
     private const float WaitTimeAfterEnd = 3;
-    private const string SkipAction = "ui_accept";
+    public const string SkipAction = "ui_player1_jump";
 
     public enum Event { Greetings, Started, DodgedBoulder, DodgedGlove, DodgedWorm, Punched, Fell, Eaten, Smashed, Win };
 
