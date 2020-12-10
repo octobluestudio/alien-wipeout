@@ -30,7 +30,7 @@ public class BaseLevel : Node2D
         this.GameState = (GameState)GetNode("/root/GameState");
         this.LevelAudio = (LevelAudio)GetNode("/root/LevelAudio");
 
-        this.InitNodes(this.GameState.CurrentLevel);
+        this.InitNodes(this.GameState.CurrentLevel, this.GameState.CheckPoint);
 
         this.Start();
     }
@@ -53,7 +53,7 @@ public class BaseLevel : Node2D
         this.Terrain.Present();
     }
 
-    protected void InitNodes(GameState.Level level)
+    protected void InitNodes(GameState.Level level, string checkPoint)
     {
         this.Character = this.GetNode<Character>("Character");
         this.Background = this.GetNode<Background>("Background");
@@ -68,7 +68,8 @@ public class BaseLevel : Node2D
 
         this.BoulderGeneratorFollow.RemotePath = new NodePath("../../Terrain/BoulderGenerator");
 
-        this.Character.GlobalPosition = this.Terrain.StartPointGlobalPosition;
+        this.Character.GlobalPosition = this.Terrain.UseCheckPoint(checkPoint);
+
         this.Background.AdjustMotion(this.Terrain.LevelLength);
 
         this.LevelAudio.Reset();
@@ -116,6 +117,7 @@ public class BaseLevel : Node2D
 
     private void OnTerrainPresentationStarted()
     {
+        this.HUD.InitStopWatch(this.GameState.InitialTime);
         this.HUD.ReactTo(Event.Greetings);
         this.HUD.DisplaySkipMessage();
     }
@@ -156,6 +158,8 @@ public class BaseLevel : Node2D
         this.Terrain.Deactivate();
         this.Music.Stop();
         this.HUD.DisplaySkipMessage();
+
+        this.GameState.TrackTime(this.HUD.GetTime());
 
         this.LostSound.Play();
 

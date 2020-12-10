@@ -12,7 +12,10 @@ public class GameState : Node
 
     private Level currentLevel = Level.One;
     public Level CurrentLevel {  get { return this.currentLevel;  } }
-    
+
+    public float InitialTime = 0;
+    public string CheckPoint = null;
+
     private float duration;
 
     public override void _Ready()
@@ -20,10 +23,11 @@ public class GameState : Node
         this.HighScores = this.Load();
     }
 
-    public void SetCurrentLevel(Level level)
+    public void SetCurrentLevel(Level level, float initialTime)
     {
         this.currentLevel = level;
-        this.duration = 0;
+        this.duration = initialTime;
+        this.InitialTime = initialTime;
     }
 
     public Level NextLevel()
@@ -55,9 +59,20 @@ public class GameState : Node
         }
     }
 
-    public void RecordTime(float duration)
+    public void ResetCheckPoint()
+    {
+        this.CheckPoint = null;
+        this.InitialTime = 0;
+    }
+
+    public void TrackTime(float duration)
     {
         this.duration = duration;
+    }
+
+    public void RecordTime(float duration)
+    {
+        this.TrackTime(duration);
 
         if (!this.HasHighScore(this.currentLevel) || this.duration < this.GetHighScoreFor(this.currentLevel))
         {
@@ -115,5 +130,10 @@ public class GameState : Node
     private static string StringifyLevel(Level level)
     {
         return level.ToString("G");
+    }
+
+    private void OnCheckPointValidated(string id)
+    {
+        this.CheckPoint = id;
     }
 }

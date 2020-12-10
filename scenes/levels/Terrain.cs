@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 public class Terrain : Node2D
@@ -13,6 +14,8 @@ public class Terrain : Node2D
     private AnimationPlayer CameraMovement;
     private Path2D CameraPath;
     private Position2D StartPosition;
+
+    private Dictionary<string, CheckPoint> CheckPoints = new Dictionary<string, CheckPoint>();
 
     private bool IsPresenting = false;
 
@@ -31,6 +34,12 @@ public class Terrain : Node2D
         {
             zone.Connect(nameof(CameraZone.CameraZoneModified), this, "OnCameraZoneModified");
             zone.Connect(nameof(CameraZone.CameraZoneRestored), this, "OnCameraZoneRestored");
+        }
+
+        var checkpoints = this.GetTree().GetNodesInGroup("checkpoint");
+        foreach(CheckPoint checkpoint in checkpoints)
+        {
+            this.CheckPoints.Add(checkpoint.ID, checkpoint);
         }
     }
 
@@ -66,6 +75,20 @@ public class Terrain : Node2D
     public void Activate()
     {
         this.BoulderGenerator.Start();
+    }
+
+    public Vector2 UseCheckPoint(string id)
+    {
+        if (id == null || !this.CheckPoints.ContainsKey(id))
+        {
+            return StartPointGlobalPosition;
+        }
+
+        CheckPoint checkPoint = this.CheckPoints[id];
+        var startingPoint = checkPoint.StartingPoint();
+        checkPoint.Remove();
+
+        return startingPoint;
     }
 
     public void Deactivate()

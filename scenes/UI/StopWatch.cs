@@ -5,8 +5,14 @@ public class StopWatch : Control
 {
     private Label Label;
 
-    private float timeElapsed = 0.0f;
+    private float timeElapsed = 0;
     private bool running = false;
+
+    public void Init(float initialTime)
+    {
+        this.timeElapsed = initialTime;
+        this.DisplayTime();
+    }
 
     public void Start()
     {
@@ -18,11 +24,6 @@ public class StopWatch : Control
     {
         this.running = false;
         this.SetProcess(true);
-    }
-
-    public void Reset()
-    {
-        this.timeElapsed = 0.0f;
     }
 
     public float TimeElapsed()
@@ -41,8 +42,6 @@ public class StopWatch : Control
     public override void _Ready()
     {
         this.Label = this.GetNode<Label>("Label");
-
-        this.Reset();
     }
 
     public override void _Process(float delta)
@@ -50,7 +49,12 @@ public class StopWatch : Control
         if (this.running)
         {
             this.timeElapsed += delta;
-            this.Label.Text = TimeElapsedAsString(this.timeElapsed);
+            this.DisplayTime();
         }
+    }
+
+    private void DisplayTime()
+    {
+        this.Label.Text = TimeElapsedAsString(this.timeElapsed);
     }
 }

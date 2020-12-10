@@ -34,12 +34,20 @@ public abstract class BaseMenu : Control
 
     public void Init()
     {
+        this.InitMouse();
+        this.InitButtons();
+    }
+
+    protected void InitMouse()
+    {
         this.Mouse = this.GetNode<Sprite>("./Mouse");
         this.Connect("mouse_entered", this, "OnMouseEntered");
         this.Connect("mouse_exited", this, "OnMouseExited");
         ControlsUtil.HideMouse();
+    }
 
-
+    protected void InitButtons()
+    {
         foreach (Node childNode in this.GetChildren())
         {
             if (childNode is Button)
@@ -68,6 +76,11 @@ public abstract class BaseMenu : Control
         }
 
         this.GrabFocusForButton(Buttons[0]);
+    }
+
+    public void CheckPoint()
+    {
+        this.StartLevel(this.GameState.CurrentLevel, this.GameState.GetCurrentDuration());
     }
 
     public void StartGame()
@@ -102,13 +115,19 @@ public abstract class BaseMenu : Control
 
     private void StartLevel(GameState.Level level)
     {
+        this.GameState.ResetCheckPoint();
+        this.StartLevel(level, 0);
+    }
+
+    private void StartLevel(GameState.Level level, float initialTime)
+    {
         if (level == GameState.Level.None)
         {
             this.DisplayCredits();
             return;
         }
 
-        this.GameState.SetCurrentLevel(level);
+        this.GameState.SetCurrentLevel(level, initialTime);
         this.GetTree().ChangeScene("res://scenes/levels/BaseLevel.tscn");
     }
 

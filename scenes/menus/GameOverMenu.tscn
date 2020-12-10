@@ -32,11 +32,49 @@ margin_right = 320.0
 margin_bottom = 180.0
 texture = ExtResource( 11 )
 
-[node name="ButtonBackground" type="TextureRect" parent="."]
+[node name="BackToCheckPointButtonBackground" type="TextureRect" parent="."]
 margin_left = 124.0
-margin_top = 99.0
+margin_top = 88.0
 margin_right = 288.0
-margin_bottom = 118.0
+margin_bottom = 107.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckPointButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -36.0
+margin_top = -20.0
+margin_right = 128.0
+margin_bottom = -4.00002
+focus_neighbour_left = NodePath("../QuitButton")
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_right = NodePath("../TryAgainButton")
+focus_neighbour_bottom = NodePath("../TryAgainButton")
+focus_next = NodePath("../TryAgainButton")
+focus_previous = NodePath("../QuitButton")
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
+text = "Last checkpoint"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TryAgainButtonBackground" type="TextureRect" parent="."]
+margin_left = 124.0
+margin_top = 112.0
+margin_right = 288.0
+margin_bottom = 131.0
 texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,22 +86,22 @@ anchor_top = 0.6
 anchor_right = 0.5
 anchor_bottom = 0.6
 margin_left = -36.0
-margin_top = -9.00001
+margin_top = 3.99999
 margin_right = 128.0
-margin_bottom = 6.99999
-focus_neighbour_left = NodePath("../QuitButton")
-focus_neighbour_top = NodePath("../QuitButton")
+margin_bottom = 20.0
+focus_neighbour_left = NodePath("../CheckPointButton")
+focus_neighbour_top = NodePath("../CheckPointButton")
 focus_neighbour_right = NodePath("../MainMenuButton")
 focus_neighbour_bottom = NodePath("../MainMenuButton")
 focus_next = NodePath("../MainMenuButton")
-focus_previous = NodePath("../QuitButton")
+focus_previous = NodePath("../CheckPointButton")
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
 shortcut_in_tooltip = false
-text = "Try Again"
+text = "Back to start"
 flat = true
 align = 0
 __meta__ = {
@@ -89,7 +127,7 @@ margin_bottom = 63.0
 focus_neighbour_left = NodePath("../QuitButton")
 focus_neighbour_top = NodePath("../TryAgainButton")
 focus_neighbour_right = NodePath("../QuitButton")
-focus_neighbour_bottom = NodePath("../TryAgainButton")
+focus_neighbour_bottom = NodePath("../CheckPointButton")
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../TryAgainButton")
 custom_styles/hover = ExtResource( 9 )
@@ -115,8 +153,8 @@ margin_bottom = 63.0
 focus_neighbour_left = NodePath("../MainMenuButton")
 focus_neighbour_top = NodePath("../TryAgainButton")
 focus_neighbour_right = NodePath("../MainMenuButton")
-focus_neighbour_bottom = NodePath("../TryAgainButton")
-focus_next = NodePath("../TryAgainButton")
+focus_neighbour_bottom = NodePath("../CheckPointButton")
+focus_next = NodePath("../CheckPointButton")
 focus_previous = NodePath("../MainMenuButton")
 custom_styles/hover = ExtResource( 8 )
 custom_styles/pressed = ExtResource( 8 )
@@ -138,6 +176,7 @@ autoplay = true
 texture = ExtResource( 13 )
 centered = false
 offset = Vector2( -3, -3 )
+[connection signal="button_up" from="CheckPointButton" to="." method="CheckPoint"]
 [connection signal="button_up" from="TryAgainButton" to="." method="StartGame"]
 [connection signal="button_up" from="MainMenuButton" to="." method="MainMenu"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitGame"]

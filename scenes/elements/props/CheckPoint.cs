@@ -15,6 +15,8 @@ public class CheckPoint : Area2D
         this.StartPosition = this.GetNode<Position2D>("StartPosition");
 
         this.AnimationPlayer.Play("Idle");
+        
+        this.Connect(nameof(CheckPointValidated), this.GetNode<GameState>("/root/GameState"), "OnCheckPointValidated");
     }
 
     public Vector2 StartingPoint()

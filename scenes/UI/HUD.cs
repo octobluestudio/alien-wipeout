@@ -28,6 +28,11 @@ public class HUD : CanvasLayer
         this.SkipMessage.Visible = false;
     }
 
+    public void InitStopWatch(float initialTime)
+    {
+        this.StopWatch.Init(initialTime);
+    }
+
     public void StartStopWatch()
     {
         this.StopWatch.Start();
