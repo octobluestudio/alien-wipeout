@@ -21,7 +21,7 @@ public class Character : KinematicBody2D
     [Signal] public delegate void Dodged(EnemyProperties.Type enemyType);
     [Signal] public delegate void Won();
 
-    public enum State { Idle, Walk, Jump, Fall, Squash, Chomp, Dance };
+    public enum State { Idle, Walk, Jump, Fall, Stick, Squash, Chomp, Dance };
 
     private Vector2 Velocity = Vector2.Zero;
     private bool Disabled = true;
@@ -216,7 +216,7 @@ public class Character : KinematicBody2D
                 return State.Jump;
             }
 
-            return State.Fall;
+            return (this.IsOnWall()) ? State.Stick : State.Fall;
         }
         
         return (Math.Abs(inputVelocity.x) > 0 && this.IsOnFloor()) ? State.Walk : State.Idle;
