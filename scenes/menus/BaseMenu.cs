@@ -21,7 +21,7 @@ public abstract class BaseMenu : Control
 
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventKey && ((InputEventKey)@event).IsPressed() && !this.AnyButtonHasFocus())
+        if (@event.IsPressed() && !this.AnyButtonHasFocus())
         {
             this.DefaultFocus();
         }
