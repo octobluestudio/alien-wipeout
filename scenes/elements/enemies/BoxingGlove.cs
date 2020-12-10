@@ -11,6 +11,7 @@ public class BoxingGlove : Area2D
 
     private DodgeDetector DodgeDetector;
     private AnimationPlayer AnimationPlayer;
+    private AudioStreamPlayer2D Whoosh;
 
     public EnemyProperties.Type Type = EnemyProperties.Type.BoxingGlove;
 
@@ -18,6 +19,7 @@ public class BoxingGlove : Area2D
     {
         this.DodgeDetector = this.GetNode<DodgeDetector>("DodgeDetector");
         this.AnimationPlayer = this.GetNode<AnimationPlayer>("AnimationPlayer");
+        this.Whoosh = this.GetNode<AudioStreamPlayer2D>("Whoosh");
 
         this.Scale = new Vector2(-this.Direction.x * Math.Abs(this.Scale.x), this.Scale.y);
 
@@ -38,6 +40,7 @@ public class BoxingGlove : Area2D
     {
         this.Speed = MaxSpeed;
         this.AnimationPlayer.Play("Idle");
+        this.Whoosh.Play();
     }
 
     private void Destroy()
