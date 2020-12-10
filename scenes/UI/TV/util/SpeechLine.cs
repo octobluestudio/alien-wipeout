@@ -2,7 +2,7 @@
 
 public class SpeechLine : Object
 {
-    public const float DefaultCompleteDisplayDuration = 2f;
+    public const float DefaultCompleteDisplayDuration = 3f;
 
     public string Text { get; }
     public TV.Mood Mood { get; }

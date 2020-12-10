@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 public class Phrases
 {
@@ -9,9 +9,9 @@ public class Phrases
             BaseLevel.Event.Greetings.ToString("G"),
             new SpeechLinesRandomizer(new SpeechLines[] {
                 new SpeechLines(new SpeechLine[] {
-                    new SpeechLine("Hello Terrans! Welcome to this new Episode of Alien Wipeout!", TV.Mood.Impressed),
-                    new SpeechLine("Today, our contestants will face death with the sole purpose of entertaining you!", TV.Mood.Amused),
-                    new SpeechLine("Please Welcome our new contestant: Poulpinette!", TV.Mood.Amused),
+                    new SpeechLine("Hello Terrans! Welcome to this new Episode of Alien Wipeout!", TV.Mood.Impressed, 2),
+                    new SpeechLine("Today, our contestants will face death with the sole purpose of entertaining you!", TV.Mood.Amused, 2),
+                    new SpeechLine("Please Welcome our new contestant: Poulpinette!", TV.Mood.Amused, 2),
                 })
             })
         },
