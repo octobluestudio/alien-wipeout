@@ -12,7 +12,5 @@ public class LevelCompleteMenu : BaseMenu
         this.GetNode<TextureRect>("NewHighScoreLabel").Visible = this.GameState.IsCurrentLevelRecord();
 
         this.Init();
-
-        this.DefaultFocus();
     }
 }

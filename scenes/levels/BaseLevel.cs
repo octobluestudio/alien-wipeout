@@ -17,6 +17,8 @@ public class BaseLevel : Node2D
 
     private GameState GameState;
 
+    private string NextScene = null;
+
     public override void _Ready()
     {
         ControlsUtil.HideMouse();
@@ -33,6 +35,11 @@ public class BaseLevel : Node2D
         if (@event is InputEventMouseButton)
         {
             ControlsUtil.ShowMouse();
+        }
+
+        if (@event.IsAction("ui_accept") && this.NextScene != null)
+        {
+            this.GoToScene();
         }
     }
 
@@ -102,6 +109,7 @@ public class BaseLevel : Node2D
     private void OnTerrainPresentationStarted()
     {
         this.HUD.ReactTo(Event.Greetings);
+        this.HUD.DisplaySkipMessage();
     }
 
     private void OnTerrainPresentationEnded()
@@ -113,6 +121,7 @@ public class BaseLevel : Node2D
         this.HUD.StartStopWatch();
 
         this.HUD.ReactTo(Event.Started);
+        this.HUD.HideSkipMessage();
     }
 
     private void OnCharacterWon()
@@ -122,10 +131,13 @@ public class BaseLevel : Node2D
 
         this.Terrain.Deactivate();
         this.Music.Stop();
+        this.HUD.DisplaySkipMessage();
 
         this.GameState.RecordTime(this.HUD.GetTime());
 
-        this.GetTree().CreateTimer(2).Connect("timeout", this, "GoToScene", new Godot.Collections.Array() { "res://scenes/menus/LevelCompleteMenu.tscn" });
+        this.RegisterNextScene("res://scenes/menus/LevelCompleteMenu.tscn");
+        this.GetTree().CreateTimer(2.5f).Connect("timeout", this, "GoToScene");
+        
     }
 
     private void OnCharacterKilled(Character.State state)
@@ -133,17 +145,30 @@ public class BaseLevel : Node2D
         this.HUD.StopStopWatch();
         this.HUD.ReactTo(CharacterStateToEvent(state));
 
+        this.Terrain.Deactivate();
         this.Music.Stop();
+        this.HUD.DisplaySkipMessage();
+
         this.LostSound.Play();
 
-        this.Terrain.Deactivate();
-
-        this.GetTree().CreateTimer(2.5f).Connect("timeout", this, "GoToScene", new Godot.Collections.Array() { "res://scenes/menus/GameOverMenu.tscn" });
+        this.RegisterNextScene("res://scenes/menus/GameOverMenu.tscn");
+        this.GetTree().CreateTimer(2.5f).Connect("timeout", this, "GoToScene");
     }
 
-    private void GoToScene(string scenePath)
+    private void RegisterNextScene(string nextScene)
     {
-        this.GetTree().ChangeScene(scenePath);
+        this.NextScene = nextScene;
+    }
+
+    private void GoToScene()
+    {
+        if (this.NextScene == null)
+        {
+            return;
+        }
+
+        Input.ActionRelease("ui_accept");
+        this.GetTree().ChangeScene(this.NextScene);
     }
     
     private void OnCharacterDodged(EnemyProperties.Type enemyType)
