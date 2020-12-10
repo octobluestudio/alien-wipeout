@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/levels/Terrain.cs" type="Script" id=1]
 [ext_resource path="res://scenes/camera/ConfigurableCamera.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/elements/props/Buzzer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/elements/DeathZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/elements/generators/BoxingGloveBoobyTrap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/elements/props/CheckPoint.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 16 )
@@ -266,6 +267,20 @@ position = Vector2( 4576, 16 )
 
 [node name="BigBall10" parent="Balls" instance=ExtResource( 3 )]
 position = Vector2( 4768, 160 )
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="CheckPoint" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 1424, 0 )
+ID = "ALPHA"
+
+[node name="CheckPoint2" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 2736, -224 )
+ID = "BETA"
+
+[node name="CheckPoint3" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 3568, -160 )
+ID = "GAMMA"
 
 [node name="Buzzer" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4976, -128 )
