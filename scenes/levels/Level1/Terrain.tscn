@@ -128,8 +128,25 @@ position = Vector2( 3200, 160.813 )
 
 [node name="Checkpoints" type="Node" parent="."]
 
-[node name="CheckPoint" parent="Checkpoints" instance=ExtResource( 9 )]
+[node name="CheckPoint1" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 592, 128 )
+ID = "1-1"
+
+[node name="CheckPoint2" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 912, 160 )
+ID = "1-2"
+
+[node name="CheckPoint3" parent="Checkpoints" instance=ExtResource( 9 )]
 position = Vector2( 1360, -159.759 )
+ID = "1-3"
+
+[node name="CheckPoint4" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 2256, 32 )
+ID = "1-4"
+
+[node name="CheckPoint5" parent="Checkpoints" instance=ExtResource( 9 )]
+position = Vector2( 2768, 128 )
+ID = "1-5"
 
 [node name="Buzzer" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3728, 64 )
